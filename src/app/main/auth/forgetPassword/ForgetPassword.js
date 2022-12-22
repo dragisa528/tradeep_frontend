@@ -1,20 +1,24 @@
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+// import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import { darken } from '@material-ui/core/styles/colorManipulator';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ForgetPasswordDetail from './ForgetPasswordDetail';
 
+import darkBackground from "@assets/images/backgrounds/dark-material-bg.jpg";
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${darken(
-      theme.palette.primary.dark,
-      0.5
-    )} 100%)`,
+    // background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${darken(
+    //   theme.palette.primary.dark,
+    //   0.5
+    // )} 100%)`,
+    background: `url(${darkBackground})`,
     color: theme.palette.primary.contrastText,
   },
   leftSection: {},
@@ -50,21 +54,20 @@ function ForgetPassword() {
         <Card
           className={clsx(
             classes.leftSection,
-            'flex flex-col w-full max-w-sm items-center justify-center shadow-0'
+            'flex flex-col w-full max-w-sm items-center justify-center shadow-0 py-32'
           )}
           square
         >
-          <CardContent className="">
+          {/* <CardContent className="">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.2 } }}
               className="flex items-center justify-center"
             >
               <Typography className="text-20 tracking-widest ml-6 -mt-8 font-700" color="textSecondary">
-                You can send your email to receive a verification token from server. <br />
               </Typography>
             </motion.div>
-          </CardContent>
+          </CardContent> */}
 
           <div className="flex flex-col items-center justify-center pb-32">
             <div>
