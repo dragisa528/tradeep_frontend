@@ -9,12 +9,15 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ResetPasswordDetail from './ResetPasswordDetail';
 
+import darkBackground from "@assets/images/backgrounds/dark-material-bg.jpg";
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${darken(
-      theme.palette.primary.dark,
-      0.5
-    )} 100%)`,
+    // background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${darken(
+    //   theme.palette.primary.dark,
+    //   0.5
+    // )} 100%)`,
+    background: `url(${darkBackground})`,
     color: theme.palette.primary.contrastText,
   },
   leftSection: {},
@@ -54,7 +57,7 @@ function ResetPassword() {
           )}
           square
         >
-          <CardContent className="">
+          <CardContent className="py-32">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.2 } }}
@@ -65,6 +68,7 @@ function ResetPassword() {
               </Typography>
             </motion.div>
           </CardContent>
+          <ResetPasswordDetail />
 
           <div className="flex flex-col items-center justify-center pb-32">
             <div>
@@ -77,7 +81,6 @@ function ResetPassword() {
               Back to Dashboard
             </Link> */}
           </div>
-          <ResetPasswordDetail />
         </Card>
       </motion.div>
     </div>
