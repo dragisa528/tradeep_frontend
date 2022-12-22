@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.eba42f27.chunk.css",
+    "main.js": "/static/js/main.d44705ae.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.d6c9b9ff.js",
+    "static/css/2.dc12981f.chunk.css": "/static/css/2.dc12981f.chunk.css",
+    "static/js/2.b4ba74dd.chunk.js": "/static/js/2.b4ba74dd.chunk.js",
+    "static/js/3.0641cd81.chunk.js": "/static/js/3.0641cd81.chunk.js",
+    "index.html": "/index.html",
+    "static/js/2.b4ba74dd.chunk.js.LICENSE.txt": "/static/js/2.b4ba74dd.chunk.js.LICENSE.txt",
+    "static/media/dark-material-bg.f4d09abd.jpg": "/static/media/dark-material-bg.f4d09abd.jpg",
+    "static/media/fuse.b84ff826.svg": "/static/media/fuse.b84ff826.svg",
+    "static/media/morain-lake.fee116bf.jpg": "/static/media/morain-lake.fee116bf.jpg",
+    "static/media/index.css": "/static/media/poppins-latin-900italic.babad407.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d6c9b9ff.js",
+    "static/css/2.dc12981f.chunk.css",
+    "static/js/2.b4ba74dd.chunk.js",
+    "static/css/main.eba42f27.chunk.css",
+    "static/js/main.d44705ae.chunk.js"
+  ]
+}
