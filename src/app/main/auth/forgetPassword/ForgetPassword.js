@@ -1,8 +1,8 @@
 import Card from '@material-ui/core/Card';
-// import CardContent from '@material-ui/core/CardContent';
+import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import { darken } from '@material-ui/core/styles/colorManipulator';
-// import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -54,22 +54,24 @@ function ForgetPassword() {
         <Card
           className={clsx(
             classes.leftSection,
-            'flex flex-col w-full max-w-sm items-center justify-center shadow-0 py-32'
+            'flex flex-col w-full max-w-sm items-center justify-center shadow-0 py-12'
           )}
           square
         >
-          {/* <CardContent className="">
+          <CardContent className="">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.2 } }}
-              className="flex items-center justify-center"
+              className="flex items-center justify-center py-24"
             >
-              <Typography className="text-20 tracking-widest ml-6 -mt-8 font-700" color="textSecondary">
+              <Typography className="text-24 tracking-widest ml-6 -mt-8 font-700" color="textSecondary">
+                Forget Password
               </Typography>
             </motion.div>
-          </CardContent> */}
+          </CardContent>
+          <ForgetPasswordDetail />
 
-          <div className="flex flex-col items-center justify-center pb-32">
+          <div className="flex flex-col items-center justify-center pb-12">
             <div>
               <span className="font-normal mr-8">Go to</span>
               <Link className="font-normal" to="/login">
@@ -80,7 +82,6 @@ function ForgetPassword() {
               Back to Dashboard
             </Link> */}
           </div>
-          <ForgetPasswordDetail />
         </Card>
       </motion.div>
     </div>
