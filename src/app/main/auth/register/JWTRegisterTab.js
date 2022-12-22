@@ -66,7 +66,7 @@ function JWTRegisterTab(props) {
               {...field}
               className="mb-16 mx-20"
               type="text"
-              label="First name"
+              label="User name"
               error={!!errors.username}
               helperText={errors?.username?.message}
               InputProps={{

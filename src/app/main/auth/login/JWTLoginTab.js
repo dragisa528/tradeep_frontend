@@ -20,7 +20,7 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .required('Please enter your password.')
-    .min(4, 'Password is too short - should be 4 chars minimum.'),
+    .min(8, 'Password is too short - should be 8 chars minimum.'),
 });
 
 const defaultValues = {
@@ -41,10 +41,10 @@ function JWTLoginTab(props) {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  useEffect(() => {
-    setValue('email', '', { shouldDirty: true, shouldValidate: true });
-    setValue('password', '', { shouldDirty: true, shouldValidate: true });
-  }, [reset, setValue, trigger]);
+  // useEffect(() => {
+  //   setValue('email', '', { shouldDirty: true, shouldValidate: true });
+  //   setValue('password', '', { shouldDirty: true, shouldValidate: true });
+  // }, [reset, setValue, trigger]);
 
   useEffect(() => {
     login.errors.forEach((error) => {
@@ -83,6 +83,7 @@ function JWTLoginTab(props) {
                 ),
               }}
               variant="outlined"
+              required
             />
           )}
         />
