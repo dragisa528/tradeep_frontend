@@ -14,13 +14,7 @@ import _ from '@lodash';
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  firstName: yup.string().required('You must enter first name'),
-  lastName: yup.string().required('You must enter last name'),
-  phoneNumber: yup.string().required('You must enter phoneNumber'),
-  city: yup.string().required('You must enter city'),
-  street: yup.string().required('You must enter street'),
-  country: yup.string().required('You must enter country'),
-  postalCode: yup.string().required('You must enter postalCode'),
+  username: yup.string().required('You must enter first name'),
   email: yup.string().email('You must enter a valid email').required('You must enter a email'),
   password: yup
     .string()
@@ -30,13 +24,7 @@ const schema = yup.object().shape({
 });
 
 const defaultValues = {
-  firstName: '',
-  lastName: '',
-  phoneNumber: '',
-  city: '',
-  street: '',
-  country: '',
-  postalCode: '',
+  username: '',
   email: '',
   password: '',
   passwordConfirm: '',
@@ -71,7 +59,7 @@ function JWTRegisterTab(props) {
     <div className="w-full">
       <form className="flex flex-col justify-center w-full" onSubmit={handleSubmit(onSubmit)}>
         <Controller
-          name="firstName"
+          name="username"
           control={control}
           render={({ field }) => (
             <TextField
@@ -79,169 +67,13 @@ function JWTRegisterTab(props) {
               className="mb-16 mx-20"
               type="text"
               label="First name"
-              error={!!errors.firstName}
-              helperText={errors?.firstName?.message}
+              error={!!errors.username}
+              helperText={errors?.username?.message}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <Icon className="text-20" color="action">
                       person
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              required
-            />
-          )}
-        />
-
-        <Controller
-          name="lastName"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              className="mb-16 mx-20"
-              type="text"
-              label="Last name"
-              error={!!errors.lastName}
-              helperText={errors?.lastName?.message}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Icon className="text-20" color="action">
-                      person
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              required
-            />
-          )}
-        />
-
-        <Controller
-          name="phoneNumber"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              className="mb-16 mx-20"
-              type="text"
-              label="Phone number"
-              error={!!errors.phoneNumber}
-              helperText={errors?.phoneNumber?.message}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Icon className="text-20" color="action">
-                      phone_android
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              required
-            />
-          )}
-        />
-
-        <Controller
-          name="street"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              className="mb-16 mx-20"
-              type="text"
-              label="Street"
-              error={!!errors.street}
-              helperText={errors?.street?.message}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Icon className="text-20" color="action">
-                      add_location
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              required
-            />
-          )}
-        />
-
-        <Controller
-          name="city"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              className="mb-16 mx-20"
-              type="text"
-              label="City"
-              error={!!errors.city}
-              helperText={errors?.city?.message}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Icon className="text-20" color="action">
-                      add_location
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              required
-            />
-          )}
-        />
-
-        <Controller
-          name="postalCode"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              className="mb-16 mx-20"
-              type="text"
-              label="Post/Zip code"
-              error={!!errors.postalCode}
-              helperText={errors?.postalCode?.message}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Icon className="text-20" color="action">
-                      add_location
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              required
-            />
-          )}
-        />
-
-        <Controller
-          name="country"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              className="mb-16 mx-20"
-              type="text"
-              label="Country"
-              error={!!errors.country}
-              helperText={errors?.country?.message}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Icon className="text-20" color="action">
-                      add_location
                     </Icon>
                   </InputAdornment>
                 ),

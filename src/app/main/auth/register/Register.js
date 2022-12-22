@@ -59,7 +59,7 @@ function Register() {
           )}
           square
         >
-          <CardContent className="flex flex-col items-center justify-center w-full py-96 max-w-320">
+          <CardContent className="flex flex-col items-center justify-center w-full py-32 max-w-320">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.2 } }}
@@ -72,9 +72,9 @@ function Register() {
 
           <div className="flex flex-col items-center justify-center pb-32">
             <div>
-              <span className="font-normal mr-8">Don't have an account?</span>
-              <Link className="font-normal" to="/register">
-                Register
+              <span className="font-normal mr-8">Have already got an account?</span>
+              <Link className="font-normal" to="/login">
+                Login
               </Link>
             </div>
             {/* <Link className="font-normal mt-8" to="/">
@@ -82,14 +82,6 @@ function Register() {
             </Link> */}
           </div>
           <JWTRegisterTab />
-          <div className="flex flex-col items-center justify-center pb-32">
-            <div>
-              <span className="font-normal mr-8">Lost Your Password?</span>
-              <Link className="font-normal" to="/forgetPassword">
-                Forget Password...
-              </Link>
-            </div>
-          </div>
         </Card>
 
         <div
