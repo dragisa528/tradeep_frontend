@@ -58,22 +58,23 @@ class JwtService extends FuseUtils.EventEmitter {
     });
   };
 
-  signInWithEmailAndPassword = (email, password) => {
+  signInWithEmailAndPassword = (signIn, email, password) => {
     return new Promise((resolve, reject) => {
-      axios
-        .get('/api/auth', {
-          data: {
-            email,
-            password,
-          },
-        })
+      signIn({
+        variables: {
+          email,
+          password,
+        }
+      })
         .then((response) => {
-          if (response.data.user) {
-            this.setSession(response.data.access_token);
-            resolve(response.data.user);
-          } else {
-            reject(response.data.error);
-          }
+          if (response.data.tokenAuth.user) {
+            this.setSession(response.data.tokenAuth.token);
+            resolve(response.data.tokenAuth.user);
+          } 
+        })
+        .catch((errors) => {
+          // reject({errors});
+          reject({message: "Please enter valid email or password!"});
         });
     });
   };
@@ -111,10 +112,10 @@ class JwtService extends FuseUtils.EventEmitter {
   setSession = (access_token) => {
     if (access_token) {
       localStorage.setItem('jwt_access_token', access_token);
-      axios.defaults.headers.common.Authorization = `Bearer ${access_token}`;
+      // axios.defaults.headers.common.Authorization = `Bearer ${access_token}`;
     } else {
       localStorage.removeItem('jwt_access_token');
-      delete axios.defaults.headers.common.Authorization;
+      // delete axios.defaults.headers.common.Authorization;
     }
   };
 

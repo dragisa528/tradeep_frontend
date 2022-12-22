@@ -44,21 +44,21 @@ function UserNavbarHeader(props) {
       className="user relative flex flex-col items-center justify-center pt-24 pb-64 mb-32 z-0 shadow-0"
     >
       <Typography className="username text-18 whitespace-nowrap font-semibold mb-4" color="inherit">
-        {user.data.displayName}
+        {user.username}
       </Typography>
       <Typography
         className="email text-13 opacity-50 whitespace-nowrap font-medium"
         color="inherit"
       >
-        {user.data.email}
+        {user.email}
       </Typography>
       <div className="flex items-center justify-center absolute bottom-0 -mb-44">
         <Avatar
           className={clsx(classes.avatar, 'avatar w-72 h-72 p-8 box-content')}
           alt="user photo"
           src={
-            user.data.photoURL && user.data.photoURL !== ''
-              ? user.data.photoURL
+            user.photoURL && user.photoURL !== ''
+              ? user.photoURL
               : defaultUser
           }
         />

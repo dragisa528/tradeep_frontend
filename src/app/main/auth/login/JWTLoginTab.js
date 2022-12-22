@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
-// import Typography from '@material-ui/core/Typography';
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +11,8 @@ import { submitLogin } from 'app/auth/store/loginSlice';
 import * as yup from 'yup';
 import _ from '@lodash';
 
+import { useMutation } from '@apollo/client';
+import { LOGIN_MUTATION } from '@graphql/mutations'
 /**
  * Form Validation Schema
  */
@@ -30,6 +31,9 @@ const defaultValues = {
 
 function JWTLoginTab(props) {
   const dispatch = useDispatch();
+
+  const [signIn] = useMutation(LOGIN_MUTATION);
+
   const login = useSelector(({ auth }) => auth.login);
   const { control, setValue, formState, handleSubmit, reset, trigger, setError } = useForm({
     mode: 'onChange',
@@ -41,22 +45,8 @@ function JWTLoginTab(props) {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  // useEffect(() => {
-  //   setValue('email', '', { shouldDirty: true, shouldValidate: true });
-  //   setValue('password', '', { shouldDirty: true, shouldValidate: true });
-  // }, [reset, setValue, trigger]);
-
-  useEffect(() => {
-    login.errors.forEach((error) => {
-      setError(error.type, {
-        type: 'manual',
-        message: error.message,
-      });
-    });
-  }, [login.errors, setError]);
-
   function onSubmit(model) {
-    dispatch(submitLogin(model));
+    dispatch(submitLogin(signIn, model));
   }
 
   return (

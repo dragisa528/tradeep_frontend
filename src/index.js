@@ -12,7 +12,37 @@ import App from 'app/App';
 import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, HttpLink } from '@apollo/client';
+import jwtService from 'app/services/jwtService';
+
+const cache = new InMemoryCache();
+
+const httpLink = new HttpLink({
+	uri: '/graphql/',
+})
+
+const authLink = new ApolloLink((operation, forward) => {
+	// add the authorization to the headers
+    
+	const token = jwtService.getAccessToken();
+
+	operation.setContext(({ headers = {} }) => ({
+		headers: {
+			...headers,
+			authorization: token ? `JWT ${token}` : '',
+			'Content-Type': 'application/json'
+		},
+	}));
+
+	return forward(operation);
+})
+
+const client = new ApolloClient({
+	link: authLink.concat(httpLink),
+	cache,
+})
+
+ReactDOM.render(<ApolloProvider client={client}><App /></ApolloProvider>, document.getElementById('root'));
 
 reportWebVitals();
 

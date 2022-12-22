@@ -59,6 +59,7 @@
         "web-vitals": "2.1.0",
         "yup": "^0.32.11"
     },
+    "proxy": "http://localhost:8000",
     "peerDependencies": {
         "autoprefixer": "9.8.6",
         "postcss": "7.0.36",
