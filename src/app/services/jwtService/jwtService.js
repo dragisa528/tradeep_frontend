@@ -45,16 +45,27 @@ class JwtService extends FuseUtils.EventEmitter {
     }
   };
 
-  createUser = (data) => {
+  createUser = (signUp, data) => {
     return new Promise((resolve, reject) => {
-      axios.post('/api/auth/register', data).then((response) => {
-        if (response.data.user) {
-          this.setSession(response.data.access_token);
-          resolve(response.data.user);
-        } else {
-          reject(response.data.error);
+      signUp({
+        variables: {
+          username: data.username,
+          email: data.email,
+          password1: data.password1,
+          password2: data.password2,
         }
-      });
+      })
+        .then((response) => {
+          if (response.data.register.success) {
+            this.setSession(response.data.register.token);
+            resolve({username: data.username, email: data.email});
+          } else {
+            reject(response.data.register.errors);
+          }
+        })
+        .catch((errors) => {
+          reject(errors);
+        })
     });
   };
 
@@ -70,11 +81,11 @@ class JwtService extends FuseUtils.EventEmitter {
           if (response.data.tokenAuth.user) {
             this.setSession(response.data.tokenAuth.token);
             resolve(response.data.tokenAuth.user);
-          } 
+          }
         })
         .catch((errors) => {
           // reject({errors});
-          reject({message: "Please enter valid email or password!"});
+          reject({ message: "Please enter valid email or password!" });
         });
     });
   };

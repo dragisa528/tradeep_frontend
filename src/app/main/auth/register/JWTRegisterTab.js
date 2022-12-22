@@ -10,29 +10,34 @@ import { submitRegister } from 'app/auth/store/registerSlice';
 import * as yup from 'yup';
 import _ from '@lodash';
 
+import { useMutation } from '@apollo/client';
+import { REGISTER_MUTATION } from '@graphql/mutations'
+
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
   username: yup.string().required('You must enter first name'),
   email: yup.string().email('You must enter a valid email').required('You must enter a email'),
-  password: yup
+  password1: yup
     .string()
     .required('Please enter your password.')
     .min(8, 'Password is too short - should be 8 chars minimum.'),
-  passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
+  password2: yup.string().oneOf([yup.ref('password1'), null], 'Passwords must match'),
 });
 
 const defaultValues = {
   username: '',
   email: '',
-  password: '',
-  passwordConfirm: '',
+  password1: '',
+  password2: '',
 };
 
 function JWTRegisterTab(props) {
   const dispatch = useDispatch();
   const authRegister = useSelector(({ auth }) => auth.register);
+
+  const [signUp] = useMutation(REGISTER_MUTATION);
 
   const { control, formState, handleSubmit, reset, setError } = useForm({
     mode: 'onChange',
@@ -43,8 +48,9 @@ function JWTRegisterTab(props) {
   const { isValid, dirtyFields, errors } = formState;
 
   useEffect(() => {
-    authRegister.errors.forEach((error) => {
-      setError(error.type, {
+    console.log("resgister:::", authRegister?.errors);
+    Object.values(authRegister?.errors)[0]?.forEach((error) => {
+      setError(Object.keys(authRegister?.errors)[0], {
         type: 'manual',
         message: error.message,
       });
@@ -52,7 +58,7 @@ function JWTRegisterTab(props) {
   }, [authRegister.errors, setError]);
 
   function onSubmit(model) {
-    dispatch(submitRegister(model));
+    dispatch(submitRegister(signUp, model));
   }
 
   return (
@@ -111,7 +117,7 @@ function JWTRegisterTab(props) {
         />
 
         <Controller
-          name="password"
+          name="password1"
           control={control}
           render={({ field }) => (
             <TextField
@@ -119,8 +125,8 @@ function JWTRegisterTab(props) {
               className="mb-16 mx-20"
               type="password"
               label="Password"
-              error={!!errors.password}
-              helperText={errors?.password?.message}
+              error={!!errors.password1}
+              helperText={errors?.password1?.message}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -137,7 +143,7 @@ function JWTRegisterTab(props) {
         />
 
         <Controller
-          name="passwordConfirm"
+          name="password2"
           control={control}
           render={({ field }) => (
             <TextField
@@ -145,8 +151,8 @@ function JWTRegisterTab(props) {
               className="mb-16 mx-20"
               type="password"
               label="Confirm Password"
-              error={!!errors.passwordConfirm}
-              helperText={errors?.passwordConfirm?.message}
+              error={!!errors.password2}
+              helperText={errors?.password2?.message}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
