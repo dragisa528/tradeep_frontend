@@ -48,7 +48,6 @@ function JWTRegisterTab(props) {
   const { isValid, dirtyFields, errors } = formState;
 
   useEffect(() => {
-    console.log("resgister:::", authRegister?.errors);
     Object.values(authRegister?.errors)[0]?.forEach((error) => {
       setError(Object.keys(authRegister?.errors)[0], {
         type: 'manual',
