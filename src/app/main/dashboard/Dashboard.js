@@ -1,4 +1,3 @@
-import DemoContent from '@fuse/core/DemoContent';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -28,7 +27,7 @@ function SimpleFullWidthSample() {
         <div className="p-24">
           <h4>Content</h4>
           <br />
-          <DemoContent />
+          DemoContent
         </div>
       }
     />

@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { submitLogin } from 'app/auth/store/loginSlice';
@@ -12,7 +12,7 @@ import * as yup from 'yup';
 import _ from '@lodash';
 
 import { useMutation } from '@apollo/client';
-import { LOGIN_MUTATION } from '@graphql/mutations'
+import { LOGIN_MUTATION } from '@graphql/mutations';
 /**
  * Form Validation Schema
  */

@@ -1,12 +1,12 @@
 import { Redirect } from 'react-router-dom';
 import FuseUtils from '@fuse/utils';
-import ExampleConfig from 'app/main/example/ExampleConfig';
+import DashboardConfig from 'app/main/dashboard/DashboardConfig';
 import FuseLoading from '@fuse/core/FuseLoading';
 import Error404Page from 'app/main/404/Error404Page';
 import AuthConfig from 'app/main/auth/AuthConfig';
 
 const routeConfigs = [
-  ExampleConfig,
+  DashboardConfig,
   ...AuthConfig
 ];
 
