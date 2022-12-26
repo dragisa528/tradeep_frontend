@@ -18,7 +18,7 @@ const routes = [
   {
     exact: true,
     path: '/',
-    component: () => <Redirect to="/example" />,
+    component: () => <Redirect to="/dashboard" />,
   },
   {
     path: '/loading',

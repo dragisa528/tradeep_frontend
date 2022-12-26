@@ -9,40 +9,44 @@ import './styles/app-base.css';
 import './styles/app-components.css';
 import './styles/app-utilities.css';
 import App from 'app/App';
-import * as serviceWorker from './serviceWorker';
-import reportWebVitals from './reportWebVitals';
-
 import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, HttpLink } from '@apollo/client';
 import jwtService from 'app/services/jwtService';
+import * as serviceWorker from './serviceWorker';
+import reportWebVitals from './reportWebVitals';
 
 const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
-	uri: '/graphql/',
-})
+  uri: 'http://54.167.38.244/graphql/',
+});
 
 const authLink = new ApolloLink((operation, forward) => {
-	// add the authorization to the headers
-    
-	const token = jwtService.getAccessToken();
+  // add the authorization to the headers
 
-	operation.setContext(({ headers = {} }) => ({
-		headers: {
-			...headers,
-			authorization: token ? `JWT ${token}` : '',
-			'Content-Type': 'application/json'
-		},
-	}));
+  const token = jwtService.getAccessToken();
 
-	return forward(operation);
-})
+  operation.setContext(({ headers = {} }) => ({
+    headers: {
+      ...headers,
+      authorization: token ? `JWT ${token}` : '',
+      'Content-Type': 'application/json',
+    },
+  }));
+
+  return forward(operation);
+});
 
 const client = new ApolloClient({
-	link: authLink.concat(httpLink),
-	cache,
-})
+  link: authLink.concat(httpLink),
+  cache,
+});
 
-ReactDOM.render(<ApolloProvider client={client}><App /></ApolloProvider>, document.getElementById('root'));
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById('root')
+);
 
 reportWebVitals();
 
