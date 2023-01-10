@@ -108,6 +108,7 @@
         "pnpify-sdk": "yarn pnpify --sdk",
         "lint": "eslint"
     },
+    "proxy": "https://backend.tradeep.ai/",
     "browserslist": {
         "production": [
             ">0.2%",
