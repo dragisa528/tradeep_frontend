@@ -27,7 +27,7 @@ function SimpleFullWidthSample() {
         <div className="p-24">
           <h4>Content</h4>
           <br />
-          DemoContent
+          DemoContent-fuse
         </div>
       }
     />
