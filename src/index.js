@@ -17,7 +17,7 @@ import reportWebVitals from './reportWebVitals';
 const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
-  uri: 'http://deeptrade-backend-snowguru-env.eba-p2y8u5pa.us-west-2.elasticbeanstalk.com/graphql/',
+  uri: 'https://backend.tradeep.ai/graphql/',
 });
 
 const authLink = new ApolloLink((operation, forward) => {
