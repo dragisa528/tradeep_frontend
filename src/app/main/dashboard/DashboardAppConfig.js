@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-const ProjectDashboardAppConfig = {
+const DashboardAppConfig = {
   settings: {
     layout: {
       config: {},
@@ -14,4 +14,4 @@ const ProjectDashboardAppConfig = {
   ],
 };
 
-export default ProjectDashboardAppConfig;
+export default DashboardAppConfig;
