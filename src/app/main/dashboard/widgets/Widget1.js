@@ -7,8 +7,8 @@ import { memo } from 'react';
 function Widget1(props) {
   return (
     <Paper className="w-full rounded-20 shadow flex flex-col justify-around">
-      <div className="flex items-center justify-between px-4 pt-8">
-        <div className="text-left py-12 pl-6">
+      <div className="flex flex-wrap items-center justify-around px-4 pt-8">
+        <div className="text-left py-12 px-6 w-1/2 md:w-1/4">
           <Typography className="text-18 font-semibold leading-none tracking-tighter">
             Compute Time
           </Typography>
@@ -20,7 +20,7 @@ function Widget1(props) {
             </div>
           </div>
         </div>
-        <div className="text-left py-12">
+        <div className="text-left py-12 px-6 w-1/2 md:w-1/4">
           <Typography className="text-18 font-semibold leading-none tracking-tighter">
             Storage
           </Typography>
@@ -32,7 +32,7 @@ function Widget1(props) {
             </div>
           </div>
         </div>
-        <div className="text-left py-12">
+        <div className="text-left py-12 px-6 w-1/2 md:w-1/4">
           <Typography className="text-18 font-semibold leading-none tracking-tighter">
             Member (1/1)
           </Typography>
@@ -42,7 +42,7 @@ function Widget1(props) {
             </div>
           </div>
         </div>
-        <div className="text-left py-12 pr-6">
+        <div className="text-left py-12 px-6 w-1/2 md:w-1/4">
           <Typography className="text-18 font-semibold leading-none tracking-tighter">
             Plan
           </Typography>

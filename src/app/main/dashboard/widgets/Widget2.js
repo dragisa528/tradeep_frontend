@@ -3,6 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import { Box } from '@material-ui/core';
 import { memo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import _ from '@lodash';
@@ -14,8 +15,8 @@ function Widget2(props) {
   _.setWith(data, 'options.colors', [theme.palette.secondary.main]);
 
   return (
-    <Card className="w-full rounded-20 shadow flex">
-      <div className="p-20 pb-0 w-full sm:w-1/4 flex flex-col justify-start">
+    <Card className="w-full rounded-20 shadow flex flex-wrap p-20">
+      <div className="flex sm:flex-col justify-start pt-16">
         <div className="mb-8">
           <div className="flex">
             <Typography className="h3 font-bold">Profits</Typography>
@@ -51,7 +52,7 @@ function Widget2(props) {
             )}
           </div>
         </div>
-        <div>
+        <div className="mb-8">
           <div className="flex flex-row flex-wrap items-center mt-12">
             <div className="min-w-32 min-h-6 bg-red rounded-full" />
             <Typography className="ml-6 text-12 font-semibold leading-none tracking-tighter">
@@ -65,16 +66,20 @@ function Widget2(props) {
             </Typography>
           </div>
         </div>
-
       </div>
-      <div className="h-320 w-100-p w-full sm:w-3/4">
+      <Box
+        sx={{
+          width: { xs: '100%', sm: '500px', md: '300px', lg: '500px' },
+          height: { xs: '260px' },
+        }}
+      >
         <ReactApexChart
           options={data.options}
           series={data.series}
           type={data.options.chart.type}
           height={data.options.chart.height}
         />
-      </div>
+      </Box>
     </Card>
   );
 }
