@@ -7,9 +7,8 @@ import Widget3 from '../widgets/Widget3';
 import Widget4 from '../widgets/Widget4';
 import Widget5 from '../widgets/Widget5';
 import Widget6 from '../widgets/Widget6';
-import Widget7 from '../widgets/Widget7';
 
-function HomeTab() {
+function DashboardTab() {
   const widgets = useSelector(selectWidgets);
 
   const container = {
@@ -40,13 +39,13 @@ function HomeTab() {
         <Widget4 widget={widgets.widget4} />
       </motion.div>
       <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
-        <Widget4 widget={widgets.widget4} />
+        <Widget5 widget={widgets.widget5} />
       </motion.div>
       <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
-        <Widget4 widget={widgets.widget4} />
+        <Widget6 widget={widgets.widget6} />
       </motion.div>
     </motion.div>
   );
 }
 
-export default HomeTab;
+export default DashboardTab;

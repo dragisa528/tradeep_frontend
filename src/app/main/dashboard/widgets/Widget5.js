@@ -1,96 +1,37 @@
-import Divider from '@material-ui/core/Divider';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
-import { useTheme } from '@material-ui/core/styles';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-import _ from '@lodash';
-import { memo, useState, useEffect } from 'react';
-import ReactApexChart from 'react-apexcharts';
+import { memo } from 'react';
 
-function Widget5(props) {
-  const theme = useTheme();
-  const [awaitRender, setAwaitRender] = useState(true);
-  const [tabValue, setTabValue] = useState(0);
-  const widget = _.merge({}, props.widget);
-  const currentRange = Object.keys(widget.ranges)[tabValue];
-
-  _.setWith(widget, 'mainChart.options.colors', [
-    theme.palette.primary.main,
-    theme.palette.secondary.main,
-  ]);
-
-  useEffect(() => {
-    setAwaitRender(false);
-  }, []);
-
-  if (awaitRender) {
-    return null;
-  }
+function Widget4(props) {
   return (
-    <Paper className="w-full rounded-20 shadow">
-      <div className="flex items-center justify-between p-20">
-        <Typography className="text-16 font-medium">{widget.title}</Typography>
-        <Tabs
-          value={tabValue}
-          onChange={(ev, value) => setTabValue(value)}
-          indicatorColor="secondary"
-          textColor="inherit"
-          variant="scrollable"
-          scrollButtons="off"
-          className="-mx-4 min-h-40"
-          classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
-          TabIndicatorProps={{
-            children: <Divider className="w-full h-full rounded-full opacity-50" />,
-          }}
-        >
-          {Object.entries(widget.ranges).map(([key, n]) => (
-            <Tab
-              className="text-14 font-semibold min-h-40 min-w-64 mx-4"
-              disableRipple
-              key={key}
-              label={n}
-            />
-          ))}
-        </Tabs>
+    <Paper className="w-full rounded-20 shadow flex flex-col justify-between">
+      <div className="flex items-center justify-between px-4 pt-8">
+        <Typography className="text-16 px-16 font-medium" color="textSecondary">
+          {props.widget.title}
+        </Typography>
+        <IconButton aria-label="more">
+          <Icon>more_vert</Icon>
+        </IconButton>
       </div>
-      <div className="flex flex-row flex-wrap">
-        <div className="w-full md:w-1/2 p-16 min-h-420 h-420">
-          <ReactApexChart
-            options={widget.mainChart.options}
-            series={widget.mainChart[currentRange].series}
-            type={widget.mainChart.options.chart.type}
-            height={widget.mainChart.options.chart.height}
-          />
-        </div>
-        <div className="flex w-full md:w-1/2 flex-wrap p-8">
-          {Object.entries(widget.supporting).map(([key, item]) => {
-            return (
-              <div key={key} className="w-full sm:w-1/2 p-12">
-                <Typography
-                  className="text-12 font-semibold whitespace-nowrap"
-                  color="textSecondary"
-                >
-                  {item.name}
-                </Typography>
-                <Typography className="text-32 font-semibold tracking-tighter">
-                  {item.count[currentRange]}
-                </Typography>
-                <div className="h-64 w-full overflow-hidden">
-                  <ReactApexChart
-                    options={{ ...item.chart.options, colors: [theme.palette.secondary.main] }}
-                    series={item.chart[currentRange].series}
-                    type={item.chart.options.chart.type}
-                    height={item.chart.options.chart.height}
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
+      <div className="text-center py-12">
+        <Typography className="text-72 font-semibold leading-none text-green tracking-tighter">
+          {props.widget.data.count}
+        </Typography>
+        <Typography className="text-18 font-normal text-green-800">
+          {props.widget.data.name}
+        </Typography>
       </div>
+      <Typography
+        className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium"
+        color="textSecondary"
+      >
+        <span className="truncate">{props.widget.data.extra.name}</span>:
+        <b className="px-8">{props.widget.data.extra.count}</b>
+      </Typography>
     </Paper>
   );
 }
 
-export default memo(Widget5);
+export default memo(Widget4);

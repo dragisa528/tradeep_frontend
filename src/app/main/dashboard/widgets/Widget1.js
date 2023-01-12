@@ -1,3 +1,5 @@
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
@@ -15,45 +17,68 @@ function Widget1(props) {
   return (
     <Paper className="w-full rounded-20 shadow flex flex-col justify-between">
       <div className="flex items-center justify-between px-4 pt-8">
-        <Select
-          native
-          className="mx-16"
-          classes={{ root: 'py-8 font-medium opacity-75' }}
-          value={currentRange}
-          onChange={handleChangeRange}
-          inputProps={{
-            name: 'currentRange',
-          }}
-          disableUnderline
-          variant="standard"
-        >
-          {Object.entries(props.widget.ranges).map(([key, n]) => {
-            return (
-              <option key={key} value={key}>
-                {n}
-              </option>
-            );
-          })}
-        </Select>
-        <IconButton aria-label="more">
-          <Icon>more_vert</Icon>
-        </IconButton>
+        <div className="text-left p-12">
+          <Typography className="text-18 font-semibold leading-none text-white tracking-tighter">
+            Compute Time
+          </Typography>
+          <div className="text-left p-3 flex">
+            <Typography className="text-28 text-white font-900">
+              {props.widget.data.count[currentRange]}
+            </Typography>
+            <div className="text-left p-3">
+              <Typography className="text-12 text-white font-normal">Hours</Typography>
+              <Typography className="text-10 text-white font-200 ">Available</Typography>
+            </div>
+          </div>
+        </div>
+        <div className="text-left p-12">
+          <Typography className="text-18 font-semibold leading-none text-white tracking-tighter">
+            Storage
+          </Typography>
+          <div className="text-left p-3 flex">
+            <Typography className="text-28 text-white font-900">
+              {props.widget.data.count[currentRange]}
+            </Typography>
+            <div className="text-left p-3">
+              <Typography className="text-12 text-white font-normal">GB</Typography>
+              <Typography className="text-10 text-white font-200 ">Available</Typography>
+            </div>
+          </div>
+        </div>
+        <div className="text-left p-12">
+          <Typography className="text-18 font-semibold leading-none text-white tracking-tighter">
+            Member (1/1)
+          </Typography>
+          <div className="text-left p-6 flex">
+            <div className="text-18 font-semibold text-white rounded-full bg-gray-800 w-32 h-32 text-center flex items-center justify-center">
+              S
+            </div>
+          </div>
+        </div>
+        <div className="text-left p-12">
+          <Typography className="text-18 font-semibold leading-none text-white tracking-tighter">
+            Plan
+          </Typography>
+          <div className="text-left p-3 flex">
+            <Typography className="text-28 text-white font-900">Free</Typography>
+            <div className="text-left p-3 felx flex-col-reverse">
+              <Link className="text-10 text-green-200 font-200" to="/#">
+                Upgrade
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="text-center py-12">
-        <Typography className="text-72 font-semibold leading-none text-blue tracking-tighter">
-          {props.widget.data.count[currentRange]}
-        </Typography>
-        <Typography className="text-18 text-blue-800 font-normal">
-          {props.widget.data.name}
-        </Typography>
-      </div>
-      <Typography
+      <Button type="button" variant="contained" color="secondary" className="mx-20 my-16">
+        Manage Subscription
+      </Button>
+      {/* <Typography
         className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium"
         color="textSecondary"
       >
         <span className="truncate">{props.widget.data.extra.name}</span>:
         <b className="px-8">{props.widget.data.extra.count[currentRange]}</b>
-      </Typography>
+      </Typography> */}
     </Paper>
   );
 }
