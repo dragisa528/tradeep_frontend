@@ -1,14 +1,12 @@
-import FusePageSimple from '@fuse/core/FusePageSimple';
 import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import withReducer from 'app/store/withReducer';
 import _ from '@lodash';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DashboardAppHeader from './DashboardAppHeader';
-import DashboardAppSidebar from './DashboardAppSidebar';
 import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import BudgetSummaryTab from './tabs/BudgetSummaryTab';
@@ -28,7 +26,6 @@ function DashboardApp(props) {
   const widgets = useSelector(selectWidgets);
 
   const classes = useStyles(props);
-  const pageLayout = useRef(null);
   const [tabValue, setTabValue] = useState(0);
 
   useEffect(() => {
@@ -44,16 +41,8 @@ function DashboardApp(props) {
   }
 
   return (
-    <FusePageSimple
-      classes={{
-        header:
-          'min-h-160 h-160 lg:ltr:rounded-br-20 lg:rtl:rounded-bl-20 lg:ltr:mr-12 lg:rtl:ml-12',
-        toolbar: 'min-h-56 h-56 items-end',
-        rightSidebar: 'w-288 border-0 py-12',
-        content: classes.content,
-      }}
-      header={<DashboardAppHeader pageLayout={pageLayout} />}
-      contentToolbar={
+    <Box>
+      <Box className="mt-12">
         <Tabs
           value={tabValue}
           onChange={handleChangeTab}
@@ -70,30 +59,34 @@ function DashboardApp(props) {
           <Tab
             className="text-14 font-semibold min-h-40 min-w-64 mx-4"
             disableRipple
-            label="Home"
+            label="Dashboard"
           />
           <Tab
             className="text-14 font-semibold min-h-40 min-w-64 mx-4"
             disableRipple
-            label="Budget Summary"
+            label="Members"
           />
           <Tab
             className="text-14 font-semibold min-h-40 min-w-64 mx-4"
             disableRipple
-            label="Team Members"
+            label="Billing"
+          />
+          <Tab
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            disableRipple
+            label="Profile"
           />
         </Tabs>
-      }
-      content={
+      </Box>
+      <Box className={classes.content}>
         <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
           {tabValue === 0 && <HomeTab />}
           {tabValue === 1 && <BudgetSummaryTab />}
           {tabValue === 2 && <TeamMembersTab />}
+          {tabValue === 3 && <TeamMembersTab />}
         </div>
-      }
-      rightSidebarContent={<DashboardAppSidebar />}
-      ref={pageLayout}
-    />
+      </Box>
+    </Box>
   );
 }
 
