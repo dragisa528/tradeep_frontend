@@ -8,8 +8,8 @@ const ProjectDashboardAppConfig = {
   },
   routes: [
     {
-      path: '/apps/dashboards/project',
-      component: lazy(() => import('./ProjectDashboardApp')),
+      path: '/dashboard',
+      component: lazy(() => import('./DashboardApp')),
     },
   ],
 };
