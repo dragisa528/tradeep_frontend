@@ -30,7 +30,7 @@ function DashboardTab() {
         <Widget1 widget={widgets.widget1} />
       </motion.div>
       <motion.div variants={item} className="widget flex w-full md:w-1/2 p-12">
-        <Widget2 widget={widgets.widget2} />
+        <Widget2 data={widgets.widget2} />
       </motion.div>
       <motion.div variants={item} className="widget flex w-full p-12">
         <Widget3 widget={widgets.widget3} />

@@ -30,16 +30,131 @@ const projectDashboardAppDB = {
 		},
 		{
 			id: 'widget2',
-			title: 'Overdue',
-			data: {
-				name: 'Tasks',
-				count: 4,
-				extra: {
-					name: "Yesterday's overdue",
-					count: 2
-				}
+			impressions: {
+				value: '87k',
+				ofTarget: 12
 			},
-			detail: 'You can show some detailed information about this widget in here.'
+			series: [
+				{
+					name: 'Impression',
+					data: [
+						67000,
+						54000,
+						82000,
+						57000,
+						72000,
+						57000,
+						87000,
+						72000,
+						89000,
+						98700,
+						112000,
+						136000,
+						110000,
+						149000,
+						98000
+					]
+				}
+			],
+			options: {
+				chart: {
+					type: 'area',
+					height: '100%',
+					background: 'transparent',
+					toolbar: {
+						show: false
+					},
+					zoom: {
+						enabled: false
+					}
+				},
+				theme: {
+					mode: 'dark'
+				},
+				dataLabels: {
+					enabled: false
+				},
+				xaxis: {
+					categories: [
+						'Jan 1',
+						'Jan 2',
+						'Jan 3',
+						'Jan 4',
+						'Jan 5',
+						'Jan 6',
+						'Jan 7',
+						'Jan 8',
+						'Jan 9',
+						'Jan 10',
+						'Jan 11',
+						'Jan 12',
+						'Jan 13',
+						'Jan 14',
+						'Jan 15'
+					],
+					tooltip: {
+						enabled: false
+					},
+					axisBorder: {
+						show: false
+					}
+				},
+				yaxis: {
+					axisBorder: {
+						show: false
+					}
+				},
+				markers: {
+					size: 3,
+					strokeWidth: 1.5,
+					strokeOpacity: 1,
+					strokeDashArray: 0,
+					fillOpacity: 1,
+					shape: 'circle',
+					radius: 2,
+					hover: {
+						size: 5
+					}
+				},
+				fill: {
+					type: 'solid',
+					opacity: 0.7,
+					gradient: {
+						shadeIntensity: 0.4,
+						opacityFrom: 1,
+						opacityTo: 0.5,
+						stops: [30, 100, 100]
+					}
+				},
+				grid: {
+					show: true,
+					strokeDashArray: 3,
+					position: 'back',
+					xaxis: {
+						lines: {
+							show: true
+						}
+					},
+					yaxis: {
+						lines: {
+							show: true
+						}
+					},
+					padding: {
+						top: 0,
+						right: 0,
+						bottom: 0,
+						left: 0
+					}
+				},
+				stroke: {
+					show: true,
+					curve: 'smooth',
+					lineCap: 'butt',
+					width: 1.5,
+					dashArray: 0
+				}
+			}
 		},
 		{
 			id: 'widget3',
