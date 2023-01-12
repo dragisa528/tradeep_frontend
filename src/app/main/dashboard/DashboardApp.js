@@ -7,8 +7,8 @@ import withReducer from 'app/store/withReducer';
 import _ from '@lodash';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ProjectDashboardAppHeader from './ProjectDashboardAppHeader';
-import ProjectDashboardAppSidebar from './ProjectDashboardAppSidebar';
+import DashboardAppHeader from './DashboardAppHeader';
+import DashboardAppSidebar from './DashboardAppSidebar';
 import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import BudgetSummaryTab from './tabs/BudgetSummaryTab';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProjectDashboardApp(props) {
+function DashboardApp(props) {
   const dispatch = useDispatch();
   const widgets = useSelector(selectWidgets);
 
@@ -52,7 +52,7 @@ function ProjectDashboardApp(props) {
         rightSidebar: 'w-288 border-0 py-12',
         content: classes.content,
       }}
-      header={<ProjectDashboardAppHeader pageLayout={pageLayout} />}
+      header={<DashboardAppHeader pageLayout={pageLayout} />}
       contentToolbar={
         <Tabs
           value={tabValue}
@@ -91,10 +91,10 @@ function ProjectDashboardApp(props) {
           {tabValue === 2 && <TeamMembersTab />}
         </div>
       }
-      rightSidebarContent={<ProjectDashboardAppSidebar />}
+      rightSidebarContent={<DashboardAppSidebar />}
       ref={pageLayout}
     />
   );
 }
 
-export default withReducer('projectDashboardApp', reducer)(ProjectDashboardApp);
+export default withReducer('dashboardApp', reducer)(DashboardApp);

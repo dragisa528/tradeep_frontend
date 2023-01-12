@@ -4,7 +4,7 @@ import { selectWidgets } from './store/widgetsSlice';
 import WidgetNow from './widgets/WidgetNow';
 import WidgetWeather from './widgets/WidgetWeather';
 
-function ProjectDashboardAppSidebar() {
+function DashboardAppSidebar() {
   const widgets = useSelector(selectWidgets);
 
   const container = {
@@ -34,4 +34,4 @@ function ProjectDashboardAppSidebar() {
   );
 }
 
-export default ProjectDashboardAppSidebar;
+export default DashboardAppSidebar;

@@ -1,4 +1,3 @@
-import Avatar from '@material-ui/core/Avatar';
 import Hidden from '@material-ui/core/Hidden';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
@@ -6,7 +5,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
-import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProjectDashboardAppHeader(props) {
+function DashboardAppHeader(props) {
   const { pageLayout } = props;
   const classes = useStyles(props);
 
@@ -126,4 +124,4 @@ function ProjectDashboardAppHeader(props) {
   );
 }
 
-export default ProjectDashboardAppHeader;
+export default DashboardAppHeader;
