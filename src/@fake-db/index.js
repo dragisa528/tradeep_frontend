@@ -1,6 +1,6 @@
 import './db/academy-db';
 import './db/analytics-dashboard-db';
-import './db/auth-db';
+// import './db/auth-db';
 import './db/calendar-db';
 import './db/chat-db';
 import './db/contacts-db';
@@ -18,7 +18,7 @@ import './db/quick-panel-db';
 import './db/scrumboard-db';
 import './db/search-db';
 import './db/todo-db';
-import './db/notification-panel-db';
+// import './db/notification-panel-db';
 import history from '@history';
 import mock from './mock';
 

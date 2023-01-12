@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-const DashboardAppConfig = {
+const ProjectDashboardAppConfig = {
   settings: {
     layout: {
       config: {},
@@ -9,9 +9,9 @@ const DashboardAppConfig = {
   routes: [
     {
       path: '/dashboard',
-      component: lazy(() => import('./DashboardApp')),
+      component: lazy(() => import('./ProjectDashboardApp')),
     },
   ],
 };
 
-export default DashboardAppConfig;
+export default ProjectDashboardAppConfig;

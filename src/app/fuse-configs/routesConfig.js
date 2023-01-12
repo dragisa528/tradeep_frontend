@@ -3,10 +3,10 @@ import FuseUtils from '@fuse/utils';
 import FuseLoading from '@fuse/core/FuseLoading';
 import Error404Page from 'app/main/404/Error404Page';
 import AuthConfig from 'app/main/auth/AuthConfig';
-import DashboardAppConfig from 'app/main/dashboard/DashboardAppConfig';
+import ProjectDashboardAppConfig from 'app/main/dashboard/ProjectDashboardAppConfig';
 
 const routeConfigs = [
-  DashboardAppConfig,
+  ProjectDashboardAppConfig,
   ...AuthConfig,
 ];
 
