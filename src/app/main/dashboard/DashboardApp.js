@@ -81,9 +81,9 @@ function DashboardApp(props) {
       <Box className={classes.content}>
         <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
           {tabValue === 0 && <HomeTab />}
-          {tabValue === 1 && <BudgetSummaryTab />}
-          {tabValue === 2 && <TeamMembersTab />}
-          {tabValue === 3 && <TeamMembersTab />}
+          {tabValue === 1 && <HomeTab />}
+          {tabValue === 2 && <HomeTab />}
+          {tabValue === 3 && <HomeTab />}
         </div>
       </Box>
     </Box>

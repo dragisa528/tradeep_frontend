@@ -27,26 +27,23 @@ function HomeTab() {
 
   return (
     <motion.div className="flex flex-wrap" variants={container} initial="hidden" animate="show">
-      <motion.div variants={item} className="widget flex w-full sm:w-1/2 md:w-1/4 p-12">
+      <motion.div variants={item} className="widget flex w-full md:w-1/2 p-12">
         <Widget1 widget={widgets.widget1} />
       </motion.div>
-      <motion.div variants={item} className="widget flex w-full sm:w-1/2 md:w-1/4 p-12">
+      <motion.div variants={item} className="widget flex w-full md:w-1/2 p-12">
         <Widget2 widget={widgets.widget2} />
       </motion.div>
-      <motion.div variants={item} className="widget flex w-full sm:w-1/2 md:w-1/4 p-12">
+      <motion.div variants={item} className="widget flex w-full p-12">
         <Widget3 widget={widgets.widget3} />
       </motion.div>
-      <motion.div variants={item} className="widget flex w-full sm:w-1/2 md:w-1/4 p-12">
+      <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
         <Widget4 widget={widgets.widget4} />
       </motion.div>
-      <motion.div variants={item} className="widget flex w-full p-12">
-        <Widget5 widget={widgets.widget5} />
+      <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
+        <Widget4 widget={widgets.widget4} />
       </motion.div>
-      <motion.div variants={item} className="widget flex w-full sm:w-1/2 p-12">
-        <Widget6 widget={widgets.widget6} />
-      </motion.div>
-      <motion.div variants={item} className="widget flex w-full sm:w-1/2 p-12">
-        <Widget7 widget={widgets.widget7} />
+      <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
+        <Widget4 widget={widgets.widget4} />
       </motion.div>
     </motion.div>
   );
