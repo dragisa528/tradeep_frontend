@@ -1,3 +1,4 @@
+import { useState, memo } from 'react';
 import { Button, ButtonGroup, IconButton } from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
@@ -8,15 +9,26 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
-import { memo } from 'react';
 
 function Widget3(props) {
+  const [selectedBtn, setSelectedBtn] = useState(-1);
+
   return (
     <Paper className="w-full rounded-20 shadow overflow-hidden">
       <div className="flex items-center justify-start p-20 h-64">
-        <ButtonGroup variant="contained" aria-label="outlined primary button group">
-          <Button>Running experiments</Button>
-          <Button>Active Deployments</Button>
+        <ButtonGroup disableElevation variant="contained" color="primary">
+          <Button
+            color={selectedBtn === 1 ? 'secondary' : 'primary'}
+            onClick={() => setSelectedBtn(1)}
+          >
+            Running experiments
+          </Button>
+          <Button
+            color={selectedBtn === 2 ? 'secondary' : 'primary'}
+            onClick={() => setSelectedBtn(2)}
+          >
+            Active Deployments
+          </Button>
         </ButtonGroup>
       </div>
       <div className="table-responsive">
