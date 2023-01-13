@@ -7,6 +7,7 @@ import Widget3 from '../widgets/Widget3';
 import Widget4 from '../widgets/Widget4';
 import Widget5 from '../widgets/Widget5';
 import Widget6 from '../widgets/Widget6';
+import { Typography } from '@material-ui/core';
 
 function DashboardTab() {
   const widgets = useSelector(selectWidgets);
@@ -35,15 +36,25 @@ function DashboardTab() {
       <motion.div variants={item} className="widget flex w-full p-12">
         <Widget3 widget={widgets.widget3} />
       </motion.div>
-      <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
-        <Widget4 widget={widgets.widget4} />
-      </motion.div>
-      <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
-        <Widget5 widget={widgets.widget5} />
-      </motion.div>
-      <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
-        <Widget6 widget={widgets.widget6} />
-      </motion.div>
+      <div className="widget flex flex-wrap w-2/3 p-12">
+        <motion.div variants={item} className="widget flex w-full p-12">
+          <Typography variant="h5">Tutorials</Typography>
+        </motion.div>
+        <motion.div variants={item} className="widget flex w-full sm:w-1/2 p-12">
+          <Widget4 widget={widgets.widget4} />
+        </motion.div>
+        <motion.div variants={item} className="widget flex w-full sm:w-1/2 p-12">
+          <Widget5 widget={widgets.widget5} />
+        </motion.div>
+      </div>
+      <div className="widget flex flex-wrap w-1/3 p-12">
+        <motion.div variants={item} className="widget flex w-full p-12">
+          <Typography variant="h5">Take the Full Course</Typography>
+        </motion.div>
+        <motion.div variants={item} className="widget flex w-full p-12">
+          <Widget6 widget={widgets.widget6} />
+        </motion.div>
+      </div>
     </motion.div>
   );
 }
