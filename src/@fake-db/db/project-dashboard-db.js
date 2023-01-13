@@ -158,16 +158,78 @@ const projectDashboardAppDB = {
 		},
 		{
 			id: 'widget3',
-			title: 'Issues',
-			data: {
-				name: 'Open',
-				count: 32,
-				extra: {
-					name: 'Closed today',
-					count: 0
-				}
-			},
-			detail: 'You can show some detailed information about this widget in here.'
+			title: 'Budget Details',
+			table: {
+				columns: [
+					{
+						id: 'model_type',
+						title: 'Model Name'
+					},
+					{
+						id: 'progress',
+						title: 'Progress (epochs)'
+					},
+					{
+						id: 'runtime',
+						title: 'Runtime'
+					},
+					{
+						id: 'creator',
+						title: 'Creator'
+					},
+					{
+						id: 'machine',
+						title: 'Machine'
+					},
+					{
+						id: 'icon',
+						title: ''
+					}
+				],
+				rows: [
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'model_type',
+								value: 'AAPL Reggr,',
+								classes: '',
+								icon: ''
+							},
+							{
+								id: 'progress',
+								value: '10/3000',
+								classes: 'font-semibold',
+								icon: ''
+							},
+							{
+								id: 'runtime',
+								value: '02:03:44',
+								classes: '',
+								icon: ''
+							},
+							{
+								id: 'creator',
+								value: 'Adam',
+								classes: 'text-green',
+								icon: 'trending_up'
+							},
+							{
+								id: 'machine',
+								value: 'AWS c4.2xlarge',
+								classes: '',
+								icon: ''
+							},
+							{
+								id: 'icon',
+								value: 'edit',
+								classes: '',
+								icon: ''
+							}
+						]
+					},
+				]
+			}
 		},
 		{
 			id: 'widget4',
@@ -1204,245 +1266,7 @@ const projectDashboardAppDB = {
 				count: '124.000,00'
 			}
 		},
-		{
-			id: 'widget10',
-			title: 'Budget Details',
-			table: {
-				columns: [
-					{
-						id: 'budget_type',
-						title: 'Budget Type'
-					},
-					{
-						id: 'total_budget',
-						title: 'Total Budget'
-					},
-					{
-						id: 'spent_usd',
-						title: 'Spent ($)'
-					},
-					{
-						id: 'spent_perc',
-						title: 'Spent (%)'
-					},
-					{
-						id: 'remaining_usd',
-						title: 'Remaining ($)'
-					},
-					{
-						id: 'remaining_perc',
-						title: 'Remaining (%)'
-					}
-				],
-				rows: [
-					{
-						id: 1,
-						cells: [
-							{
-								id: 'budget_type',
-								value: 'Wireframing',
-								classes: 'bg-blue text-white',
-								icon: ''
-							},
-							{
-								id: 'total_budget',
-								value: '$14,880.00',
-								classes: 'font-semibold',
-								icon: ''
-							},
-							{
-								id: 'spent_usd',
-								value: '$14,000.00',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'spent_perc',
-								value: '%94.08',
-								classes: 'text-green',
-								icon: 'trending_up'
-							},
-							{
-								id: 'remaining_usd',
-								value: '$880.00',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'remaining_perc',
-								value: '%5.92',
-								classes: '',
-								icon: ''
-							}
-						]
-					},
-					{
-						id: 2,
-						cells: [
-							{
-								id: 'budget_type',
-								value: 'Design',
-								classes: 'bg-green text-white',
-								icon: ''
-							},
-							{
-								id: 'total_budget',
-								value: '$21,080.00',
-								classes: 'font-semibold',
-								icon: ''
-							},
-							{
-								id: 'spent_usd',
-								value: '$17,240.34',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'spent_perc',
-								value: '%81.78',
-								classes: 'text-green',
-								icon: 'trending_up'
-							},
-							{
-								id: 'remaining_usd',
-								value: '$3,839.66',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'remaining_perc',
-								value: '%18.22',
-								classes: '',
-								icon: ''
-							}
-						]
-					},
-					{
-						id: 3,
-						cells: [
-							{
-								id: 'budget_type',
-								value: 'Coding',
-								classes: 'bg-red text-white',
-								icon: ''
-							},
-							{
-								id: 'total_budget',
-								value: '$34,720.00',
-								classes: 'font-semibold',
-								icon: ''
-							},
-							{
-								id: 'spent_usd',
-								value: '$3,518.00',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'spent_perc',
-								value: '%10.13',
-								classes: 'text-red',
-								icon: 'trending_down'
-							},
-							{
-								id: 'remaining_usd',
-								value: '$31,202.00',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'remaining_perc',
-								value: '%89.87',
-								classes: '',
-								icon: ''
-							}
-						]
-					},
-					{
-						id: 4,
-						cells: [
-							{
-								id: 'budget_type',
-								value: 'Marketing',
-								classes: 'bg-pink text-white',
-								icon: ''
-							},
-							{
-								id: 'total_budget',
-								value: '$34,720.00',
-								classes: 'font-semibold',
-								icon: ''
-							},
-							{
-								id: 'spent_usd',
-								value: '$0.00',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'spent_perc',
-								value: '%0.00',
-								classes: 'text-blue',
-								icon: 'trending_flat'
-							},
-							{
-								id: 'remaining_usd',
-								value: '$34,720.00',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'remaining_perc',
-								value: '%100.00',
-								classes: '',
-								icon: ''
-							}
-						]
-					},
-					{
-						id: 5,
-						cells: [
-							{
-								id: 'budget_type',
-								value: 'Extra',
-								classes: 'bg-orange text-white',
-								icon: ''
-							},
-							{
-								id: 'total_budget',
-								value: '$18,600.00',
-								classes: 'font-semibold',
-								icon: ''
-							},
-							{
-								id: 'spent_usd',
-								value: '$0.00',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'spent_perc',
-								value: '%0.00',
-								classes: 'text-blue',
-								icon: 'trending_flat'
-							},
-							{
-								id: 'remaining_usd',
-								value: '$34,720.00',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'remaining_perc',
-								value: '%100.00',
-								classes: '',
-								icon: ''
-							}
-						]
-					}
-				]
-			}
-		},
+		
 		{
 			id: 'widget11',
 			title: 'Team Members',
