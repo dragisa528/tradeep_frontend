@@ -1,37 +1,32 @@
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
+import { memo } from 'react';
+import { Button } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { memo } from 'react';
 
-function Widget3(props) {
+function Widget10() {
   return (
-    <Paper className="w-full rounded-20 shadow flex flex-col justify-between">
-      <div className="flex items-center justify-between px-4 pt-8">
-        <Typography className="text-16 px-16 font-medium" color="textSecondary">
-          {props.widget.title}
-        </Typography>
-        <IconButton aria-label="more">
-          <Icon>more_vert</Icon>
-        </IconButton>
+    <Paper className="w-full rounded-20 shadow overflow-hidden p-12">
+      <div className="table-responsive">
+        <div className="flex w-full">
+          <Button>
+            <Typography className="px-3 py-2 bg-gray-500 rounded">Editor</Typography>
+          </Button>
+        </div>
+        <div className="flex flex-col w-full">
+          <Typography component="p" className="text-14 font-bold ml-4 mb-8">
+            An Editor has develop access to most assets - projects, experiments and deployments.
+          </Typography>
+          <Typography component="p" className="text-14 font-bold ml-4 mb-8">
+            Editor can initiate new projects, upload datasets, experiment with models and deploy
+            them.
+          </Typography>
+          <Typography component="p" className="text-14 font-bold ml-4 mb-8">
+            Editor can delete projects, datasets and experiments to remove obsolete content.
+          </Typography>
+        </div>
       </div>
-      <div className="text-center py-12">
-        <Typography className="text-72 font-semibold leading-none text-orange tracking-tighter">
-          {props.widget.data.count}
-        </Typography>
-        <Typography className="text-18 font-normal text-orange-800">
-          {props.widget.data.name}
-        </Typography>
-      </div>
-      <Typography
-        className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium"
-        color="textSecondary"
-      >
-        <span className="truncate">{props.widget.data.extra.name}</span>:
-        <b className="px-8">{props.widget.data.extra.count}</b>
-      </Typography>
     </Paper>
   );
 }
 
-export default memo(Widget3);
+export default memo(Widget10);

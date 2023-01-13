@@ -10,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 
-function Widget7(props) {
+function Widget8(props) {
   return (
     <Paper className="w-full rounded-20 shadow overflow-hidden">
       <div className="table-responsive">
@@ -75,4 +75,4 @@ function Widget7(props) {
   );
 }
 
-export default memo(Widget7);
+export default memo(Widget8);
