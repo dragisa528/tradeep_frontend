@@ -5,7 +5,7 @@ import Widget10 from '../widgets/Widget10';
 import Widget8 from '../widgets/Widget8';
 import Widget9 from '../widgets/Widget9';
 
-function BudgetSummaryTab() {
+function MembersTab() {
   const widgets = useSelector(selectWidgets);
 
   const container = {
@@ -36,4 +36,4 @@ function BudgetSummaryTab() {
   );
 }
 
-export default BudgetSummaryTab;
+export default MembersTab;

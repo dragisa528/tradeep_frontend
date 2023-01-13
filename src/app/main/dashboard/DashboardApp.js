@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
-import BudgetSummaryTab from './tabs/BudgetSummaryTab';
+import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
 import TeamMembersTab from './tabs/TeamMembersTab';
 
@@ -81,7 +81,7 @@ function DashboardApp(props) {
       <Box className={classes.content}>
         <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
           {tabValue === 0 && <DashboardTab />}
-          {tabValue === 1 && <DashboardTab />}
+          {tabValue === 1 && <MembersTab />}
           {tabValue === 2 && <DashboardTab />}
           {tabValue === 3 && <DashboardTab />}
         </div>

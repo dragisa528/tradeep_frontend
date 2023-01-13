@@ -1,61 +1,86 @@
+import { useState, memo } from 'react';
+import { Button, ButtonGroup, IconButton } from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
 import Paper from '@material-ui/core/Paper';
-import Select from '@material-ui/core/Select';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import { memo, useState } from 'react';
+import clsx from 'clsx';
 
 function Widget7(props) {
-  const [currentRange, setCurrentRange] = useState(props.widget.currentRange);
-
-  function handleChangeRange(ev) {
-    setCurrentRange(ev.target.value);
-  }
+  const [selectedBtn, setSelectedBtn] = useState(-1);
 
   return (
-    <Paper className="w-full rounded-20 shadow">
-      <div className="flex items-center justify-between p-20 h-64 ">
-        <Typography className="text-16 font-medium">{props.widget.title}</Typography>
-
-        <Select
-          native
-          value={currentRange}
-          onChange={handleChangeRange}
-          inputProps={{
-            name: 'currentRange',
-          }}
-          className="font-medium opacity-75"
-          disableUnderline
-        >
-          {Object.entries(props.widget.ranges).map(([key, n]) => {
-            return (
-              <option key={key} value={key}>
-                {n}
-              </option>
-            );
-          })}
-        </Select>
+    <Paper className="w-full rounded-20 shadow overflow-hidden">
+      <div className="flex items-center justify-start p-20 h-64">
+        <ButtonGroup disableElevation variant="contained" color="primary">
+          <Button
+            color={selectedBtn === 1 ? 'secondary' : 'primary'}
+            onClick={() => setSelectedBtn(1)}
+          >
+            Running experiments
+          </Button>
+          <Button
+            color={selectedBtn === 2 ? 'secondary' : 'primary'}
+            onClick={() => setSelectedBtn(2)}
+          >
+            Active Deployments
+          </Button>
+        </ButtonGroup>
       </div>
-      <List className="py-0">
-        {props.widget.schedule[currentRange].map((item) => (
-          <ListItem key={item.id}>
-            <ListItemText
-              classes={{ root: 'px-8', primary: 'font-medium text-16' }}
-              primary={item.title}
-              secondary={item.time}
-            />
-            <ListItemSecondaryAction>
-              <IconButton aria-label="more">
-                <Icon>more_vert</Icon>
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ))}
-      </List>
+      <div className="table-responsive">
+        <Table className="w-full min-w-full">
+          <TableHead>
+            <TableRow>
+              {props.widget.table.columns.map((column) => (
+                <TableCell key={column.id}>
+                  <Typography color="textSecondary" className="font-semibold whitespace-nowrap">
+                    {column.title}
+                  </Typography>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.widget.table.rows.map((row) => (
+              <TableRow key={row.id} className="h-64">
+                {row.cells.map((cell) => {
+                  switch (cell.id) {
+                    case 'icon': {
+                      return (
+                        <TableCell key={cell.id} component="th" scope="row">
+                          <Typography
+                            className={clsx(cell.classes, 'flex items-center font-medium')}
+                          >
+                            <IconButton color="inherit">
+                              <Icon className="text-14">{cell.value}</Icon>
+                            </IconButton>
+                          </Typography>
+                        </TableCell>
+                      );
+                    }
+                    default: {
+                      return (
+                        <TableCell key={cell.id} component="th" scope="row">
+                          <Typography className={cell.classes}>{cell.value}</Typography>
+                        </TableCell>
+                      );
+                    }
+                  }
+                })}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="flex items-center justify-start p-20 h-64">
+        <Typography varient="body1">
+          No runnings deployments / Experiments for the organization
+        </Typography>
+      </div>
     </Paper>
   );
 }

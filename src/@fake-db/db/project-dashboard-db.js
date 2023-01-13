@@ -211,7 +211,7 @@ const projectDashboardAppDB = {
 							{
 								id: 'creator',
 								value: 'Adam',
-								classes: 'text-green',
+								classes: '',
 								icon: 'trending_up'
 							},
 							{
@@ -269,6 +269,81 @@ const projectDashboardAppDB = {
 				}
 			},
 			detail: 'You can show some detailed information about this widget in here.'
+		},
+		{
+			id: 'widget7',
+			title: 'Budget Details',
+			table: {
+				columns: [
+					{
+						id: 'model_type',
+						title: 'Model Name'
+					},
+					{
+						id: 'progress',
+						title: 'Progress (epochs)'
+					},
+					{
+						id: 'runtime',
+						title: 'Runtime'
+					},
+					{
+						id: 'creator',
+						title: 'Creator'
+					},
+					{
+						id: 'machine',
+						title: 'Machine'
+					},
+					{
+						id: 'icon',
+						title: ''
+					}
+				],
+				rows: [
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'model_type',
+								value: 'AAPL Reggr,',
+								classes: '',
+								icon: ''
+							},
+							{
+								id: 'progress',
+								value: '10/3000',
+								classes: 'font-semibold',
+								icon: ''
+							},
+							{
+								id: 'runtime',
+								value: '02:03:44',
+								classes: '',
+								icon: ''
+							},
+							{
+								id: 'creator',
+								value: 'Adam',
+								classes: '',
+								icon: 'trending_up'
+							},
+							{
+								id: 'machine',
+								value: 'AWS c4.2xlarge',
+								classes: '',
+								icon: ''
+							},
+							{
+								id: 'icon',
+								value: 'edit',
+								classes: '',
+								icon: ''
+							}
+						]
+					},
+				]
+			}
 		},
 		// {
 		// 	id: 'widget5',
@@ -915,7 +990,7 @@ const projectDashboardAppDB = {
 		// 	}
 		// },
 		{
-			id: 'widget7',
+			id: 'widget7_',
 			title: 'Schedule',
 			currentRange: 'T',
 			ranges: {
