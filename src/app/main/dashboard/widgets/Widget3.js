@@ -1,4 +1,4 @@
-import { Button, ButtonGroup } from '@material-ui/core';
+import { Button, ButtonGroup, IconButton } from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -37,28 +37,15 @@ function Widget3(props) {
               <TableRow key={row.id} className="h-64">
                 {row.cells.map((cell) => {
                   switch (cell.id) {
-                    case 'budget_type': {
-                      return (
-                        <TableCell key={cell.id} component="th" scope="row">
-                          <Typography
-                            className={clsx(
-                              cell.classes,
-                              'inline text-11 font-500 px-8 py-4 rounded-4'
-                            )}
-                          >
-                            {cell.value}
-                          </Typography>
-                        </TableCell>
-                      );
-                    }
-                    case 'spent_perc': {
+                    case 'icon': {
                       return (
                         <TableCell key={cell.id} component="th" scope="row">
                           <Typography
                             className={clsx(cell.classes, 'flex items-center font-medium')}
                           >
-                            {cell.value}
-                            <Icon className="text-14 mx-4">{cell.icon}</Icon>
+                            <IconButton color="inherit">
+                              <Icon className="text-14">{cell.value}</Icon>
+                            </IconButton>
                           </Typography>
                         </TableCell>
                       );
