@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { Typography } from '@material-ui/core';
 import { selectWidgets } from '../store/widgetsSlice';
 import Widget1 from '../widgets/Widget1';
 import Widget2 from '../widgets/Widget2';
@@ -7,7 +8,6 @@ import Widget3 from '../widgets/Widget3';
 import Widget4 from '../widgets/Widget4';
 import Widget5 from '../widgets/Widget5';
 import Widget6 from '../widgets/Widget6';
-import { Typography } from '@material-ui/core';
 
 function DashboardTab() {
   const widgets = useSelector(selectWidgets);
@@ -36,7 +36,7 @@ function DashboardTab() {
       <motion.div variants={item} className="widget flex w-full p-12">
         <Widget3 widget={widgets.widget3} />
       </motion.div>
-      <div className="widget flex flex-wrap w-2/3 p-12">
+      <div className="widget flex flex-wrap w-full sm:w-2/3 p-12">
         <motion.div variants={item} className="widget flex w-full p-12">
           <Typography variant="h5">Tutorials</Typography>
         </motion.div>
@@ -47,7 +47,7 @@ function DashboardTab() {
           <Widget5 widget={widgets.widget5} />
         </motion.div>
       </div>
-      <div className="widget flex flex-wrap w-1/3 p-12">
+      <div className="widget flex flex-wrap w-full p-12 sm:w-1/3">
         <motion.div variants={item} className="widget flex w-full p-12">
           <Typography variant="h5">Take the Full Course</Typography>
         </motion.div>
