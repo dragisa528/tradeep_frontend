@@ -6,6 +6,7 @@ import Widget7 from '../widgets/Widget7';
 import Widget8 from '../widgets/Widget8';
 import Widget9 from '../widgets/Widget9';
 import Widget10 from '../widgets/Widget10';
+import Widget11 from '../widgets/Widget11';
 
 function MembersTab() {
   const widgets = useSelector(selectWidgets);
@@ -43,9 +44,9 @@ function MembersTab() {
       <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
         <Widget10 />
       </motion.div>
-      {/* <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
+      <motion.div variants={item} className="widget flex w-full sm:w-1/3 p-12">
         <Widget11 widget={widgets.widget11} />
-      </motion.div> */}
+      </motion.div>
     </motion.div>
   );
 }
