@@ -276,24 +276,16 @@ const projectDashboardAppDB = {
 			table: {
 				columns: [
 					{
-						id: 'model_type',
-						title: 'Model Name'
+						id: 'name',
+						title: 'Name'
 					},
 					{
-						id: 'progress',
-						title: 'Progress (epochs)'
+						id: 'email',
+						title: 'Email'
 					},
 					{
-						id: 'runtime',
-						title: 'Runtime'
-					},
-					{
-						id: 'creator',
-						title: 'Creator'
-					},
-					{
-						id: 'machine',
-						title: 'Machine'
+						id: 'role',
+						title: 'Role'
 					},
 					{
 						id: 'icon',
@@ -305,33 +297,21 @@ const projectDashboardAppDB = {
 						id: 1,
 						cells: [
 							{
-								id: 'model_type',
-								value: 'AAPL Reggr,',
-								classes: '',
+								id: 'name',
+								value: 'Smith John',
+								classes: 'font-bold',
 								icon: ''
 							},
 							{
-								id: 'progress',
-								value: '10/3000',
+								id: 'email',
+								value: 'Johns@deeptrade.com',
 								classes: 'font-semibold',
 								icon: ''
 							},
 							{
-								id: 'runtime',
-								value: '02:03:44',
-								classes: '',
-								icon: ''
-							},
-							{
-								id: 'creator',
-								value: 'Adam',
-								classes: '',
-								icon: 'trending_up'
-							},
-							{
-								id: 'machine',
-								value: 'AWS c4.2xlarge',
-								classes: '',
+								id: 'role',
+								value: 'admin',
+								classes: 'px-3 py-2 bg-gray-500 rounded',
 								icon: ''
 							},
 							{

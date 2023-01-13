@@ -11,7 +11,7 @@ import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
-import TeamMembersTab from './tabs/TeamMembersTab';
+// import TeamMembersTab from './tabs/TeamMembersTab';
 
 const useStyles = makeStyles((theme) => ({
   content: {

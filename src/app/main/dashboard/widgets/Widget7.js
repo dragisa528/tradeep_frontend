@@ -1,5 +1,5 @@
 import { useState, memo } from 'react';
-import { Button, ButtonGroup, IconButton } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -11,26 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 
 function Widget7(props) {
-  const [selectedBtn, setSelectedBtn] = useState(-1);
-
   return (
     <Paper className="w-full rounded-20 shadow overflow-hidden">
-      <div className="flex items-center justify-start p-20 h-64">
-        <ButtonGroup disableElevation variant="contained" color="primary">
-          <Button
-            color={selectedBtn === 1 ? 'secondary' : 'primary'}
-            onClick={() => setSelectedBtn(1)}
-          >
-            Running experiments
-          </Button>
-          <Button
-            color={selectedBtn === 2 ? 'secondary' : 'primary'}
-            onClick={() => setSelectedBtn(2)}
-          >
-            Active Deployments
-          </Button>
-        </ButtonGroup>
-      </div>
       <div className="table-responsive">
         <Table className="w-full min-w-full">
           <TableHead>
@@ -62,6 +44,15 @@ function Widget7(props) {
                         </TableCell>
                       );
                     }
+                    case 'role': {
+                      return (
+                        <TableCell key={cell.id} component="th" scope="row">
+                          <Button>
+                            <Typography className={cell.classes}>{cell.value}</Typography>
+                          </Button>
+                        </TableCell>
+                      );
+                    }
                     default: {
                       return (
                         <TableCell key={cell.id} component="th" scope="row">
@@ -75,11 +66,6 @@ function Widget7(props) {
             ))}
           </TableBody>
         </Table>
-      </div>
-      <div className="flex items-center justify-start p-20 h-64">
-        <Typography varient="body1">
-          No runnings deployments / Experiments for the organization
-        </Typography>
       </div>
     </Paper>
   );
