@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { selectWidgets } from '../store/widgetsSlice';
-import Widget10 from '../widgets/Widget10';
 import Widget7 from '../widgets/Widget7';
-import Widget9 from '../widgets/Widget9';
+import Widget8 from '../widgets/Widget8';
 
 function MembersTab() {
   const widgets = useSelector(selectWidgets);
@@ -25,6 +24,9 @@ function MembersTab() {
     <motion.div className="flex flex-wrap" variants={container} initial="hidden" animate="show">
       <motion.div variants={item} className="widget flex w-full p-12">
         <Widget7 widget={widgets.widget7} />
+      </motion.div>
+      <motion.div variants={item} className="widget flex w-full p-12">
+        <Widget8 widget={widgets.widget8} />
       </motion.div>
     </motion.div>
   );

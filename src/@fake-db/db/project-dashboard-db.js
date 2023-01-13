@@ -272,7 +272,6 @@ const projectDashboardAppDB = {
 		},
 		{
 			id: 'widget7',
-			title: 'Budget Details',
 			table: {
 				columns: [
 					{
@@ -322,6 +321,50 @@ const projectDashboardAppDB = {
 							}
 						]
 					},
+				]
+			}
+		},
+		{
+			id: 'widget8',
+			table: {
+				columns: [
+					{
+						id: 'email',
+						title: 'Email'
+					},
+					{
+						id: 'role',
+						title: 'Role'
+					},
+					{
+						id: 'icon',
+						title: ''
+					}
+				],
+				rows: [
+					// {
+					// 	id: 1,
+					// 	cells: [
+					// 		{
+					// 			id: 'email',
+					// 			value: 'Johns@deeptrade.com',
+					// 			classes: 'font-bold',
+					// 			icon: ''
+					// 		},
+					// 		{
+					// 			id: 'role',
+					// 			value: 'admin',
+					// 			classes: 'px-3 py-2 bg-gray-500 rounded',
+					// 			icon: ''
+					// 		},
+					// 		{
+					// 			id: 'icon',
+					// 			value: 'edit',
+					// 			classes: '',
+					// 			icon: ''
+					// 		}
+					// 	]
+					// },
 				]
 			}
 		},
