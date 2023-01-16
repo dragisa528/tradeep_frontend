@@ -1,5 +1,5 @@
 import { useState, memo } from 'react';
-import { Button, ButtonGroup, IconButton } from '@material-ui/core';
+import { Button, ButtonGroup } from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
