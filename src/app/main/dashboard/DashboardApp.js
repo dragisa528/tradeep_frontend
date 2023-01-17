@@ -11,7 +11,7 @@ import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
-// import TeamMembersTab from './tabs/TeamMembersTab';
+import BillingTab from './tabs/BillingTab';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -82,7 +82,7 @@ function DashboardApp(props) {
         <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
           {tabValue === 0 && <DashboardTab />}
           {tabValue === 1 && <MembersTab />}
-          {tabValue === 2 && <DashboardTab />}
+          {tabValue === 2 && <BillingTab />}
           {tabValue === 3 && <DashboardTab />}
         </div>
       </Box>

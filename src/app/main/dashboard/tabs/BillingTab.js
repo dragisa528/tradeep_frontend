@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { selectWidgets } from '../store/widgetsSlice';
-import Widget11 from '../widgets/Widget11';
+import Widget12 from '../widgets/Widget12';
+import Widget13 from '../widgets/Widget13';
 
-function TeamMembersTab() {
+function BillingTab() {
   const widgets = useSelector(selectWidgets);
 
   const container = {
@@ -20,12 +21,20 @@ function TeamMembersTab() {
   };
 
   return (
-    <motion.div className="flex flex-wrap" variants={container} initial="hidden" animate="show">
+    <motion.div
+      className="flex flex-wrap justify-center"
+      variants={container}
+      initial="hidden"
+      animate="show"
+    >
+      <motion.div variants={item} className="widget flex w-full p-12 md:w-1/2">
+        <Widget12 widget={widgets.widget12} />
+      </motion.div>
       <motion.div variants={item} className="widget flex w-full p-12">
-        <Widget11 widget={widgets.widget11} />
+        <Widget13 widget={widgets.widget13} />
       </motion.div>
     </motion.div>
   );
 }
 
-export default TeamMembersTab;
+export default BillingTab;
