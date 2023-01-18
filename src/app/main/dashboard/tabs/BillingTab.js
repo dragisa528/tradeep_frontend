@@ -22,7 +22,7 @@ function BillingTab() {
 
   return (
     <motion.div
-      className="flex flex-wrap justify-center"
+      className="flex flex-wrap justify-left"
       variants={container}
       initial="hidden"
       animate="show"
