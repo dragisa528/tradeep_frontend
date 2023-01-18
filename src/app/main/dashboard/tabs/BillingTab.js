@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { selectWidgets } from '../store/widgetsSlice';
@@ -21,6 +23,17 @@ function BillingTab() {
     show: { opacity: 1, y: 0 },
   };
 
+  const [userMenu, setUserMenu] = useState(null);
+  const [pageState, setPageState] = useState(0);
+
+  const userMenuClick = (event) => {
+    setUserMenu(event.currentTarget);
+  };
+
+  const userMenuClose = () => {
+    setUserMenu(null);
+  };
+
   return (
     <motion.div
       className="flex flex-wrap justify-left"
@@ -28,15 +41,27 @@ function BillingTab() {
       initial="hidden"
       animate="show"
     >
-      <motion.div variants={item} className="widget flex w-full p-12 md:w-1/2">
-        <Widget12 widget={widgets.widget12} />
-      </motion.div>
-      <motion.div variants={item} className="widget flex w-full p-12">
-        <Widget13 widget={widgets.widget13} />
-      </motion.div>
-      <motion.div variants={item} className="widget flex w-full p-12">
-        <Widget14 widget={widgets.widget14} />
-      </motion.div>
+      {pageState === 0 && (
+        <motion.div variants={item} className="widget flex w-full p-12">
+          <Widget12
+            widget={widgets.widget12}
+            userMenu={userMenu}
+            userMenuClick={userMenuClick}
+            userMenuClose={userMenuClose}
+            setPageState={setPageState}
+          />
+        </motion.div>
+      )}
+      {pageState === 1 && (
+        <motion.div variants={item} className="widget flex w-full p-12">
+          <Widget13 widget={widgets.widget13} setPageState={setPageState} />
+        </motion.div>
+      )}
+      {pageState === 2 && (
+        <motion.div variants={item} className="widget flex w-full p-12">
+          <Widget14 widget={widgets.widget14} setPageState={setPageState} />
+        </motion.div>
+      )}
     </motion.div>
   );
 }
