@@ -7,9 +7,7 @@ import { Button } from '@material-ui/core';
 function Widget5(props) {
   return (
     <Paper className="w-full rounded-20 shadow flex flex-col justify-between p-10">
-      <div className="flex items-center justify-between px-4 pt-8">
-        <Typography component="img" src={img2} />
-      </div>
+      
       <div className="flex items-center justify-between pt-8">
         <Typography className="text-16 font-medium" color="textSecondary">
           Deploy a Deep Learning Model on Bitcoin
