@@ -8,13 +8,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import { memo } from 'react';
 
-function Widget13(props) {
+function Widget14(props) {
   return (
     <Paper className="w-full rounded-20 shadow overflow-hidden">
       <div className="flex items-center justify-between p-20 h-64">
         <Typography className="text-16 font-medium">{props.widget.title}</Typography>
         <Typography className="text-11 font-500 rounded-4 text-white bg-blue px-8 py-4">
-          {`${props.widget.table.rows.length} Usage`}
+          {`${props.widget.table.rows.length} History`}
         </Typography>
       </div>
       <div className="table-responsive">
@@ -88,4 +88,4 @@ function Widget13(props) {
   );
 }
 
-export default memo(Widget13);
+export default memo(Widget14);

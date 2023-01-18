@@ -370,7 +370,7 @@ const projectDashboardAppDB = {
 		},
 		{
 			id: 'widget13',
-			title: 'History Usage',
+			title: 'Usage',
 			table: {
 				columns: [
 					{
@@ -394,6 +394,10 @@ const projectDashboardAppDB = {
 						title: 'Contact Delivery Tools'
 					},
 					{
+						id: 'email_plan',
+						title: 'Email Plan'
+					},
+					{
 						id: 'verification_count',
 						title: 'Verification Count'
 					},
@@ -407,35 +411,212 @@ const projectDashboardAppDB = {
 					}
 				],
 				rows: [
-					// {
-					// 	id: 1,
-					// 	cells: [
-					// 		{
-					// 			id: 'avatar',
-					// 			value: 'assets/images/avatars/james.jpg'
-					// 		},
-					// 		{
-					// 			id: 'name',
-					// 			value: 'Jack Gilbert'
-					// 		},
-					// 		{
-					// 			id: 'position',
-					// 			value: 'Design Manager'
-					// 		},
-					// 		{
-					// 			id: 'office',
-					// 			value: 'Johor Bahru'
-					// 		},
-					// 		{
-					// 			id: 'email',
-					// 			value: 'jgilbert48@mail.com'
-					// 		},
-					// 		{
-					// 			id: 'phone',
-					// 			value: '+16 298 032 7774'
-					// 		}
-					// 	]
-					// },
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'date',
+								value: '16/1/2022'
+							},
+							{
+								id: 'jobs_sent',
+								value: '1,967'
+							},
+							{
+								id: 'recipients',
+								value: '1,967'
+							},
+							{
+								id: 'private',
+								value: '$2.37'
+							},
+							{
+								id: 'delevery_tool',
+								value: '$1.94'
+							},
+							{
+								id: 'email_plan',
+								value: '$5.00'
+							},
+							{
+								id: 'verification_count',
+								value: '0'
+							},
+							{
+								id: 'verification_cost',
+								value: '$0'
+							},
+							{
+								id: 'cost',
+								value: '$9.31'
+							},
+						]
+					},
+					{
+						id: 2,
+						cells: [
+							{
+								id: 'date',
+								value: '15/1/2022'
+							},
+							{
+								id: 'jobs_sent',
+								value: '69,082'
+							},
+							{
+								id: 'recipients',
+								value: '69,086'
+							},
+							{
+								id: 'private',
+								value: '$2.37'
+							},
+							{
+								id: 'delevery_tool',
+								value: '$1.94'
+							},
+							{
+								id: 'email_plan',
+								value: '$5.00'
+							},
+							{
+								id: 'verification_count',
+								value: '0'
+							},
+							{
+								id: 'verification_cost',
+								value: '$0'
+							},
+							{
+								id: 'cost',
+								value: '$9.31'
+							},
+						]
+					},
+				]
+			}
+		},
+		{
+			id: 'widget14',
+			title: 'Payment History',
+			table: {
+				columns: [
+					{
+						id: 'date',
+						title: 'Date'
+					},
+					{
+						id: 'source',
+						title: 'Source'
+					},
+					{
+						id: 'amount',
+						title: 'Amount'
+					},
+				],
+				rows: [
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'date',
+								value: '01/04/2022'
+							},
+							{
+								id: 'source',
+								value: 'Auto-Rechange of Elastic Email Credit - Reference: ch_2KE0mAdE679NCTXH0bDbpKND'
+							},
+							{
+								id: 'amount',
+								value: '$150.00'
+							},
+						]
+					},
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'date',
+								value: '12/19/2021'
+							},
+							{
+								id: 'source',
+								value: 'Auto-Rechange of Elastic Email Credit - Reference: ch_2KE0mAdE679NCTXH0bDbpKND'
+							},
+							{
+								id: 'amount',
+								value: '$150.00'
+							},
+						]
+					},
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'date',
+								value: '12/06/2021'
+							},
+							{
+								id: 'source',
+								value: 'Manual Payment Refund - Reference: ch_2K2m2UdE679NCTDH1toTQ6qf'
+							},
+							{
+								id: 'amount',
+								value: '$150.00'
+							},
+						]
+					},
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'date',
+								value: '12/06/2021'
+							},
+							{
+								id: 'source',
+								value: 'Purchase of Elastic Email Credit-Refernece: ch_2K2m2UdE679NCTDH1toTQ6qf'
+							},
+							{
+								id: 'amount',
+								value: '$100.00'
+							},
+						]
+					},
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'date',
+								value: '12/04/2021'
+							},
+							{
+								id: 'source',
+								value: 'Auto-Rechange of Elastic Email Credit - Reference: ch_2KE0mAdE679NCTXH0bDbpKND'
+							},
+							{
+								id: 'amount',
+								value: '$100.00'
+							},
+						]
+					},
+					{
+						id: 1,
+						cells: [
+							{
+								id: 'date',
+								value: '11/23/2022'
+							},
+							{
+								id: 'source',
+								value: 'Auto-Rechange of Elastic Email Credit - Reference: ch_2KE0mAdE679NCTXH0bDbpKND'
+							},
+							{
+								id: 'amount',
+								value: '$100.00'
+							},
+						]
+					},
 				]
 			}
 		},

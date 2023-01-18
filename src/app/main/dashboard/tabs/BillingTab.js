@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectWidgets } from '../store/widgetsSlice';
 import Widget12 from '../widgets/Widget12';
 import Widget13 from '../widgets/Widget13';
+import Widget14 from '../widgets/Widget14';
 
 function BillingTab() {
   const widgets = useSelector(selectWidgets);
@@ -32,6 +33,9 @@ function BillingTab() {
       </motion.div>
       <motion.div variants={item} className="widget flex w-full p-12">
         <Widget13 widget={widgets.widget13} />
+      </motion.div>
+      <motion.div variants={item} className="widget flex w-full p-12">
+        <Widget14 widget={widgets.widget14} />
       </motion.div>
     </motion.div>
   );
