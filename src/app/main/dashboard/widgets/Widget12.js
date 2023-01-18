@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -26,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 function Widget12(props) {
   const classes = useStyles();
   const { userMenu, userMenuClose, userMenuClick, setPageState } = props;
+  const [count, setCount] = useState(0);
+  const [countFree, setCountFree] = useState(0);
 
   const container = {
     show: {
@@ -132,7 +135,11 @@ function Widget12(props) {
               <motion.div variants={item} className="w-full max-w-320 sm:w-1/2 p-12">
                 <Card className="relative rounded-16">
                   <div className="pt-48 pb-24 text-center">
-                    <Typography variant="subtitle1" color="inherit" className="text-20 font-semibold">
+                    <Typography
+                      variant="subtitle1"
+                      color="inherit"
+                      className="text-20 font-semibold"
+                    >
                       Current Plan(Free)
                     </Typography>
                   </div>
@@ -154,8 +161,12 @@ function Widget12(props) {
                         For your hobby projects or validating the platform
                       </Typography>
                       <div className="flex justify-center pb-4">
-                        <Button variant="outlined" className="w-128">
-                          Get Started
+                        <Button
+                          onClick={() => setCountFree(countFree + 1)}
+                          variant="outlined"
+                          className="w-128"
+                        >
+                          Get Started {`  ${countFree}`}
                         </Button>
                       </div>
                     </div>
@@ -212,13 +223,17 @@ function Widget12(props) {
                   <div className="absolute top-0 inset-x-0 flex justify-center">
                     <div className={clsx(classes.badge, 'py-4 px-8 rounded-b-4')}>
                       <Typography className="text-12 font-semibold tracking-tight" color="inherit">
-                        BEST VALUE
+                        BEST OPTION
                       </Typography>
                     </div>
                   </div>
 
                   <div className="pt-48 pb-24 text-center">
-                    <Typography variant="subtitle1" color="inherit" className="text-20 font-semibold">
+                    <Typography
+                      variant="subtitle1"
+                      color="inherit"
+                      className="text-20 font-semibold"
+                    >
                       Alpha Stage(Starter)
                     </Typography>
                   </div>
@@ -240,8 +255,13 @@ function Widget12(props) {
                         For your Trading projects or validating the platform
                       </Typography>
                       <div className="flex justify-center ">
-                        <Button variant="contained" color="secondary" className="w-128">
-                          Get Started
+                        <Button
+                          onClick={() => setCount(count + 1)}
+                          variant="contained"
+                          color="secondary"
+                          className="w-128"
+                        >
+                          Get Started {`  ${count}`}
                         </Button>
                       </div>
                     </div>
