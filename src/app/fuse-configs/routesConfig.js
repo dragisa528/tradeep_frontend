@@ -7,12 +7,14 @@ import DashboardAppConfig from 'app/main/dashboard/DashboardAppConfig';
 import ModelConfig from 'app/main/model/ModelConfig';
 import DatastoreConfig from 'app/main/datastore/DatastoreConfig';
 import AccountsConfig from 'app/main/accounts/AccountsConfig';
+import InstancesConfig from 'app/main/instances/InstancesConfig';
 
 const routeConfigs = [
   DashboardAppConfig,
   ModelConfig,
   DatastoreConfig,
   AccountsConfig,
+  InstancesConfig,
   ...AuthConfig,
 ];
 
