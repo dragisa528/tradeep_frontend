@@ -1,3 +1,4 @@
+import { Button, Icon } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,8 +10,23 @@ import Typography from '@material-ui/core/Typography';
 import { memo } from 'react';
 
 function Widget14(props) {
+  const { setPageState } = props;
+
   return (
     <Paper className="w-full rounded-20 shadow overflow-hidden">
+      <div className="flex justify-end w-full">
+        <Button
+          color="secondary"
+          variant="contained"
+          className="max-h-40 min-w-40 px-16 py-6 m-8"
+          onClick={() => setPageState(0)}
+        >
+          <Icon>arrow_back</Icon>
+          <Typography component="span" className="font-semibold flex">
+            Back
+          </Typography>
+        </Button>
+      </div>
       <div className="flex items-center justify-between p-20 h-64">
         <Typography className="text-16 font-medium">{props.widget.title}</Typography>
         <Typography className="text-11 font-500 rounded-4 text-white bg-blue px-8 py-4">

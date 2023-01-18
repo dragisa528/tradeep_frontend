@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { Icon, ListItemIcon, ListItemText, MenuItem, Popover } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Widget12(props) {
   const classes = useStyles();
-  const { userMenu, userMenuClose, userMenuClick } = props;
+  const { userMenu, userMenuClose, userMenuClick, setPageState } = props;
 
   const container = {
     show: {
@@ -298,7 +297,7 @@ function Widget12(props) {
       <Button
         color="secondary"
         variant="contained"
-        className="max-h-40 min-w-40 px-0 md:px-16 py-0 md:py-6"
+        className="max-h-40 min-w-40 px-16 py-6"
         onClick={userMenuClick}
       >
         <Typography component="span" className="font-semibold flex">
@@ -321,13 +320,13 @@ function Widget12(props) {
           paper: 'py-8',
         }}
       >
-        <MenuItem component={Link} to="/login" role="button">
+        <MenuItem onClick={() => setPageState(1)} role="button">
           <ListItemIcon className="min-w-40">
             <Icon>payment</Icon>
           </ListItemIcon>
           <ListItemText primary="Usage" />
         </MenuItem>
-        <MenuItem component={Link} to="/register" role="button">
+        <MenuItem onClick={() => setPageState(2)} role="button">
           <ListItemIcon className="min-w-40">
             <Icon>receipt</Icon>
           </ListItemIcon>
