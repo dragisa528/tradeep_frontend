@@ -9,7 +9,6 @@ import Widget40 from '../widgets/Widget4_0';
 import Widget41 from '../widgets/Widget4_1';
 import Widget42 from '../widgets/Widget4_2';
 import Widget43 from '../widgets/Widget4_3';
-import Widget5 from '../widgets/Widget5';
 
 function DashboardTab() {
   const widgets = useSelector(selectWidgets);
