@@ -340,13 +340,25 @@ function Widget12(props) {
           paper: 'py-8',
         }}
       >
-        <MenuItem onClick={() => setPageState(1)} role="button">
+        <MenuItem
+          onClick={() => {
+            setPageState(1);
+            userMenuClose();
+          }}
+          role="button"
+        >
           <ListItemIcon className="min-w-40">
             <Icon>payment</Icon>
           </ListItemIcon>
           <ListItemText primary="Usage" />
         </MenuItem>
-        <MenuItem onClick={() => setPageState(2)} role="button">
+        <MenuItem
+          onClick={() => {
+            setPageState(2);
+            userMenuClose();
+          }}
+          role="button"
+        >
           <ListItemIcon className="min-w-40">
             <Icon>receipt</Icon>
           </ListItemIcon>
