@@ -137,18 +137,18 @@ function ModelDialog(props) {
     >
       <AppBar position="static" elevation={0}>
         <Toolbar className="flex w-full">
-          <Typography variant="subtitle1" color="inherit">
-            {modelDialog.type === 'new' ? 'New Contact' : 'Edit Contact'}
+          <Typography variant="h5" color="inherit" className="text-center w-full">
+            {modelDialog.type === 'new' ? 'Agent Builder POC' : 'Edit Contact'}
           </Typography>
         </Toolbar>
-        <div className="flex flex-col items-center justify-center pb-24">
+        {/* <div className="flex flex-col items-center justify-center pb-24">
           <Avatar className="w-96 h-96" alt="contact avatar" src={avatar} />
           {modelDialog.type === 'edit' && (
             <Typography variant="h6" color="inherit" className="pt-8">
               {name}
             </Typography>
           )}
-        </div>
+        </div> */}
       </AppBar>
       <form
         noValidate
@@ -167,7 +167,7 @@ function ModelDialog(props) {
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Name"
+                  label="Agent name"
                   id="name"
                   error={!!errors.name}
                   helperText={errors?.name?.message}
@@ -180,27 +180,8 @@ function ModelDialog(props) {
           </div>
 
           <div className="flex">
-            <div className="min-w-48 pt-20" />
-
-            <Controller
-              control={control}
-              name="lastName"
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  className="mb-24"
-                  label="Last name"
-                  id="lastName"
-                  variant="outlined"
-                  fullWidth
-                />
-              )}
-            />
-          </div>
-
-          <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">star</Icon>
+              <Icon color="action">home</Icon>
             </div>
             <Controller
               control={control}
@@ -209,7 +190,7 @@ function ModelDialog(props) {
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Nickname"
+                  label="Model"
                   id="nickname"
                   variant="outlined"
                   fullWidth
@@ -220,7 +201,7 @@ function ModelDialog(props) {
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">phone</Icon>
+              <Icon color="action">home</Icon>
             </div>
             <Controller
               control={control}
@@ -229,7 +210,7 @@ function ModelDialog(props) {
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Phone"
+                  label="Asset1"
                   id="phone"
                   variant="outlined"
                   fullWidth
@@ -240,7 +221,7 @@ function ModelDialog(props) {
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">email</Icon>
+              <Icon color="action">home</Icon>
             </div>
             <Controller
               control={control}
@@ -249,7 +230,7 @@ function ModelDialog(props) {
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Email"
+                  label="Asset2"
                   id="email"
                   variant="outlined"
                   fullWidth
@@ -260,7 +241,7 @@ function ModelDialog(props) {
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">domain</Icon>
+              <Icon color="action">home</Icon>
             </div>
             <Controller
               control={control}
@@ -269,7 +250,7 @@ function ModelDialog(props) {
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Company"
+                  label="Timeframe1"
                   id="company"
                   variant="outlined"
                   fullWidth
@@ -280,7 +261,7 @@ function ModelDialog(props) {
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">work</Icon>
+              <Icon color="action">home</Icon>
             </div>
             <Controller
               control={control}
@@ -289,7 +270,7 @@ function ModelDialog(props) {
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Job title"
+                  label="Timeframe2"
                   id="jobTitle"
                   name="jobTitle"
                   variant="outlined"
@@ -301,7 +282,68 @@ function ModelDialog(props) {
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">cake</Icon>
+              <Icon color="action">home</Icon>
+            </div>
+            <Controller
+              control={control}
+              name="jobTitle"
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  className="mb-24"
+                  label="Features"
+                  id="jobTitle"
+                  name="jobTitle"
+                  variant="outlined"
+                  fullWidth
+                />
+              )}
+            />
+          </div>
+
+          <div className="flex">
+            <div className="min-w-48 pt-20">
+              <Icon color="action">home</Icon>
+            </div>
+            <Controller
+              control={control}
+              name="address"
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  className="mb-24"
+                  label="Reward function"
+                  id="address"
+                  variant="outlined"
+                  fullWidth
+                />
+              )}
+            />
+          </div>
+
+          <div className="flex">
+            <div className="min-w-48 pt-20">
+              <Icon color="action">home</Icon>
+            </div>
+            <Controller
+              control={control}
+              name="address"
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  className="mb-24"
+                  label="Window Size"
+                  id="address"
+                  variant="outlined"
+                  fullWidth
+                />
+              )}
+            />
+          </div>
+
+          <div className="flex">
+            <div className="min-w-48 pt-20">
+              <Icon color="action">home</Icon>
             </div>
             <Controller
               control={control}
@@ -311,7 +353,7 @@ function ModelDialog(props) {
                   {...field}
                   className="mb-24"
                   id="birthday"
-                  label="Birthday"
+                  label="Features Selected"
                   type="date"
                   InputLabelProps={{
                     shrink: true,
@@ -334,7 +376,7 @@ function ModelDialog(props) {
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Address"
+                  label="Set TP"
                   id="address"
                   variant="outlined"
                   fullWidth
@@ -344,6 +386,26 @@ function ModelDialog(props) {
           </div>
 
           <div className="flex">
+            <div className="min-w-48 pt-20">
+              <Icon color="action">home</Icon>
+            </div>
+            <Controller
+              control={control}
+              name="address"
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  className="mb-24"
+                  label="Set SL"
+                  id="address"
+                  variant="outlined"
+                  fullWidth
+                />
+              )}
+            />
+          </div>
+
+          {/* <div className="flex">
             <div className="min-w-48 pt-20">
               <Icon color="action">note</Icon>
             </div>
@@ -363,7 +425,7 @@ function ModelDialog(props) {
                 />
               )}
             />
-          </div>
+          </div> */}
         </DialogContent>
 
         {modelDialog.type === 'new' ? (
@@ -375,7 +437,7 @@ function ModelDialog(props) {
                 type="submit"
                 disabled={_.isEmpty(dirtyFields) || !isValid}
               >
-                Add
+                Start Trading
               </Button>
             </div>
           </DialogActions>
