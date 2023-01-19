@@ -13,6 +13,8 @@ import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
 import BillingTab from './tabs/BillingTab';
+import { openNewModelDialog } from './store/modelSlice';
+import ModelDialog from './ModelDialog';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -78,7 +80,12 @@ function DashboardApp(props) {
             label="Profile"
           />
         </Tabs>
-        <Button color="secondary" variant="contained" className="w-160">
+        <Button
+          color="secondary"
+          variant="contained"
+          className="w-160"
+          onClick={(ev) => dispatch(openNewModelDialog())}
+        >
           Model Builder
         </Button>
       </Box>
@@ -90,6 +97,7 @@ function DashboardApp(props) {
           {tabValue === 3 && <DashboardTab />}
         </div>
       </Box>
+      <ModelDialog />
     </Box>
   );
 }
