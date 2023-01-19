@@ -1,5 +1,6 @@
 import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
@@ -12,7 +13,6 @@ import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
 import BillingTab from './tabs/BillingTab';
-import { Button, Icon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   content: {
