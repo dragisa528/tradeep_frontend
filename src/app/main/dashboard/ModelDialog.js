@@ -1,7 +1,6 @@
 import FuseUtils from '@fuse/utils/FuseUtils';
 import { yupResolver } from '@hookform/resolvers/yup';
 import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -30,7 +29,6 @@ const defaultValues = {
   id: '',
   name: '',
   lastName: '',
-  avatar: 'assets/images/avatars/profile.jpg',
   nickname: '',
   company: '',
   jobTitle: '',
@@ -141,14 +139,6 @@ function ModelDialog(props) {
             {modelDialog.type === 'new' ? 'Agent Builder POC' : 'Edit Contact'}
           </Typography>
         </Toolbar>
-        {/* <div className="flex flex-col items-center justify-center pb-24">
-          <Avatar className="w-96 h-96" alt="contact avatar" src={avatar} />
-          {modelDialog.type === 'edit' && (
-            <Typography variant="h6" color="inherit" className="pt-8">
-              {name}
-            </Typography>
-          )}
-        </div> */}
       </AppBar>
       <form
         noValidate

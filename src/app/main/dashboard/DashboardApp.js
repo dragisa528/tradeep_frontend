@@ -83,7 +83,7 @@ function DashboardApp(props) {
         <Button
           color="secondary"
           variant="contained"
-          className="w-160"
+          className="w-160 mr-12"
           onClick={(ev) => dispatch(openNewModelDialog())}
         >
           Model Builder
