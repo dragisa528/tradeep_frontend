@@ -12,6 +12,7 @@ import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
 import BillingTab from './tabs/BillingTab';
+import { Button, Icon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -42,7 +43,7 @@ function DashboardApp(props) {
 
   return (
     <Box>
-      <Box className="mt-12">
+      <Box className="mt-12 flex justify-between">
         <Tabs
           value={tabValue}
           onChange={handleChangeTab}
@@ -77,6 +78,9 @@ function DashboardApp(props) {
             label="Profile"
           />
         </Tabs>
+        <Button color="secondary" variant="contained" className="w-160">
+          Model Builder
+        </Button>
       </Box>
       <Box className={classes.content}>
         <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
