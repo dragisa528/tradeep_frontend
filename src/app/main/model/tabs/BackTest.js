@@ -35,7 +35,7 @@ function BillingTab() {
       initial="hidden"
       animate="show"
     >
-      Create Model
+      Quantstats
     </motion.div>
   );
 }

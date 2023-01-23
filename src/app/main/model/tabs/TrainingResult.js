@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
+import { Icon, Typography } from '@material-ui/core';
 import { motion } from 'framer-motion';
-import { Typography } from '@material-ui/core';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-function DashboardTab() {
-
+function MembersTab() {
   const container = {
     show: {
       transition: {
@@ -36,9 +35,9 @@ function DashboardTab() {
       initial="hidden"
       animate="show"
     >
-      Create Model
+      Oputuna Dashboard
     </motion.div>
   );
 }
 
-export default DashboardTab;
+export default MembersTab;

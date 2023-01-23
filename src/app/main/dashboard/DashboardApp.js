@@ -9,7 +9,7 @@ import withReducer from 'app/store/withReducer';
 import _ from '@lodash';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { openNewModelDialog } from 'app/main/model/store/modelSlice';
+// import { openNewModelDialog } from 'app/main/model/store/modelSlice';
 import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
@@ -85,7 +85,7 @@ function DashboardApp(props) {
           color="secondary"
           variant="contained"
           className="w-160 mr-12"
-          onClick={(ev) => dispatch(openNewModelDialog())}
+          // onClick={(ev) => dispatch(openNewModelDialog())}
           component={Link}
           to="/model"
         >

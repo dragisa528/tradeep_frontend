@@ -7,9 +7,9 @@ import _ from '@lodash';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from 'app/store/withReducer';
-import MembersTab from './tabs/MembersTab';
-import DashboardTab from './tabs/DashboardTab';
-import BillingTab from './tabs/BillingTab';
+import BackTest from './tabs/BackTest';
+import CreateModel from './tabs/CreateModel';
+import TrainingResult from './tabs/TrainingResult';
 import { openNewModelDialog } from './store/modelSlice';
 import ModelDialog from './ModelDialog';
 import reducer from './store';
@@ -64,23 +64,23 @@ function Model(props) {
             label="Backtest"
           />
         </Tabs>
-        <Button
+        {/* <Button
           color="secondary"
           variant="contained"
           className="w-160 mr-12"
           onClick={(ev) => dispatch(openNewModelDialog())}
         >
           +Create Model
-        </Button>
+        </Button> */}
       </Box>
       <Box className={classes.content}>
         <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
-          {tabValue === 0 && <DashboardTab />}
-          {tabValue === 1 && <MembersTab />}
-          {tabValue === 2 && <BillingTab />}
+          {tabValue === 0 && <CreateModel />}
+          {tabValue === 2 && <TrainingResult />}
+          {tabValue === 1 && <BackTest />}
         </div>
       </Box>
-      <ModelDialog />
+      {/* <ModelDialog /> */}
     </Box>
   );
 }
