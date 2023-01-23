@@ -90,7 +90,7 @@ function DashboardTab() {
       <form
         noValidate
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col md:overflow-hidden border border-1 rounded-lg"
+        className="m-12 flex flex-col md:overflow-hidden border border-1 rounded-lg"
       >
         <DialogContent classes={{ root: 'p-24' }}>
           <div className="flex">
