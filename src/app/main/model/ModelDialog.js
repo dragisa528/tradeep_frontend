@@ -48,7 +48,7 @@ const schema = yup.object().shape({
 
 function ModelDialog(props) {
   const dispatch = useDispatch();
-  const modelDialog = useSelector(({ dashboardApp }) => dashboardApp.model.ModelDialog);
+  const modelDialog = useSelector(({ modelsApp }) => modelsApp.model.ModelDialog);
 
   const { control, watch, reset, handleSubmit, formState, getValues } = useForm({
     mode: 'onChange',

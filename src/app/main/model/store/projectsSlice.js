@@ -15,7 +15,7 @@ export const {
 } = projectsAdapter.getSelectors((state) => state.dashboardApp.projects);
 
 const projectsSlice = createSlice({
-  name: 'dashboardApp/projects',
+  name: 'modelsApp/projects',
   initialState: projectsAdapter.getInitialState(),
   reducers: {},
   extraReducers: {

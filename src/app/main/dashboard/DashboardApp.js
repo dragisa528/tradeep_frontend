@@ -4,17 +4,18 @@ import { Button } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
+import { Link } from 'react-router-dom';
 import withReducer from 'app/store/withReducer';
 import _ from '@lodash';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { openNewModelDialog } from 'app/main/model/store/modelSlice';
 import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
 import BillingTab from './tabs/BillingTab';
-import { openNewModelDialog } from './store/modelSlice';
-import ModelDialog from './ModelDialog';
+
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -85,8 +86,10 @@ function DashboardApp(props) {
           variant="contained"
           className="w-160 mr-12"
           onClick={(ev) => dispatch(openNewModelDialog())}
+          component={Link}
+          to="/model"
         >
-          Model Builder
+          +Create Model
         </Button>
       </Box>
       <Box className={classes.content}>
@@ -97,7 +100,6 @@ function DashboardApp(props) {
           {tabValue === 3 && <DashboardTab />}
         </div>
       </Box>
-      <ModelDialog />
     </Box>
   );
 }

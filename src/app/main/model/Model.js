@@ -1,9 +1,88 @@
-import { Box } from '@material-ui/core';
+import { Box, Button } from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
+import { makeStyles } from '@material-ui/core/styles';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import _ from '@lodash';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import withReducer from 'app/store/withReducer';
+import MembersTab from './tabs/MembersTab';
+import DashboardTab from './tabs/DashboardTab';
+import BillingTab from './tabs/BillingTab';
+import { openNewModelDialog } from './store/modelSlice';
+import ModelDialog from './ModelDialog';
 import reducer from './store';
 
+const useStyles = makeStyles((theme) => ({
+  content: {
+    '& canvas': {
+      maxHeight: '100%',
+    },
+  },
+}));
+
 function Model(props) {
-  return <Box>Model</Box>;
+  const dispatch = useDispatch();
+
+  const classes = useStyles(props);
+  const [tabValue, setTabValue] = useState(0);
+
+  function handleChangeTab(event, value) {
+    setTabValue(value);
+  }
+
+  return (
+    <Box>
+      <Box className="mt-12 flex justify-between">
+        <Tabs
+          value={tabValue}
+          onChange={handleChangeTab}
+          indicatorColor="secondary"
+          textColor="inherit"
+          variant="scrollable"
+          scrollButtons="off"
+          className="w-full px-24 -mx-4 min-h-40"
+          classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
+          TabIndicatorProps={{
+            children: <Divider className="w-full h-full rounded-full opacity-50" />,
+          }}
+        >
+          <Tab
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            disableRipple
+            label="Create Features"
+          />
+          <Tab
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            disableRipple
+            label="Training Result"
+          />
+          <Tab
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            disableRipple
+            label="Backtest"
+          />
+        </Tabs>
+        <Button
+          color="secondary"
+          variant="contained"
+          className="w-160 mr-12"
+          onClick={(ev) => dispatch(openNewModelDialog())}
+        >
+          +Create Model
+        </Button>
+      </Box>
+      <Box className={classes.content}>
+        <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
+          {tabValue === 0 && <DashboardTab />}
+          {tabValue === 1 && <MembersTab />}
+          {tabValue === 2 && <BillingTab />}
+        </div>
+      </Box>
+      <ModelDialog />
+    </Box>
+  );
 }
 
-export default withReducer('model', reducer)(Model);
+export default withReducer('modelsApp', reducer)(Model);

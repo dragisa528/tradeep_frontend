@@ -50,7 +50,7 @@ export const removeContact = createAsyncThunk(
 const contactsAdapter = createEntityAdapter({});
 
 const contactsSlice = createSlice({
-  name: 'contactsApp/contacts',
+  name: 'modelsApp/model',
   initialState: contactsAdapter.getInitialState({
     searchText: '',
     routeParams: {},
