@@ -15,6 +15,7 @@ import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
 import BillingTab from './tabs/BillingTab';
+import ProfileTab from './tabs/ProfileTab';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -97,7 +98,7 @@ function DashboardApp(props) {
           {tabValue === 0 && <DashboardTab />}
           {tabValue === 1 && <MembersTab />}
           {tabValue === 2 && <BillingTab />}
-          {tabValue === 3 && <DashboardTab />}
+          {tabValue === 3 && <ProfileTab />}
         </div>
       </Box>
     </Box>
