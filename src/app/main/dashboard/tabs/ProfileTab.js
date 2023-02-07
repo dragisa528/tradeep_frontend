@@ -1,60 +1,80 @@
-import {
-    Card,
-    Button, Form,
-    Row, Col, InputGroup
-} from 'react-bootstrap';
+import { useState } from 'react';
 
-import avar from 'assets/images/settings/avar.png';
+import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
+import { selectWidgets } from '../store/widgetsSlice';
+import ProfileTab from './setting/ProfileTab';
+import EmailTab from './setting/EmailTab';
+import TimeSettingTab from './setting/TimeSettingsTab';
+import AffiliateProgramTab from './setting/AffiliateProgramTab';
 
+function SettingsTab() {
+  const widgets = useSelector(selectWidgets);
 
-export const Profile = () => {
-    return (
-        <div style={{ marginTop: 40 }}>
-            <Row md={2} sm={2} xs={12} lg={2}>
-                <Col>
-                    <img style={{ float: 'left' }} src={avar} alt="avartar" />
-                    <Form style={{ float: 'left', marginLeft: 20 }}>
-                        <Form.Group>
-                            <InputGroup style={{ marginBottom: 10 }}>
-                                <Form.Control defaultValue='John' style={{ width: 250 }} type='text' name='first_name' /><br />
-                                <Button size='sm'> <i style={{ margin: 0 }} className='feather icon-edit-2' /> </Button>
-                            </InputGroup>
-                        </Form.Group>
-                        <Form.Group>
-                            <InputGroup style={{ marginBottom: 10 }}>
-                                <Form.Control defaultValue='Doe' style={{ width: 250 }} type='text' name='last_name' /><br />
-                                <Button size='sm'> <i style={{ margin: 0 }} className='feather icon-edit-2' /> </Button>
-                            </InputGroup>
-                        </Form.Group>
-                        <Form.Group>
-                            <InputGroup style={{ marginBottom: 10 }}>
-                                <Form.Control defaultValue='falcon.123@gmail.com' style={{ width: 250 }} type='email' name='email' /><br />
-                                <Button size='sm'> <i style={{ margin: 0 }} className='feather icon-edit-2' /> </Button>
-                            </InputGroup>
-                        </Form.Group>
-                        <Form.Group>
-                            <InputGroup style={{ marginBottom: 10 }}>
-                                <Form.Control defaultValue='+44 1234 5678 9' style={{ width: 250 }} type='text' name='phone' /><br />
-                                <Button size='sm'> <i style={{ margin: 0 }} className='feather icon-edit-2' /> </Button>
-                            </InputGroup>
-                        </Form.Group>
-                        <Form.Group>
-                            <InputGroup>
-                                <Form.Control defaultValue='Company: Trade Company' style={{ width: 250 }} type='text' name='country' />
-                                <Button size='sm'> <i style={{ margin: 0 }} className='feather icon-edit-2' /> </Button>
-                            </InputGroup>
-                        </Form.Group>
-                    </Form>
-                </Col>
-            </Row>
-            <br />
-            <Card>
-                <Card.Body>
-                    <Button size='sm' variant='secondary'> Reset Password </Button>
-                    <Button size='sm' variant='secondary'> Verify Email </Button>
-                    <Button size='sm' variant='success'> Save Changes </Button>
-                </Card.Body>
-            </Card>
+  const container = {
+    show: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  const [selectedTab, setSelectedTab] = useState('profile');
+
+  return (
+    <motion.div
+      className="flex flex-col"
+      variants={container}
+      initial="hidden"
+      animate="show"
+    >
+      <div className="tab-nav flex justify-center">
+        <div
+          className={`tab-nav-item ${selectedTab === 'profile' ? 'active' : ''}`}
+          onClick={() => setSelectedTab('profile')}
+        >
+          Profile
         </div>
-    )
+        <div
+          className={`tab-nav-item ${selectedTab === 'email' ? 'active' : ''}`}
+          onClick={() => setSelectedTab('email')}
+        >
+          Email
+        </div>
+        <div
+          className={`tab-nav-item ${selectedTab === 'timeSetting' ? 'active' : ''}`}
+          onClick={() => setSelectedTab('timeSetting')}
+        >
+          Time Setting
+        </div>
+        <div
+          className={`tab-nav-item ${selectedTab === 'affiliateProgram' ? 'active' : ''}`}
+          onClick={() => setSelectedTab('affiliateProgram')}
+        >
+          Affiliate Program
+        </div>
+      </div>
+      <motion.div variants={item} className="tab-content">
+        {selectedTab === 'profile' && (
+          <ProfileTab widget={widgets.widgetProfile} />
+        )}
+        {selectedTab === 'email' && (
+          <EmailTab widget={widgets.widgetEmail} />
+        )}
+        {selectedTab === 'timeSetting' && (
+          <TimeSettingTab widget={widgets.widgetTimeSetting} />
+        )}
+        {selectedTab === 'affiliateProgram' && (
+          <AffiliateProgramTab widget={widgets.widgetAffiliateProgram} />
+        )}
+      </motion.div>
+    </motion.div>
+  );
 }
+
+export default SettingsTab;

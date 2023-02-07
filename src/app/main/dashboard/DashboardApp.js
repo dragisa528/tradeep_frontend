@@ -15,8 +15,8 @@ import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import MembersTab from './tabs/MembersTab';
 import DashboardTab from './tabs/DashboardTab';
 import BillingTab from './tabs/BillingTab';
-//import ProfileTab from './tabs/ProfileTab';
-import { ProfileTab } from './tabs/ProfileTab';
+import ProfileTab from './tabs/ProfileTab';
+
 
 const useStyles = makeStyles((theme) => ({
   content: {

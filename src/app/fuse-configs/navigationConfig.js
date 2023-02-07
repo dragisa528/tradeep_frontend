@@ -24,14 +24,6 @@ const navigationConfig = [
         url: '/dashboard',
       },
       {
-        id: 'model-component',
-        title: 'Model',
-        translate: 'Model',
-        type: 'item',
-        icon: 'view_in_ar',
-        url: '/model',
-      },
-      {
         id: 'datastore-component',
         title: 'Datastore',
         translate: 'Datastore',
@@ -47,14 +39,14 @@ const navigationConfig = [
         icon: 'people',
         url: '/accounts',
       },
-      {
-        id: 'instances-component',
-        title: 'Instances',
-        translate: 'Instances',
-        type: 'item',
-        icon: 'class',
-        url: '/instances',
-      },
+      // {
+      //   id: 'instances-component',
+      //   title: 'Instances',
+      //   translate: 'Instances',
+      //   type: 'item',
+      //   icon: 'class',
+      //   url: '/instances',
+      // },
       {
         id: 'apikeys-component',
         title: 'API Keys',
