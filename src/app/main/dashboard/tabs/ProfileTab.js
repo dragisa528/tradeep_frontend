@@ -33,30 +33,32 @@ function SettingsTab() {
       initial="hidden"
       animate="show"
     >
-      <div className="tab-nav flex justify-center">
-        <div
-          className={`tab-nav-item ${selectedTab === 'profile' ? 'active' : ''}`}
-          onClick={() => setSelectedTab('profile')}
-        >
-          Profile
-        </div>
-        <div
-          className={`tab-nav-item ${selectedTab === 'email' ? 'active' : ''}`}
-          onClick={() => setSelectedTab('email')}
-        >
-          Email
-        </div>
-        <div
-          className={`tab-nav-item ${selectedTab === 'timeSetting' ? 'active' : ''}`}
-          onClick={() => setSelectedTab('timeSetting')}
-        >
-          Time Setting
-        </div>
-        <div
-          className={`tab-nav-item ${selectedTab === 'affiliateProgram' ? 'active' : ''}`}
-          onClick={() => setSelectedTab('affiliateProgram')}
-        >
-          Affiliate Program
+      <div className="tab-nav-container flex justify-center">
+        <div className="tab-nav flex">
+          <div
+            className={`tab-nav-item ${selectedTab === 'profile' ? 'active' : ''}`}
+            onClick={() => setSelectedTab('profile')}
+          >
+            Profile
+          </div>
+          <div
+            className={`tab-nav-item ${selectedTab === 'email' ? 'active' : ''}`}
+            onClick={() => setSelectedTab('email')}
+          >
+            Email
+          </div>
+          <div
+            className={`tab-nav-item ${selectedTab === 'timeSetting' ? 'active' : ''}`}
+            onClick={() => setSelectedTab('timeSetting')}
+          >
+            Time Setting
+          </div>
+          <div
+            className={`tab-nav-item ${selectedTab === 'affiliateProgram' ? 'active' : ''}`}
+            onClick={() => setSelectedTab('affiliateProgram')}
+          >
+            Affiliate Program
+          </div>
         </div>
       </div>
       <motion.div variants={item} className="tab-content">

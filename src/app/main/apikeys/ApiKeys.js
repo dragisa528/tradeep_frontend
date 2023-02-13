@@ -5,5 +5,5 @@ import reducer from './store';
 function ApiKeys(props) {
   return <Box>ApiKeys</Box>;
 }
+export default withReducer('apikey', reducer)(ApiKeys);
 
-export default withReducer('apiKeys', reducer)(ApiKeys);
