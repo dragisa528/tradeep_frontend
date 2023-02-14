@@ -40,22 +40,37 @@ const useStyles = makeStyles({
 
 const data = [
     {
-        key: "TwittFintech sentiment Api key 1",
+        key: "AlphaVantage Api key",
         files: 6,
         size: "1.1kb"
     },
     {
-        key: "TwittFintech sentiment Api key 2",
+        key: "quandl API key ",
         files: 7,
         size: "1.0mb"
     },
     {
-        key: "TwittFintech sentiment Api key 3",
+        key: "bitquery Api key",
         files: 8,
         size: "2.0kb"
     },
     {
-        key: "TwittFintech sentiment Api key 4",
+        key: "coinmarketcap Api key",
+        files: 9,
+        size: "3.0mb"
+    }, 
+    {
+        key: "EODHD Api key",
+        files: 9,
+        size: "3.0mb"
+    },
+    {
+        key: "Coinbase Api key",
+        files: 9,
+        size: "3.0mb"
+    },
+    {
+        key: "Oanda Api key",
         files: 9,
         size: "3.0mb"
     },
@@ -84,7 +99,7 @@ const TableData = () => {
                         <TableCell >
 
                             <TableCell style={{ border: "0px" }} align="left">
-                                <FaRegStar />
+                                <FaPlayCircle />
                             </TableCell>
 
                             <TableCell style={{ border: "0px" }} align="right">
@@ -100,16 +115,8 @@ const TableData = () => {
 
                         </TableCell>
 
-                        <TableCell align="right">
                             <Button variant="contained" color="primary" >
-                                <FaFile />
-                                <span style={{ width: "5px" }}></span>
-                                Browser
-                            </Button>
-
-
-                            <Button variant="contained" color="primary" >
-                                <FaRegStar />
+                                <FaPen />
                                 <span style={{ width: "5px" }}></span>
                                 Edit
                             </Button>
