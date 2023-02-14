@@ -37,24 +37,27 @@ const useStyles = makeStyles({
     },
 });
 
-
 const data = [
     {
+    
         key: "AlphaVantage Api key",
         files: 6,
         size: "1.1kb"
     },
     {
+     
         key: "quandl API key ",
         files: 7,
         size: "1.0mb"
     },
     {
+     
         key: "bitquery Api key",
         files: 8,
         size: "2.0kb"
     },
     {
+     
         key: "coinmarketcap Api key",
         files: 9,
         size: "3.0mb"
@@ -96,8 +99,10 @@ const TableData = () => {
                 {data.map((row) => (
                     <TableRow key={row.key}>
 
-                          <TableCell style={{ border: "0px" }} align="left">
-                                <FaPlayCircle />
+                        <TableCell >
+
+                            <TableCell style={{ border: "0px" }} align="left">
+                                <FaRegStar />
                             </TableCell>
 
                             <TableCell style={{ border: "0px" }} align="right">
@@ -113,8 +118,16 @@ const TableData = () => {
 
                         </TableCell>
 
+                        <TableCell align="right">
                             <Button variant="contained" color="primary" >
-                                <FaPen />
+                                <FaFile />
+                                <span style={{ width: "5px" }}></span>
+                                Browser
+                            </Button>
+
+
+                            <Button variant="contained" color="primary" >
+                                <FaRegStar />
                                 <span style={{ width: "5px" }}></span>
                                 Edit
                             </Button>
@@ -136,4 +149,3 @@ const TableData = () => {
 };
 
 export default TableData;
-

@@ -4,17 +4,16 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Switch from '@material-ui/core/Switch';
-import { Tab, Tabs, Box,Button } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    maxWidth: 660,
+    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
 }));
 
-function EmailTab () {
+export default function SwitchListSecondary() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     checkedA: true,
@@ -27,7 +26,6 @@ function EmailTab () {
   };
 
   return (
-   <>
     <List className={classes.root}>
       <ListItem>
         <ListItemText primary="Notification" secondary="Receive notifications for important updates" />
@@ -57,19 +55,5 @@ function EmailTab () {
         />
       </ListItem>
     </List>
-    <Button
-          color="secondary"
-          variant="contained"
-          className="w-160 mt-12"
-          // onClick={(ev) => dispatch(openNewModelDialog())}
-        //   component={Link}
-        //   to="/model"
-        >
-        Save Change
-        </Button>
-   </>
   );
 }
-
-
-export default EmailTab;
