@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between !important",
   },
-  tableSetting: {
-    margin: "10px !important",
+  tableSetting :{
+    margin:"10px !important",
   }
 
 }));
@@ -61,13 +61,18 @@ function Accounts(props) {
           </Typography>
         </Box>
         <Box className="right_button">
-          <AddAccountModal />
+            <AddAccountModal/>
         </Box>
       </Box>
 
       <Box style={{ padding: "10px" }}>
-        <Grid container spacing={3}>
-          <Grid item xs={6}>
+        {/* container justify="center" alignItems="center" */}
+        <Grid container  justify="space-around"  alignItems="center" spacing={3}>
+          
+          <Grid item  
+              xs={12}
+              sm={12}
+              lg={5}>
             <Box className={classes.root}>
               <Grid container spacing={4}>
                 <Grid
@@ -140,47 +145,54 @@ function Accounts(props) {
               </Grid>
             </Box>
           </Grid>
-          <Grid item xs={6}>
-            <Box mb={2}>
+          <Grid item  
+              xs={12}
+              sm={12}
+              lg={5}
+              
+              style={{margin: '40px'}}
+              
+              >
+            <Box  mb={2}>
 
               <Typography variant="h6">Account Stats</Typography>
             </Box>
             <br />
-            <Grid style={{ padding: "4px", paddingRight: "20px" }} container spacing={6}>
+            <Grid style={{padding:"4px",paddingRight:"20px"}} container spacing={6}>
 
               {/* First Row  */}
 
-              <Grid style={{ padding: "4px" }} item xs={12} sm={6}>
+              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
+                  <Box mb={1}>
+                    <InputLabel htmlFor="outlined-adornment-amount">
+                      Cash
+                    </InputLabel>
+                  </Box>
+                  <FormControl fullWidth disabled>
+                    <OutlinedInput
+                      id="outlined-adornment-amount"
+                      startAdornment={<InputAdornment position="start">USD</InputAdornment>}
+                    />
+                  </FormControl>
+                </Grid>
+                
+                <Grid style={{padding:"4px"}} item xs={12} sm={6}>
                 <Box mb={1}>
-                  <InputLabel htmlFor="outlined-adornment-amount">
-                    Cash
-                  </InputLabel>
-                </Box>
-                <FormControl fullWidth disabled>
-                  <OutlinedInput
-                    id="outlined-adornment-amount"
-                    startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                  />
-                </FormControl>
-              </Grid>
+                    <InputLabel htmlFor="outlined-adornment-amount">
+                      Multiplier
+                    </InputLabel>
+                  </Box>
+                  <FormControl fullWidth disabled sx={{ m: 1 }}>
+                    <OutlinedInput
+                      id="outlined-adornment-amount"
+                      startAdornment={<InputAdornment position="start">USD</InputAdornment>}
+                      value="1000"
+                      inputProps={{ textAlign: 'center' }}
+                    />
+                  </FormControl>
+                </Grid>
 
-              <Grid style={{ padding: "4px" }} item xs={12} sm={6}>
-                <Box mb={1}>
-                  <InputLabel htmlFor="outlined-adornment-amount">
-                    Multiplier
-                  </InputLabel>
-                </Box>
-                <FormControl fullWidth disabled sx={{ m: 1 }}>
-                  <OutlinedInput
-                    id="outlined-adornment-amount"
-                    startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                    value="1000"
-                    inputProps={{ textAlign: 'center' }}
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid style={{ padding: "4px" }} item xs={12} sm={6}>
+              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
                 <Box mb={1}>
                   <InputLabel htmlFor="outlined-adornment-amount">
                     Realized PNL
@@ -200,7 +212,7 @@ function Accounts(props) {
 
 
 
-              <Grid style={{ padding: "4px" }} item xs={12} sm={6}>
+              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
                 <Box mb={1}>
                   <InputLabel htmlFor="outlined-adornment-amount">
                     Buying Power
@@ -214,7 +226,7 @@ function Accounts(props) {
                 </FormControl>
               </Grid>
 
-              <Grid style={{ padding: "4px" }} item xs={12} sm={6}>
+              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
                 <Box mb={1}>
                   <InputLabel htmlFor="outlined-adornment-amount">
                     Equity
@@ -232,7 +244,7 @@ function Accounts(props) {
 
               {/* Third row  */}
 
-              <Grid style={{ padding: "4px" }} item xs={12} sm={6}>
+              <Grid  style={{padding:"4px"}} item xs={12} sm={6}>
                 <Box mb={1}>
                   <InputLabel htmlFor="outlined-adornment-amount">
                     initial Margin                    </InputLabel>
@@ -245,7 +257,7 @@ function Accounts(props) {
                 </FormControl>
               </Grid>
 
-              <Grid style={{ padding: "4px" }} item xs={12} sm={6}>
+              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
                 <Box mb={1}>
                   <InputLabel htmlFor="outlined-adornment-amount">
                     Maintenance Margin
@@ -261,14 +273,15 @@ function Accounts(props) {
 
             </Grid>
           </Grid>
+
         </Grid>
       </Box>
 
 
-      <Box item sx={{ margin: "20px" }}
+      <Box item  sx={{margin:"20px"}}
       // style={{maxWidth:"1500px",}}
       >
-        <Table />
+        <Table/>
       </Box>
     </>
   );

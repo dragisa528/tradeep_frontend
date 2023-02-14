@@ -30,8 +30,8 @@ function AddAccountModal(props) {
 
   return (
     <div>
-        <Button variant="contained" color="secondary" onClick={handleOpen} xs={12}>
-        Add 
+   <Button variant="contained" color="secondary" onClick={handleOpen} xs={12}>
+        Add Key
       </Button>
       <Modal
         aria-labelledby="add-account-modal-title"
@@ -41,7 +41,7 @@ function AddAccountModal(props) {
         onClose={handleClose}
       >
         <div className={classes.paper}>
-          <h2 id="add-account-modal-title">Add Account</h2>
+          <h2 id="add-account-modal-title">Add New Key</h2>
           <TextField
             label="Account Name"
             variant="outlined"
@@ -49,35 +49,24 @@ function AddAccountModal(props) {
             margin="normal"
           />
           <br />
-          <Select
-            labelId="outlined-label"
-            id="outlined-label-select"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-          >
-            <option value="">Your Broker</option>
-            <option value="broker1">Broker 1</option>
-            <option value="broker2">Broker 2</option>
-            <option value="broker3">Broker 3</option>
-          </Select>
-          <br />
+        
           <TextField
-            label="Key"
+            label="Api Key"
             variant="outlined"
             fullWidth
             margin="normal"
           />
           <br />
           <TextField
-            label="Secret"
+            label="Secret Key"
             variant="outlined"
             fullWidth
             margin="normal"
           />
+          <br />
           <br />
           <Button variant="contained" color="secondary">
-            Add Account
+           Save
           </Button>
         </div>
       </Modal>
