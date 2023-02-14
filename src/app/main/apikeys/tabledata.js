@@ -96,9 +96,7 @@ const TableData = () => {
                 {data.map((row) => (
                     <TableRow key={row.key}>
 
-                        <TableCell >
-
-                            <TableCell style={{ border: "0px" }} align="left">
+                          <TableCell style={{ border: "0px" }} align="left">
                                 <FaPlayCircle />
                             </TableCell>
 
