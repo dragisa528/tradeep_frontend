@@ -18,9 +18,9 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import IconButton from "@material-ui/core/IconButton";
 import TableBody from "@material-ui/core/TableBody";
-import { FaRegStar, FaFile, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaFile, FaTrash } from 'react-icons/fa';
 // import { IconName } from "react-icons/fa";
-// import { FaFile, FaRegStar, FaTrash } from "react-icons/fa";
+// import { FaFile, FaEdit, FaTrash } from "react-icons/fa";
 import {
     Browse,
     Edit,
@@ -99,35 +99,29 @@ const TableData = () => {
                 {data.map((row) => (
                     <TableRow key={row.key}>
 
-                        <TableCell >
-
-                            <TableCell style={{ border: "0px" }} align="left">
-                                <FaRegStar />
-                            </TableCell>
-
-                            <TableCell style={{ border: "0px" }} align="right">
-                                <br />
-                                {row.key}
-                                <div style={{ display: "flex", flexDirection: "row" }}>
-
-                                    <span>{row.files} <FaFile /></span>
-                                    <span>{row.size}</span>
-                                </div>
-                            </TableCell>
-
-
+                        <TableCell style={{ display: "flex" }}>
+                        <div style={{ width: 50, height: 50, marginRight:"20px",background: "url(https://png.pngtree.com/png-vector/20190511/ourmid/pngtree-vector-key-icon-png-image_1028662.jpg) no-repeat center center / cover" }}></div>
+                        <div style={{ display: "flex", flexDirection: "column", marginLeft: 10 }}>
+                            <span style={{ fontWeight: "bold" }}>{row.key}</span>
+                            <div style={{ display: "flex", flexDirection: "row" }}>
+                            <span style={{ fontWeight: "bold" }}>{row.files}</span>
+                            <span style={{ marginLeft: 5, marginRight: 5 }}><FaFile /></span>
+                            <span>{row.size}</span>
+                            </div>
+                        </div>
                         </TableCell>
+
 
                         <TableCell align="right">
                             <Button variant="contained" color="primary" >
                                 <FaFile />
                                 <span style={{ width: "5px" }}></span>
-                                Browser
+                                Learn More
                             </Button>
 
 
                             <Button variant="contained" color="primary" >
-                                <FaRegStar />
+                                <FaEdit />
                                 <span style={{ width: "5px" }}></span>
                                 Edit
                             </Button>

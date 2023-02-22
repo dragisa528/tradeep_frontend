@@ -11,6 +11,10 @@ const AccountsConfig = {
       path: '/accounts',
       component: lazy(() => import('./Accounts')),
     },
+    {
+      path: '/mAccount',
+      component: lazy(() => import('./AccountDetail')),
+    },
   ],
 };
 

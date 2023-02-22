@@ -7,13 +7,26 @@ import {
   InputAdornment,
   InputLabel, FormControl, OutlinedInput,
   Switch,
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton,
   FormControlLabel,
 } from "@material-ui/core";
+import { Link } from 'react-router-dom';
+
 import { makeStyles } from "@material-ui/core/styles";
 import withReducer from "app/store/withReducer";
 import reducer from "./store";
-import Table from "./table";
+
+import Rating from '@mui/material/Rating';
+
+
+
+// or
+// import { Rating } from '@mui/material';
+
+import React from "react";
+import { Edit as EditIcon, Visibility as VisibilityIcon } from "@material-ui/icons";
 import AddAccountModal from "./modalshow"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(4),
@@ -32,14 +45,19 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between !important",
   },
-  tableSetting :{
-    margin:"10px !important",
+  tableSetting: {
+    margin: "10px !important",
   }
 
 }));
 
 function Accounts(props) {
   const classes = useStyles();
+  // Sample data for the table
+  const tableData = [{ name: "John Doe", broker: "TD Ameritrade", cash: "$5000", }];
+
+  // Sample data for the list
+  const listData = [{ image: "https://via.placeholder.com/150", rating: 4, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", }, { image: "https://via.placeholder.com/150", rating: 3, text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", }, { image: "https://via.placeholder.com/150", rating: 5, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", },];
 
   return (
     <>
@@ -49,239 +67,112 @@ function Accounts(props) {
           display: "flex",
           padding: "10px",
           justifyContent: "space-between",
+          flexDirection: "column",
         }}
       >
-        <Box className={classes.heading}>
-          <Typography variant="h6">Accounts</Typography>
-          <br />
-          <Typography className="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            euismod
-            <span className={classes.strongWord}> bibendum </span> laoreet.
-          </Typography>
-        </Box>
-        <Box className="right_button">
-            <AddAccountModal/>
-        </Box>
-      </Box>
 
-      <Box style={{ padding: "10px" }}>
-        {/* container justify="center" alignItems="center" */}
-        <Grid container  justify="space-around"  alignItems="center" spacing={3}>
-          
-          <Grid item  
-              xs={12}
-              sm={12}
-              lg={5}>
-            <Box className={classes.root}>
-              <Grid container spacing={4}>
-                <Grid
-                  style={{
-                    display: "flex",
-                    padding: "10px",
-                    justifyContent: "space-between",
-                  }}
-                  item
-                  xs={12}
-                >
-                  <Typography variant="h6">Account Info</Typography>
-                  <Button variant="contained" color="secondary">
-                    Change credentials
-                  </Button>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography>Account name</Typography>
-                  <Box mb={1}>
-                    <TextField
-                      label="Account name"
-                      variant="outlined"
-                      fullWidth
-                    />
-                  </Box>
-                </Grid>
-                <Grid item xs={12}>
-                  <Box style={{ display: "flex" }}>
-                    <FormControlLabel
-                      control={<Switch color="primary" />}
-                      label="Paper Account"
-                    />
+        <Box style={{
+          width: "100%", display: "flex",
+          padding: "10px",
+          justifyContent: "space-between"
+        }}>
 
-                    <FormControlLabel
-                      control={<Switch color="primary" />}
-                      label="Active"
-                    />
-                  </Box>
-                </Grid>
-                <Grid container spacing={6}>
-                  <Grid item xs={12} sm={6}>
-                    <Box mb={1}>
-                      <TextField label="Broker" variant="outlined" fullWidth />
-                    </Box>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Box mb={1}>
-                      <TextField
-                        label="Broker account"
-                        variant="outlined"
-                        fullWidth
-                      />
-                    </Box>
-                  </Grid>
-                </Grid>
-                <Grid
-                  style={{
-                    display: "flex",
-                    padding: "10px",
-                    justifyContent: "center",
-                  }}
-                  item xs={12}>
-                  <Button variant="contained" style={{ marginRight: "20px" }} color="primary">
-                    Save
-                  </Button>
-                  <Button variant="contained" color="secondary">
-                    Cancel
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
-          </Grid>
-          <Grid item  
-              xs={12}
-              sm={12}
-              lg={5}
-              
-              style={{margin: '40px'}}
-              
-              >
-            <Box  mb={2}>
-
-              <Typography variant="h6">Account Stats</Typography>
-            </Box>
+          <Box className={classes.heading}>
+            <Typography variant="h6">Accounts</Typography>
             <br />
-            <Grid style={{padding:"4px",paddingRight:"20px"}} container spacing={6}>
-
-              {/* First Row  */}
-
-              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
-                  <Box mb={1}>
-                    <InputLabel htmlFor="outlined-adornment-amount">
-                      Cash
-                    </InputLabel>
-                  </Box>
-                  <FormControl fullWidth disabled>
-                    <OutlinedInput
-                      id="outlined-adornment-amount"
-                      startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                    />
-                  </FormControl>
-                </Grid>
-                
-                <Grid style={{padding:"4px"}} item xs={12} sm={6}>
-                <Box mb={1}>
-                    <InputLabel htmlFor="outlined-adornment-amount">
-                      Multiplier
-                    </InputLabel>
-                  </Box>
-                  <FormControl fullWidth disabled sx={{ m: 1 }}>
-                    <OutlinedInput
-                      id="outlined-adornment-amount"
-                      startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                      value="1000"
-                      inputProps={{ textAlign: 'center' }}
-                    />
-                  </FormControl>
-                </Grid>
-
-              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
-                <Box mb={1}>
-                  <InputLabel htmlFor="outlined-adornment-amount">
-                    Realized PNL
-                  </InputLabel>
-                </Box>
-                <FormControl fullWidth disabled>
-                  <OutlinedInput
-                    id="outlined-adornment-amount"
-                    startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                  />
-                </FormControl>
-              </Grid>
+            <Typography className="">
+              An <span className={classes.strongWord}> account object </span> holds your destination broker's credentials.
+              <br />
+              <p>This allows you to route orders to the desired broker.</p>
+            </Typography>
+          </Box>
+          <Box className="right_button">
+            <AddAccountModal />
+          </Box>
+        </Box>
 
 
 
-              {/* Second Row  */}
+        <Box>
 
-
-
-              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
-                <Box mb={1}>
-                  <InputLabel htmlFor="outlined-adornment-amount">
-                    Buying Power
-                  </InputLabel>
-                </Box>
-                <FormControl fullWidth disabled>
-                  <OutlinedInput
-                    id="outlined-adornment-amount"
-                    startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
-                <Box mb={1}>
-                  <InputLabel htmlFor="outlined-adornment-amount">
-                    Equity
-                  </InputLabel>
-                </Box>
-                <FormControl fullWidth disabled>
-                  <OutlinedInput
-                    id="outlined-adornment-amount"
-                    startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                  />
-                </FormControl>
-              </Grid>
-
-
-
-              {/* Third row  */}
-
-              <Grid  style={{padding:"4px"}} item xs={12} sm={6}>
-                <Box mb={1}>
-                  <InputLabel htmlFor="outlined-adornment-amount">
-                    initial Margin                    </InputLabel>
-                </Box>
-                <FormControl fullWidth disabled>
-                  <OutlinedInput
-                    id="outlined-adornment-amount"
-                    startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid style={{padding:"4px"}} item xs={12} sm={6}>
-                <Box mb={1}>
-                  <InputLabel htmlFor="outlined-adornment-amount">
-                    Maintenance Margin
-                  </InputLabel>
-                </Box>
-                <FormControl fullWidth disabled>
-                  <OutlinedInput
-                    id="outlined-adornment-amount"
-                    startAdornment={<InputAdornment position="start">USD</InputAdornment>}
-                  />
-                </FormControl>
-              </Grid>
-
+          <Grid container spacing={2}>
+            <Grid item xs={12}
+              sm={12}
+              lg={8}>
+              <TableContainer>
+                <Table className={classes.table} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Broker</TableCell>
+                      <TableCell>Cash</TableCell>
+                      <TableCell>---</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {tableData.map((row, index) => (
+                      <TableRow key={index}>
+                        <TableCell>{row.name}</TableCell>
+                        <TableCell>{row.broker}</TableCell>
+                        <TableCell>{row.cash}</TableCell>
+                        <TableCell>
+                        <Link to="/mAccount">
+                          <IconButton>
+                            <EditIcon />
+                          </IconButton>
+                        </Link>
+                        <Link to="/mAccount">
+                          <IconButton>
+                            <VisibilityIcon />
+                          </IconButton>
+                        </Link>
+                      </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
             </Grid>
+            <Grid 
+  style={{margin:"20px"}}
+  item xs={12}
+  sm={12}
+  lg={3}
+>
+  {/* Column 2 content */}
+  <Box boxShadow={3} p={2} bgcolor="background.paper">
+    <Grid container spacing={2} display="flex" alignItems="center" flexDirection="column" >
+      {listData.map((item) => (
+        <Box boxShadow={1} p={2} bgcolor="background.paper">
+          <Grid item xs={12} md={12} lg={12} display="flex" alignItems="center">
+            <Box display="flex" display="flex" alignItems="center" justifyContent="space-between">
+              <Box mr={2}>
+                <img src="https://www.cnet.com/a/img/resize/e797cd7dd3d705435319ad5bfb405c0c60eae5ad/hub/2022/04/05/653e0d19-f298-49f3-9bb0-41ad1464e1cd/gettyimages-1199472028.jpg?auto=webp&fit=crop&height=675&width=1200" alt={item.name} width={80} />
+              </Box>
+              <Box>
+                <Typography variant="h6">{item.name}</Typography>
+                <Typography variant="subtitle1">
+                  {item.description}
+                </Typography>
+                <Box display="flex" alignItems="center">
+                  <Rating name="read-only" value={item.rating} readOnly />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography variant="body2" color="textSecondary">
+                    OverAll
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
           </Grid>
+        </Box>
+      ))}
+    </Grid>
+  </Box>
+</Grid>
 
-        </Grid>
-      </Box>
-
-
-      <Box item  sx={{margin:"20px"}}
-      // style={{maxWidth:"1500px",}}
-      >
-        <Table/>
+          </Grid>
+        </Box>
       </Box>
     </>
   );
