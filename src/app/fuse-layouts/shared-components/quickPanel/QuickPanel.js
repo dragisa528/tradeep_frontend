@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { memo } from 'react';
 import { toggleQuickPanel } from './store/stateSlice';
 import reducer from './store';
-
+import SearchBar from './searchbar';
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 280,
+    width: 450,
   },
 }));
 
@@ -30,7 +30,7 @@ function QuickPanel(props) {
       disableSwipeToOpen
     >
       <FuseScrollbars>
-        <Typography>Quick Panel</Typography>
+        <SearchBar/>
       </FuseScrollbars>
     </SwipeableDrawer>
   );
