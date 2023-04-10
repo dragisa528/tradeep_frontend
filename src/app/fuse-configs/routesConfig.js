@@ -4,11 +4,15 @@ import FuseLoading from '@fuse/core/FuseLoading';
 import Error404Page from 'app/main/404/Error404Page';
 import AuthConfig from 'app/main/auth/AuthConfig';
 import DashboardAppConfig from 'app/main/dashboard/DashboardAppConfig';
+
+import AdminDashboardAppConfig from 'app/main/AdminDashboard/DashboardAppConfig';
+
 import ModelConfig from 'app/main/model/ModelConfig';
 import DatastoreConfig from 'app/main/datastore/DatastoreConfig';
 import AccountsConfig from 'app/main/accounts/AccountsConfig';
 import InstancesConfig from 'app/main/instances/InstancesConfig';
 import ApiKeysConfig from 'app/main/apikeys/ApiKeysConfig';
+import UserDetailsConfig from 'app/main/userdetails/UserDetailsConfig';
 import CommunityConfig from 'app/main/community/CommunityConfig';
 import DocsConfig from 'app/main/docs/DocsConfig';
 import AffiliateProgrameConfig from 'app/main/affiliatePrograme/AffiliateProgrameConfig';
@@ -20,6 +24,7 @@ import NotebooksConfig from 'app/main/notebooks/NotebooksConfig';
 
 const routeConfigs = [
   DashboardAppConfig,
+  AdminDashboardAppConfig,
   ModelConfig,
   DatastoreConfig,
   AccountsConfig,
@@ -30,6 +35,7 @@ const routeConfigs = [
   AffiliateProgrameConfig,
   FeatureRequestConfig,
   HelpConfig,
+  UserDetailsConfig,
   WhatnewConfig,
   StatusConfig,
   NotebooksConfig,

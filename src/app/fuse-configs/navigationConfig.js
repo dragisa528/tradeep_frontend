@@ -127,7 +127,40 @@ const navigationConfig = [
         icon: 'help',
         url: '/help',
       },
+   
     ],
+
+    
+    
+  },
+
+  {
+    id: 'Admin',
+    title: 'Admin',
+    translate: 'Admin',
+    type: 'group',
+    icon: 'apps',
+    children: [
+      {
+        id: 'dashboard-component-admin',
+        title: 'Dashboard',
+        translate: 'Dashboard',
+        type: 'item',
+        icon: 'home',
+        url: '/AdminDashboard',
+      },
+      {
+        id: 'accounts-component-user',
+        title: 'Users',
+        translate: 'Users',
+        type: 'item',
+        icon: 'person',
+        url: '/userdetails',
+      },
+      
+   ],
+
+    
     
   },
 ];

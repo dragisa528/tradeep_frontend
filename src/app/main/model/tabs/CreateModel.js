@@ -12,9 +12,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
+
 import _ from '@lodash';
 import * as yup from 'yup';
-
+import DrawflowComponent from './DrawflowComponent';
 import {
   removeContact,
   updateContact,
@@ -90,7 +91,7 @@ function DashboardTab() {
       <form
         noValidate
         onSubmit={handleSubmit(onSubmit)}
-        className="m-12 flex flex-col md:overflow-hidden border border-1 rounded-lg"
+        className="m-12 flex flex-col md:overflow-hidden border border-1 rounded-lg "
       >
         <DialogContent classes={{ root: 'p-24' }}>
           <div className="flex">
@@ -388,7 +389,11 @@ function DashboardTab() {
           </div>
         </DialogActions>
       </form>
+
+
+     <DrawflowComponent/>
     </motion.div>
+    
   );
 }
 
