@@ -195,46 +195,6 @@ function ModelDialog(props) {
             </div>
             <Controller
               control={control}
-              name="phone"
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  className="mb-24"
-                  label="Asset1"
-                  id="phone"
-                  variant="outlined"
-                  fullWidth
-                />
-              )}
-            />
-          </div>
-
-          <div className="flex">
-            <div className="min-w-48 pt-20">
-              <Icon color="action">home</Icon>
-            </div>
-            <Controller
-              control={control}
-              name="email"
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  className="mb-24"
-                  label="Asset2"
-                  id="email"
-                  variant="outlined"
-                  fullWidth
-                />
-              )}
-            />
-          </div>
-
-          <div className="flex">
-            <div className="min-w-48 pt-20">
-              <Icon color="action">home</Icon>
-            </div>
-            <Controller
-              control={control}
               name="company"
               render={({ field }) => (
                 <TextField
