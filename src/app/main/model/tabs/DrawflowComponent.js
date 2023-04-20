@@ -57,10 +57,60 @@ const DrawflowWrapper = () => {
     editor = new Drawflow(container);
 
     editor.reroute = true;
-    const dataToImport = {"drawflow":{"Home":{"data":{"1":{"id":1,"name":"welcome","data":{},"class":"welcome","html":"\n    <div>\n      <div class=\"title-box\">👏 Welcome!!</div>\n      <div class=\"box\">\n        <p>Simple flow library <b>demo</b>\n        <a href=\"https://github.com/jerosoler/Drawflow\" target=\"_blank\">Drawflow</a> by <b>Jero Soler</b></p><br>\n\n        <p>Multiple input / outputs<br>\n           Data sync nodes<br>\n           Import / export<br>\n           Modules support<br>\n           Simple use<br>\n           Type: Fixed or Edit<br>\n           Events: view console<br>\n           Pure Javascript<br>\n        </p>\n        <br>\n        <p><b><u>Shortkeys:</u></b></p>\n        <p>🎹 <b>Delete</b> for remove selected<br>\n        💠 Mouse Left Click == Move<br>\n        ❌ Mouse Right == Delete Option<br>\n        🔍 Ctrl + Wheel == Zoom<br>\n        📱 Mobile support<br>\n        ...</p>\n      </div>\n    </div>\n    ","typenode": false, "inputs":{},"outputs":{},"pos_x":50,"pos_y":50},"2":{"id":2,"name":"slack","data":{},"class":"slack","html":"\n          <div>\n            <div class=\"title-box\"><i class=\"fab fa-slack\"></i> Slack chat message</div>\n          </div>\n          ","typenode": false, "inputs":{"input_1":{"connections":[{"node":"7","input":"output_1"}]}},"outputs":{},"pos_x":1028,"pos_y":87},"3":{"id":3,"name":"telegram","data":{"channel":"channel_2"},"class":"telegram","html":"\n          <div>\n            <div class=\"title-box\"><i class=\"fab fa-telegram-plane\"></i> Telegram bot</div>\n            <div class=\"box\">\n              <p>Send to telegram</p>\n              <p>select channel</p>\n              <select df-channel>\n                <option value=\"channel_1\">Channel 1</option>\n                <option value=\"channel_2\">Channel 2</option>\n                <option value=\"channel_3\">Channel 3</option>\n                <option value=\"channel_4\">Channel 4</option>\n              </select>\n            </div>\n          </div>\n          ","typenode": false, "inputs":{"input_1":{"connections":[{"node":"7","input":"output_1"}]}},"outputs":{},"pos_x":1032,"pos_y":184},"4":{"id":4,"name":"email","data":{},"class":"email","html":"\n            <div>\n              <div class=\"title-box\"><i class=\"fas fa-at\"></i> Send Email </div>\n            </div>\n            ","typenode": false, "inputs":{"input_1":{"connections":[{"node":"5","input":"output_1"}]}},"outputs":{},"pos_x":1033,"pos_y":439},"5":{"id":5,"name":"template","data":{"template":"Write your template"},"class":"template","html":"\n            <div>\n              <div class=\"title-box\"><i class=\"fas fa-code\"></i> Template</div>\n              <div class=\"box\">\n                Ger Vars\n                <textarea df-template></textarea>\n                Output template with vars\n              </div>\n            </div>\n            ","typenode": false, "inputs":{"input_1":{"connections":[{"node":"6","input":"output_1"}]}},"outputs":{"output_1":{"connections":[{"node":"4","output":"input_1"},{"node":"11","output":"input_1"}]}},"pos_x":607,"pos_y":304},"6":{"id":6,"name":"github","data":{"name":"https://github.com/jerosoler/Drawflow"},"class":"github","html":"\n          <div>\n            <div class=\"title-box\"><i class=\"fab fa-github \"></i> Github Stars</div>\n            <div class=\"box\">\n              <p>Enter repository url</p>\n            <input type=\"text\" df-name>\n            </div>\n          </div>\n          ","typenode": false, "inputs":{},"outputs":{"output_1":{"connections":[{"node":"5","output":"input_1"}]}},"pos_x":341,"pos_y":191},"7":{"id":7,"name":"facebook","data":{},"class":"facebook","html":"\n        <div>\n          <div class=\"title-box\"><i class=\"fab fa-facebook\"></i> Facebook Message</div>\n        </div>\n        ","typenode": false, "inputs":{},"outputs":{"output_1":{"connections":[{"node":"2","output":"input_1"},{"node":"3","output":"input_1"},{"node":"11","output":"input_1"}]}},"pos_x":347,"pos_y":87},"11":{"id":11,"name":"log","data":{},"class":"log","html":"\n            <div>\n              <div class=\"title-box\"><i class=\"fas fa-file-signature\"></i> Save log file </div>\n            </div>\n            ","typenode": false, "inputs":{"input_1":{"connections":[{"node":"5","input":"output_1"},{"node":"7","input":"output_1"}]}},"outputs":{},"pos_x":1031,"pos_y":363}}},"Other":{"data":{"8":{"id":8,"name":"personalized","data":{},"class":"personalized","html":"\n            <div>\n              Personalized\n            </div>\n            ","typenode": false, "inputs":{"input_1":{"connections":[{"node":"12","input":"output_1"},{"node":"12","input":"output_2"},{"node":"12","input":"output_3"},{"node":"12","input":"output_4"}]}},"outputs":{"output_1":{"connections":[{"node":"9","output":"input_1"}]}},"pos_x":764,"pos_y":227},"9":{"id":9,"name":"dbclick","data":{"name":"Hello World!!"},"class":"dbclick","html":"\n            <div>\n            <div class=\"title-box\"><i class=\"fas fa-mouse\"></i> Db Click</div>\n              <div class=\"box dbclickbox\" ondblclick=\"showpopup(event)\">\n                Db Click here\n                <div class=\"modal\" style=\"display:none\">\n                  <div class=\"modal-content\">\n                    <span class=\"close\" onclick=\"closemodal(event)\">&times;</span>\n                    Change your variable {name} !\n                    <input type=\"text\" df-name>\n                  </div>\n\n                </div>\n              </div>\n            </div>\n            ","typenode": false, "inputs":{"input_1":{"connections":[{"node":"8","input":"output_1"}]}},"outputs":{"output_1":{"connections":[{"node":"12","output":"input_2"}]}},"pos_x":209,"pos_y":38},"12":{"id":12,"name":"multiple","data":{},"class":"multiple","html":"\n            <div>\n              <div class=\"box\">\n                Multiple!\n              </div>\n            </div>\n            ","typenode": false, "inputs":{"input_1":{"connections":[]},"input_2":{"connections":[{"node":"9","input":"output_1"}]},"input_3":{"connections":[]}},"outputs":{"output_1":{"connections":[{"node":"8","output":"input_1"}]},"output_2":{"connections":[{"node":"8","output":"input_1"}]},"output_3":{"connections":[{"node":"8","output":"input_1"}]},"output_4":{"connections":[{"node":"8","output":"input_1"}]}},"pos_x":179,"pos_y":272}}}}}
+    const dataToImport = {
+      "drawflow": {
+          "Home": {
+              "data": {
+                  "1": {
+                      "id": 1,
+                      "name": "welcome",
+                      "data": {},
+                      "class": "welcome",
+                      "html": "\n    <div>\n      <div class=\"title-box\">👏 Welcome!!</div>\n      <div class=\"box\">\n        <p>Simple flow library <b>demo</b>\n        <a href=\"https://github.com/jerosoler/Drawflow\" target=\"_blank\">Drawflow</a> by <b>Jero Soler</b></p><br>\n\n        <p>Multiple input / outputs<br>\n           Data sync nodes<br>\n           Import / export<br>\n           Modules support<br>\n           Simple use<br>\n           Type: Fixed or Edit<br>\n           Events: view console<br>\n           Pure Javascript<br>\n        </p>\n        <br>\n        <p><b><u>Shortkeys:</u></b></p>\n        <p>🎹 <b>Delete</b> for remove selected<br>\n        💠 Mouse Left Click == Move<br>\n        ❌ Mouse Right == Delete Option<br>\n        🔍 Ctrl + Wheel == Zoom<br>\n        📱 Mobile support<br>\n        ...</p>\n      </div>\n    </div>\n    ",
+                      "typenode": false,
+                      "inputs": {},
+                      "outputs": {},
+                      "pos_x": 500,
+                      "pos_y": 50
+                  },
+              }
+          },
+          "Other": {
+              "data": {
+                  
+              }
+          },
+          "Other2": {
+              "data": {
+  
+              }
+          },
+          "Other3": {
+              "data": {
+  
+              }
+          },
+          "Other4": {
+              "data": {
+  
+              }
+          },
+      }
+  }
     editor.start();
     editor.import(dataToImport);
+
+    const handleModuleChanged = (name) => {
+      console.log(`Module Changed ${name}`);
+    }
+    // Events!
+    editor.on('moduleChanged', handleModuleChanged);
+
+    // return () => {
+    //   editor.off('moduleChaged', handleModuleChanged);
+    // }
   }, []);
+
 
   /* DRAG EVENT */
 
@@ -92,6 +142,7 @@ const DrawflowWrapper = () => {
   }
 
   function drop(ev) {
+    // console.log(ev);
     if (ev.type === "touchend") {
       var parentdrawflow = document.elementFromPoint( mobile_last_move.touches[0].clientX, mobile_last_move.touches[0].clientY).closest("#drawflow");
       if(parentdrawflow != null) {
@@ -114,140 +165,183 @@ const DrawflowWrapper = () => {
 
 
     switch (name) {
-      case 'facebook':
-      var facebook = `
-      <div>
-        <div class="title-box"><i class="fab fa-facebook"></i> Facebook Message</div>
-      </div>
-      `;
-        editor.addNode('facebook', 0,  1, pos_x, pos_y, 'facebook', {}, facebook );
-        break;
-      case 'slack':
-        var slackchat = `
+      case 'environment':
+      var environment = `
         <div>
-          <div class="title-box"><i class="fab fa-slack"></i> Slack chat message</div>
-        </div>
-        `
-        editor.addNode('slack', 1, 0, pos_x, pos_y, 'slack', {}, slackchat );
-        break;
-      case 'github':
-        var githubtemplate = `
-        <div>
-          <div class="title-box"><i class="fab fa-github "></i> Github Stars</div>
+          <div class="title-box"> Environment</div>
           <div class="box">
-            <p>Enter repository url</p>
-          <input type="text" df-name>
+            <select>
+              <option value="crypto">Crypto</option>
+              <option value="stock_ETF">Stocks & ETF</option>
+              <option value="indices">Indices</option>
+              <option value="forex">Forex</option>
+              <option value="commodities">Commodities</option>
+            </select>
           </div>
         </div>
-        `;
-        editor.addNode('github', 0, 1, pos_x, pos_y, 'github', { "name": ''}, githubtemplate );
+      `;
+        editor.addNode('environment', 0,  1, pos_x, pos_y, 'environment', {}, environment );
         break;
-      case 'telegram':
-        var telegrambot = `
+      case 'state':
+        var state = `
+          <div>
+            <div class="title-box"> State</div>
+            <div class="box">
+              <select>
+                <option value="forexbrocker_a">ForexBroker A</option>
+                <option value="1m">1M</option>
+                <option value="5m">5M</option>
+                <option value="15m">15M</option>
+                <option value="30m">30M</option>
+                <option value="1h">1H</option>
+                <option value="4h">4H</option>
+                <option value="1d">1D</option>
+              </select>
+            </div>
+          </div>
+        `
+        editor.addNode('state', 1, 0, pos_x, pos_y, 'state', {}, state );
+        break;
+      case 'reward':
+        var reward = `
+          <div>
+            <div class="title-box"> Reward</div>
+            <div class="box">
+              <select>
+                <option value="sharp_reward_a">Sharp Reward A</option>
+                <option value="profit_reward_b">ProfitReward B</option>
+                <option value="mini_drawdown">MiniDrawdown</option>
+              </select>
+            </div>
+          </div>
+        `;
+        editor.addNode('reward', 0, 1, pos_x, pos_y, 'reward', {}, reward );
+        break;
+      case 'broker_account':
+        var broker_account = `
         <div>
-          <div class="title-box"><i class="fab fa-telegram-plane"></i> Telegram bot</div>
+          <div class="title-box"> Broker Account</div>
           <div class="box">
-            <p>Send to telegram</p>
-            <p>select channel</p>
-            <select df-channel>
-              <option value="channel_1">Channel 1</option>
-              <option value="channel_2">Channel 2</option>
-              <option value="channel_3">Channel 3</option>
-              <option value="channel_4">Channel 4</option>
+            <select>
+              <option value="forex_brocker_a">ForexBroker A</option>
+              <option value="stock_brocker_b">Stock Broker B</option>
             </select>
           </div>
         </div>
         `;
-        editor.addNode('telegram', 1, 0, pos_x, pos_y, 'telegram', { "channel": 'channel_3'}, telegrambot );
+        editor.addNode('broker_account', 1, 0, pos_x, pos_y, 'broker_account', {}, broker_account );
         break;
-      case 'aws':
-        var aws = `
-        <div>
-          <div class="title-box"><i class="fab fa-aws"></i> Aws Save </div>
-          <div class="box">
-            <p>Save in aws</p>
-            <input type="text" df-db-dbname placeholder="DB name"><br><br>
-            <input type="text" df-db-key placeholder="DB key">
-            <p>Output Log</p>
+      case 'models':
+        var models = `
+          <div>
+            <div class="title-box"> Models</div>
+            <div class="box">
+              <select>
+                <option value="rl">RL</option>
+                <option value="ml">ML</option>
+                <option value="supervised">SuperVised</option>
+              </select>
+            </div>
           </div>
-        </div>
         `;
-        editor.addNode('aws', 1, 1, pos_x, pos_y, 'aws', { "db": { "dbname": '', "key": '' }}, aws );
+        editor.addNode('models', 1, 1, pos_x, pos_y, 'models', {}, models );
         break;
-      case 'log':
-          var log = `
-          <div>
-            <div class="title-box"><i class="fas fa-file-signature"></i> Save log file </div>
-          </div>
+      case 'agents':
+          var agents = `
+            <div>
+              <div class="title-box"> Agents</div>
+              <div class="box">
+                <select>
+                  <option value="ppo">PPO</option>
+                  <option value="sac">SAC</option>
+                  <option value="ddpg">DDPG</option>
+                  <option value="multiAgent_ddpg">Multi-Agent DDPG</option>
+                  <option value="a2c">A2C</option>
+                  <option value="td3">TD3</option>
+                </select>
+              </div>
+            </div>
           `;
-          editor.addNode('log', 1, 0, pos_x, pos_y, 'log', {}, log );
+          editor.addNode('agents', 1, 0, pos_x, pos_y, 'agents', {}, agents );
           break;
-        case 'google':
-          var google = `
+        case 'event_logger':
+          var event_logger = `
           <div>
-            <div class="title-box"><i class="fab fa-google-drive"></i> Google Drive save </div>
+            <div class="title-box"> Event Logger </div>
           </div>
           `;
-          editor.addNode('google', 1, 0, pos_x, pos_y, 'google', {}, google );
+          editor.addNode('event_logger', 1, 0, pos_x, pos_y, 'event_logger', {}, event_logger );
           break;
         case 'email':
           var email = `
-          <div>
-            <div class="title-box"><i class="fas fa-at"></i> Send Email </div>
-          </div>
+            <div>
+              <div class="title-box"> Send Email </div>
+            </div>
           `;
           editor.addNode('email', 1, 0, pos_x, pos_y, 'email', {}, email );
           break;
 
-        case 'template':
-          var template = `
-          <div>
-            <div class="title-box"><i class="fas fa-code"></i> Template</div>
-            <div class="box">
-              Ger Vars
-              <textarea df-template></textarea>
-              Output template with vars
-            </div>
-          </div>
-          `;
-          editor.addNode('template', 1, 1, pos_x, pos_y, 'template', { "template": 'Write your template'}, template );
-          break;
-        case 'multiple':
-          var multiple = `
-          <div>
-            <div class="box">
-              Multiple!
-            </div>
-          </div>
-          `;
-          editor.addNode('multiple', 3, 4, pos_x, pos_y, 'multiple', {}, multiple );
-          break;
-        case 'personalized':
-          var personalized = `
-          <div>
-            Personalized
-          </div>
-          `;
-          editor.addNode('personalized', 1, 1, pos_x, pos_y, 'personalized', {}, personalized );
-          break;
-        case 'dbclick':
-          var dbclick = `
-          <div>
-          <div class="title-box"><i class="fas fa-mouse"></i> Db Click</div>
-            <div class="box dbclickbox" ondblclick="showpopup(event)">
-              Db Click here
-              <div class="modal" style="display:none">
-                <div class="modal-content">
-                  <span class="close" onclick="closemodal(event)">&times;</span>
-                  Change your variable {name} !
-                  <input type="text" df-name>
-                </div>
-
+        case 'action_space':
+          var action_space = `
+            <div>
+              <div class="title-box"> ActionSpace</div>
+              <div class="box">
+                <select>
+                  <option value="buy_sell_move2break">Buy,Sell-Move2Break</option>
+                  <option value="buy_sell_hold">Buy, Sell, Hold</option>
+                </select>
               </div>
             </div>
-          </div>
           `;
-          editor.addNode('dbclick', 1, 1, pos_x, pos_y, 'dbclick', { name: ''}, dbclick );
+          editor.addNode('action_space', 1, 1, pos_x, pos_y, 'action_space', {}, action_space );
+          break;
+        case 'features':
+          var features = `
+            <div>
+              <div class="title-box"> Features</div>
+              <div class="box">
+                <select>
+                  <option value="ma9">MA9</option>
+                  <option value="ma21">MA21</option>
+                  <option value="vwap">VWAP</option>
+                  <option value="bbands">BBands</option>
+                  <option value="heniken_hashi">Heniken Hashi</option>
+                  <option value="renko">Renko</option>
+                  <option value="td3">TD3</option>
+                </select>
+              </div>
+            </div>
+          `;
+          editor.addNode('features', 3, 4, pos_x, pos_y, 'features', {}, features );
+          break;
+        case 'social_channels':
+          var social_channels = `
+            <div>
+              <div class="title-box"> Social Channels</div>
+              <div class="box">
+                <select>
+                  <option value="email">email</option>
+                  <option value="telegram">telegram</option>
+                  <option value="discord">discord</option>
+                  <option value="whatsapp">whatsapp</option>
+                </select>
+              </div>
+            </div>
+          `;
+          editor.addNode('social_channels', 1, 1, pos_x, pos_y, 'social_channels', {}, social_channels );
+          break;
+        case 'template':
+          var template = `
+            <div>
+              <div class="title-box"> Template</div>
+              <div class="box">
+                Ger Vars
+                <textarea df-template></textarea>
+                Output template with vars
+              </div>
+            </div>
+          `;
+          editor.addNode('template', 1, 1, pos_x, pos_y, 'template', { "template": 'Write your template'}, template );
           break;
 
       default:
@@ -256,70 +350,88 @@ const DrawflowWrapper = () => {
 
   function changeModule(event) {
     var all = document.querySelectorAll(".menu ul li");
-      for (var i = 0; i < all.length; i++) {
-        all[i].classList.remove('selected');
-      }
+    for (var i = 0; i < all.length; i++) {
+      all[i].classList.remove('selected');
+    }
     event.target.classList.add('selected');
+    editor.changeModule(event.target.getAttribute('module-name'));
   }
 
   function changeMode(option) {
   //console.log(lock.id);
-  console.log(lock);
-    // if(option == 'lock') {
-    //   lock.current.style.display = 'none';
-    //   unlock.current.style.display = 'block';
-    // } else {
-    //   lock.current.style.display = 'block';
-    //   unlock.current.style.display = 'none';
-    // }
-
+    if(option == 'lock') {
+      editor.editor_mode='fixed';
+      lock.current.style.display = 'none';
+      unlock.current.style.display = 'block';
+    } else {
+      editor.editor_mode='edit';
+      lock.current.style.display = 'block';
+      unlock.current.style.display = 'none';
+    }
   }
 
+  const handleClearModule = () => {
+    editor.clearModuleSelected();
+  }
 
+  const handleExport = () => {
+    Swal.fire({ title: 'Export',
+      html: '<pre><code>'+JSON.stringify(editor.export(), null,4)+'</code></pre>'
+    })
+  }
+
+  const handleZoomOut = () => {
+    editor.zoom_out();
+  }
+
+  const handleZoomIn = () => {
+    editor.zoom_in();
+  }
+
+  const handleZoomReset = () => {
+    editor.zoom_reset();
+  }
 
   return (
       // <div ref={drawflowRef} style={{ height: '500px', width: '70%',background:"red" }} />
       <Box>
         <Box className="wrapper">
           <Box className="col">
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="facebook">
-              <i className="fab fa-facebook"></i><span> Environment</span>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="environment">
+              <span> Environment</span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="slack">
-              <i className="fab fa-slack"></i><span> State </span>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="models">
+              <span> Models</span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="github">
-              <i className="fab fa-github"></i><span> Reward</span>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="agents">
+              <span> Agents</span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="telegram">
-              <i className="fab fa-telegram"></i><span> Broker Account</span>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="state">
+              <span> State </span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="aws">
-              <i className="fab fa-aws"></i><span> Models</span>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="reward">
+              <span> Reward</span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="log">
-              <i className="fas fa-file-signature"></i><span> Trading</span>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="broker_account">
+              <span> Broker Account</span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="google">
-              <i className="fab fa-google-drive"></i><span> Features</span>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="action_space">
+              <span> ActionSpace</span>
+            </Box>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="features">
+              <span> Features</span>
+            </Box>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="social_channels">
+              <span> Social Channels</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="email">
-              <i className="fas fa-at"></i><span> Multiple input/output</span>
+              <span> Send Email</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="template">
-              <i className="fas fa-code"></i><span> ActionSpace</span>
+              <span> Template</span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="multiple">
-              <i className="fas fa-code-branch"></i><span> Telegram</span>
-            </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="personalized">
-              <i className="fas fa-fill"></i><span> Send Email</span>
-            </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="template">
-              <i className="fas fa-code"></i><span> Template</span>
-            </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="dbclick">
-              <i className="fas fa-mouse"></i><span> Event logger</span>
+            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="event_logger">
+              <span> Event logger</span>
             </Box>
 
 
@@ -327,23 +439,26 @@ const DrawflowWrapper = () => {
           <Box className="col-right" style={{background:"black"}}>
             <Box className="menu" style={{color: "black"}}>
               <ul>
-                <li onClick={changeModule} className="selected">Home</li>
-                <li onClick={changeModule}>Other Module</li>
+                <li onClick={changeModule} module-name="Home" className="selected">Home</li>
+                <li onClick={changeModule} module-name="Other">Other Module</li>
+                <li onClick={changeModule} module-name="Other2">Other Module 2</li>
+                <li onClick={changeModule} module-name="Other3">Other Module 3</li>
+                <li onClick={changeModule} module-name="Other4">Other Module 4</li>
+                {/* <li onClick={addModule}><button className='model-builder-module-plus'><i className='fa fa-plus'></i></button></li> */}
               </ul>
+              {/* <button>plus</button> */}
             </Box>
             <Box id="drawflow" onDrop={drop} onDragOver={allowDrop}>
-              {/* <Box className="btn-export" onClick={Swal.fire({ title: 'Export',
-              html: '<pre><code>'+JSON.stringify(editor.export(), null,4)+'</code></pre>'
-              })}>Export</Box> */}
-              <Box className="btn-clear" onClick={editor.clearModuleSelected}>Clear</Box>
+              <Box className="btn-export" onClick={handleExport}>Export</Box>
+              <Box className="btn-clear" onClick={handleClearModule}>Clear</Box>
               <Box className="btn-lock">
-                <i ref={lock} className="fas fa-lock" onClick={changeMode('lock')}></i>
-                <i ref={unlock} className="fas fa-lock-open" onClick={changeMode('unlock')} style={{display:'none'}}></i>
+                <button ref={lock} onClick={() => changeMode('lock')}><i className="fas fa-lock"></i></button>
+                <button ref={unlock} onClick={() => changeMode('unlock')} style={{display:'none'}}><i className="fas fa-lock-open"></i></button>
               </Box>
               <Box className="bar-zoom">
-                <i className="fas fa-search-minus" onClick={editor.zoom_out}></i>
-                <i className="fas fa-search" onClick={editor.zoom_reset}></i>
-                <i className="fas fa-search-plus" onClick={editor.zoom_in}></i>
+                <button className='btn-zoom' onClick={handleZoomOut}><i className="fas fa-search-minus"></i></button>
+                <button className='btn-zoom' onClick={handleZoomReset}><i className="fas fa-search"></i></button>
+                <button className='btn-zoom-last' onClick={handleZoomIn}><i className="fas fa-search-plus"></i></button>
               </Box>
             </Box>
           </Box>
