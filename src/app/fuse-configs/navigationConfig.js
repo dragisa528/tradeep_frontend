@@ -24,19 +24,27 @@ const navigationConfig = [
         url: '/dashboard',
       },
       {
-        id: 'datastore-component',
-        title: 'Datastore',
-        translate: 'Datastore',
+        id: 'model-component',
+        title: 'Model',
+        translate: 'Model',
         type: 'item',
-        icon: 'storage',
-        url: '/datastore',
+        icon: 'view_in_ar',
+        url: '/model',
       },
+      // {
+      //   id: 'datastore-component',
+      //   title: 'Datastore',
+      //   translate: 'Datastore',
+      //   type: 'item',
+      //   icon: 'storage',
+      //   url: '/datastore',
+      // },
       {
         id: 'accounts-component',
         title: 'Accounts',
         translate: 'Accounts',
         type: 'item',
-        icon: 'people',
+        icon: 'person',
         url: '/accounts',
       },
       // {
@@ -52,7 +60,7 @@ const navigationConfig = [
         title: 'API Keys',
         translate: 'API Keys',
         type: 'item',
-        icon: 'key',
+        icon: 'vpn_key',
         url: '/apikeys',
       },
       {
@@ -60,32 +68,31 @@ const navigationConfig = [
         title: 'Notebooks',
         translate: 'Notebooks',
         type: 'item',
-        icon: 'menu_book',
+        icon: 'note',
         url: '/notebooks',
       },
-      {
-        id: 'community-component',
-        title: 'Community',
-        translate: 'Community',
-        type: 'item',
-        icon: 'forum',
-        url: '/community',
-      },
+      // {
+      //   id: 'community-component',
+      //   title: 'Community',
+      //   translate: 'Community',
+      //   type: 'item',
+      //   icon: 'forum',
+      //   url: '/community',
+      // },
       {
         id: 'featurerequest-component',
         title: 'Feature Request',
         translate: 'Feature Request',
         type: 'item',
-        icon: 'request_page',
+        icon: 'lightbulb',
         url: '/featurerequest',
       },
-
       {
         id: 'affiliatePrograme-component',
         title: 'Affiliate Program',
         translate: 'Affiliate Program',
         type: 'item',
-        icon: 'source',
+        icon: 'attach_money',
         url: '/affiliateprogram',
       },
       {
@@ -93,7 +100,7 @@ const navigationConfig = [
         title: 'Status',
         translate: 'Status',
         type: 'item',
-        icon: 'military_tech',
+        icon: 'info',
         url: '/status',
       },
       {
@@ -101,7 +108,7 @@ const navigationConfig = [
         title: 'Docs',
         translate: 'Docs',
         type: 'item',
-        icon: 'text_snippet',
+        icon: 'description',
         url: '/docs',
       },
       {
@@ -109,7 +116,7 @@ const navigationConfig = [
         title: "What's New?",
         translate: "What's New?",
         type: 'item',
-        icon: 'fiber_new',
+        icon: 'new_releases',
         url: '/whatnew',
       },
       {
@@ -120,7 +127,41 @@ const navigationConfig = [
         icon: 'help',
         url: '/help',
       },
+   
     ],
+
+    
+    
+  },
+
+  {
+    id: 'Admin',
+    title: 'Admin',
+    translate: 'Admin',
+    type: 'group',
+    icon: 'apps',
+    children: [
+      {
+        id: 'dashboard-component-admin',
+        title: 'Dashboard',
+        translate: 'Dashboard',
+        type: 'item',
+        icon: 'home',
+        url: '/AdminDashboard',
+      },
+      {
+        id: 'accounts-component-user',
+        title: 'Users',
+        translate: 'Users',
+        type: 'item',
+        icon: 'person',
+        url: '/userdetails',
+      },
+      
+   ],
+
+    
+    
   },
 ];
 

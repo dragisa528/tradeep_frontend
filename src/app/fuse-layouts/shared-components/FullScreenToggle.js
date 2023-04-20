@@ -80,12 +80,24 @@ const HeaderFullScreenToggle = (props) => {
     }
   }
 
+  function openReactIconsSearch() {
+    window.open("https://discord.gg/7BqXvkg2AH");
+  }
+  
+
   return (
+   <>
     <Tooltip title="Fullscreen toggle" placement="bottom">
       <IconButton onClick={toggleFullScreen} className={clsx('w-40 h-40', props.className)}>
         <Icon>{isFullScreen ? 'fullscreen_exit' : 'fullscreen'}</Icon>
       </IconButton>
     </Tooltip>
+    <Tooltip title="Join Community" placement="bottom">
+      <IconButton onClick={openReactIconsSearch} >
+        <Icon>discord</Icon>
+      </IconButton>
+    </Tooltip>
+   </>
   );
 };
 

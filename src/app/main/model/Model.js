@@ -48,12 +48,19 @@ function Model(props) {
             children: <Divider className="w-full h-full rounded-full opacity-50" />,
           }}
         >
+
+
           <Tab
             className="text-14 font-semibold min-h-40 min-w-64 mx-4"
             disableRipple
-            label="Create Features"
+            label="Builder"
           />
           <Tab
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            disableRipple
+            label="Features"
+          />
+           <Tab
             className="text-14 font-semibold min-h-40 min-w-64 mx-4"
             disableRipple
             label="Training Result"
