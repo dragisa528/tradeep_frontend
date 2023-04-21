@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, TextField } from '@material-ui/core';
 import Drawflow from 'drawflow';
+import { result } from 'lodash';
 
 const DrawflowWrapper = () => {
   const drawflowRef = useRef(null);
@@ -8,6 +9,7 @@ const DrawflowWrapper = () => {
   var editor = "";
   const lock = useRef(null);
   const unlock = useRef(null);
+  var dataToImport = "";
 
   useEffect(() => {
     const options = {
@@ -57,7 +59,7 @@ const DrawflowWrapper = () => {
     editor = new Drawflow(container);
 
     editor.reroute = true;
-    const dataToImport = {
+    dataToImport = {
       "drawflow": {
           "Home": {
               "data": {
@@ -73,26 +75,6 @@ const DrawflowWrapper = () => {
                       "pos_x": 500,
                       "pos_y": 50
                   },
-              }
-          },
-          "Other": {
-              "data": {
-                  
-              }
-          },
-          "Other2": {
-              "data": {
-  
-              }
-          },
-          "Other3": {
-              "data": {
-  
-              }
-          },
-          "Other4": {
-              "data": {
-  
               }
           },
       }
@@ -392,6 +374,69 @@ const DrawflowWrapper = () => {
     editor.zoom_reset();
   }
 
+  const tabRemove = (event) => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: 'success',
+      confirmButtonText: 'Sure'
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        var tabName = event.target.getAttribute('module-name');
+        var tab = document.getElementById(tabName);
+        tab.parentNode.removeChild(tab);
+        // dataToImport.deletedModule = dataToImport.drawflow[tabName];
+        // delete dataToImport.drawflow[tabName];
+        // console.log(dataToImport.drawflow);
+      }
+    })
+  }
+
+  const addModule = () => {
+    Swal.fire({
+      title: "Add New Tab",
+      html: '<input placeholder="Input tag name..." id="add_new_tab" margin="normal" />'
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        var tabName = document.getElementById("add_new_tab").value;
+        if (tabName) {
+          if (dataToImport.drawflow[tabName]) {
+            Swal.fire({
+              title: "A tab with the same name already exists.",
+              icon: 'warning'
+            })
+          } else {
+            var tabData = {data: {}};
+            dataToImport.drawflow[tabName] = tabData;
+            const newHTMLNode = document.createElement("li");
+            newHTMLNode.addEventListener('click', changeModule);
+            newHTMLNode.setAttribute("module-name", tabName);
+            newHTMLNode.setAttribute("id", tabName);
+            newHTMLNode.innerHTML = tabName + ' <button class="tab-remove"><img class="tab-remove-icon" src="./assets/images/remove-icon.png" /></button>';
+            const tabs = document.getElementById("tab_buttons");
+            const plusButton = tabs.lastChild;
+            tabs.insertBefore(newHTMLNode, plusButton);  
+            console.log(dataToImport.drawflow);
+
+            editor.clear();
+            editor.import(dataToImport);
+            const remove = document.getElementsByClassName("tab-remove");
+            const removeIcons = document.getElementsByClassName("tab-remove-icon");
+            remove[remove.length - 1].addEventListener("click", tabRemove);            
+            remove[remove.length - 1].setAttribute("module-name", tabName);
+            removeIcons[remove.length - 1].setAttribute("module-name", tabName);
+          }
+        } else {
+          Swal.fire({
+            title: "Input the tag name",
+            icon: 'warning'
+          })
+        }
+      }
+    })
+  }
+
   return (
       // <div ref={drawflowRef} style={{ height: '500px', width: '70%',background:"red" }} />
       <Box>
@@ -438,13 +483,9 @@ const DrawflowWrapper = () => {
           </Box>
           <Box className="col-right" style={{background:"black"}}>
             <Box className="menu" style={{color: "black"}}>
-              <ul>
+              <ul id='tab_buttons'>
                 <li onClick={changeModule} module-name="Home" className="selected">Home</li>
-                <li onClick={changeModule} module-name="Other">Other Module</li>
-                <li onClick={changeModule} module-name="Other2">Other Module 2</li>
-                <li onClick={changeModule} module-name="Other3">Other Module 3</li>
-                <li onClick={changeModule} module-name="Other4">Other Module 4</li>
-                {/* <li onClick={addModule}><button className='model-builder-module-plus'><i className='fa fa-plus'></i></button></li> */}
+                <li onClick={addModule}><i className='fa fa-plus'></i></li>
               </ul>
               {/* <button>plus</button> */}
             </Box>
