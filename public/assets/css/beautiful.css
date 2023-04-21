@@ -94,7 +94,7 @@ cursor: pointer;
   float: right;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 300px;
   color: white;
   font-weight: bold;
   border: 1px solid #0e5ba3;
@@ -109,7 +109,7 @@ cursor: pointer;
   float: right;
   position: absolute;
   top: 10px;
-  right: 85px;
+  right: 370px;
   color: white;
   font-weight: bold;
   border: 1px solid #96015b;
@@ -126,8 +126,8 @@ cursor: pointer;
 .btn-lock {
   float: right;
   position: absolute;
-  bottom: 10px;
-  right: 140px;
+  bottom: 70px;
+  right: 431px;
   display: flex;
   font-size: 24px;
   color: white;
@@ -142,8 +142,8 @@ cursor: pointer;
 .bar-zoom {
   float: right;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 70px;
+  right: 305px;
   display: flex;
   font-size: 24px;
   color: white;
@@ -152,6 +152,9 @@ cursor: pointer;
   border-radius: 4px;
   border-right: 1px solid var(--border-color);
   z-index: 5;
+}
+.btn-zoom {
+  margin-right: 10px;
 }
 .bar-zoom svg {
   cursor: pointer;
@@ -183,7 +186,48 @@ cursor: pointer;
   #drawflow {
     width: calc(100vw - 51px);
   }
+  .btn-clear {
+    right: 85px;
+  }
+  .btn-lock, .bar-zoom {
+    bottom: 70px;
+  }
+  .btn-lock {
+    right: 135px;
+  }
+  .bar-zoom {
+    right: 20px;
+  }
 }
+
+@media only screen and (max-width: 1280px) {
+  .col {
+    width: 50px;
+  }
+  .col .drag-drawflow span {
+    display:none;
+  }
+  #drawflow {
+    width: calc(100vw - 51px);
+  }
+  .btn-clear {
+    right: 85px;
+  }
+  .btn-export {
+    right: 10px;
+  }
+  .btn-lock, .bar-zoom {
+    bottom: 70px;
+  }
+  .btn-lock {
+    right: 135px;
+  }
+  .bar-zoom {
+    right: 20px;
+  }
+}
+
+
 
 
 
@@ -355,6 +399,20 @@ cursor: pointer;
   font-size: 28px;
   font-weight: bold;
   cursor:pointer;
+}
+
+.model-builder-module-plus {
+  border-radius: 50%;
+}
+
+#add_new_tab {
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.tab-remove-icon {
+  width: 16px;
 }
 
 @media only screen and (max-width: 768px) {
