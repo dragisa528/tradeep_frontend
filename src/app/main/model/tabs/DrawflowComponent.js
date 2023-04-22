@@ -443,40 +443,40 @@ const DrawflowWrapper = () => {
         <Box className="wrapper">
           <Box className="col">
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="environment">
-              <span> Environment</span>
+              <i className="fa-solid fa-seedling"></i><span> Environment</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="models">
-              <span> Models</span>
+              <i className="fa fa-tasks"></i><span> Models</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="agents">
-              <span> Agents</span>
+              <i className="fa fa-building"></i><span> Agents</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="state">
-              <span> State </span>
+              <i className="fa-regular fa-timer"></i><span> State </span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="reward">
-              <span> Reward</span>
+            <i className="fa-sharp fa-light fa-medal"></i><span> Reward</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="broker_account">
-              <span> Broker Account</span>
+              <i className="fa-regular fa-user-secret"></i><span> Broker Account</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="action_space">
-              <span> ActionSpace</span>
+              <i className="fab fa-buysellads"></i><span> ActionSpace</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="features">
-              <span> Features</span>
+              <i className="fa-regular fa-rocket-launch"></i><span> Features</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="social_channels">
-              <span> Social Channels</span>
+              <i className="fa-brands fa-telegram"></i><span> Social Channels</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="email">
-              <span> Send Email</span>
+              <i className="fa-duotone fa-at"></i><span> Send Email</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="template">
-              <span> Template</span>
+              <i className="fa-solid fa-code"></i><span> Template</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="event_logger">
-              <span> Event logger</span>
+              <i className="fa-light fa-file-lines"></i><span> Event logger</span>
             </Box>
 
 
