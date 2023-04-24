@@ -139,6 +139,41 @@ cursor: pointer;
   cursor: pointer;
 }
 
+.bar-play {
+  margin-left: 20px;
+  float: left;
+  position: absolute;
+  bottom: 120px;
+  display: flex;
+  font-size: 24px;
+  color: white;
+  padding: 10px 15px;
+  background: #556EE6;
+  border-radius: 4px;
+  border-right: 1px solid var(--border-color);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.bar-controls {
+  margin-left: 20px;
+  float: left;
+  position: absolute;
+  bottom: 70px;
+  display: flex;
+  font-size: 24px;
+  color: white;
+  padding: 5px 10px;
+  background: #555555;
+  border-radius: 4px;
+  border-right: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+.btn-controls {
+  margin-left: 15px;
+}
+
 .bar-zoom {
   float: right;
   position: absolute;

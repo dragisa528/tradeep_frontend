@@ -10,6 +10,9 @@ const DrawflowWrapper = () => {
   const lock = useRef(null);
   const unlock = useRef(null);
   var dataToImport = "";
+  var lastDataToImport = [];
+  var undoCount = 0;
+  var redoCount = 0;
 
   useEffect(() => {
     const options = {
@@ -87,6 +90,21 @@ const DrawflowWrapper = () => {
     }
     // Events!
     editor.on('moduleChanged', handleModuleChanged);
+    editor.on('nodeMoved', function () {
+      lastDataToImport.push(editor.export());
+      undoCount = lastDataToImport.length - 1;
+    })
+
+    editor.on('connectionCreated', function () {
+      lastDataToImport.push(editor.export());
+      undoCount = lastDataToImport.length - 1;
+    })
+
+    editor.on('nodeRemoved', function() {
+      console.log(editor.export());
+      lastDataToImport.push(editor.export());
+      undoCount = lastDataToImport.length - 1;
+    })
 
     // return () => {
     //   editor.off('moduleChaged', handleModuleChanged);
@@ -119,12 +137,13 @@ const DrawflowWrapper = () => {
     if (ev.type === "touchstart") {
       mobile_item_selec = ev.target.closest(".drag-drawflow").getAttribute('data-node');
     } else {
-    ev.dataTransfer.setData("node", ev.target.getAttribute('data-node'));
+      ev.dataTransfer.setData("node", ev.target.getAttribute('data-node'));
     }
   }
-
+  
   function drop(ev) {
-    // console.log(ev);
+    lastDataToImport.push(editor.export());
+    undoCount = lastDataToImport.length - 1;
     if (ev.type === "touchend") {
       var parentdrawflow = document.elementFromPoint( mobile_last_move.touches[0].clientX, mobile_last_move.touches[0].clientY).closest("#drawflow");
       if(parentdrawflow != null) {
@@ -150,7 +169,7 @@ const DrawflowWrapper = () => {
       case 'environment':
       var environment = `
         <div>
-          <div class="title-box"> Environment</div>
+          <div class="title-box"><i class="fa-solid fa-seedling"></i> Environment</div>
           <div class="box">
             <select>
               <option value="crypto">Crypto</option>
@@ -167,7 +186,7 @@ const DrawflowWrapper = () => {
       case 'state':
         var state = `
           <div>
-            <div class="title-box"> State</div>
+            <div class="title-box"><i class="fas fa-business-time"></i> State</div>
             <div class="box">
               <select>
                 <option value="forexbrocker_a">ForexBroker A</option>
@@ -187,7 +206,7 @@ const DrawflowWrapper = () => {
       case 'reward':
         var reward = `
           <div>
-            <div class="title-box"> Reward</div>
+            <div class="title-box"><i class="fas fa-medal"></i> Reward</div>
             <div class="box">
               <select>
                 <option value="sharp_reward_a">Sharp Reward A</option>
@@ -202,7 +221,7 @@ const DrawflowWrapper = () => {
       case 'broker_account':
         var broker_account = `
         <div>
-          <div class="title-box"> Broker Account</div>
+          <div class="title-box"><i class="fa-regular fa-user"></i> Broker Account</div>
           <div class="box">
             <select>
               <option value="forex_brocker_a">ForexBroker A</option>
@@ -216,7 +235,7 @@ const DrawflowWrapper = () => {
       case 'models':
         var models = `
           <div>
-            <div class="title-box"> Models</div>
+            <div class="title-box"><i class="fa fa-tasks"></i> Models</div>
             <div class="box">
               <select>
                 <option value="rl">RL</option>
@@ -231,7 +250,7 @@ const DrawflowWrapper = () => {
       case 'agents':
           var agents = `
             <div>
-              <div class="title-box"> Agents</div>
+              <div class="title-box"><i class="fa fa-building"></i> Agents</div>
               <div class="box">
                 <select>
                   <option value="ppo">PPO</option>
@@ -249,7 +268,7 @@ const DrawflowWrapper = () => {
         case 'event_logger':
           var event_logger = `
           <div>
-            <div class="title-box"> Event Logger </div>
+            <div class="title-box"><i class="fas fa-file-alt"></i> Event Logger </div>
           </div>
           `;
           editor.addNode('event_logger', 1, 0, pos_x, pos_y, 'event_logger', {}, event_logger );
@@ -257,7 +276,7 @@ const DrawflowWrapper = () => {
         case 'email':
           var email = `
             <div>
-              <div class="title-box"> Send Email </div>
+              <div class="title-box"><i class="fa-duotone fa-at"></i> Send Email </div>
             </div>
           `;
           editor.addNode('email', 1, 0, pos_x, pos_y, 'email', {}, email );
@@ -266,7 +285,7 @@ const DrawflowWrapper = () => {
         case 'action_space':
           var action_space = `
             <div>
-              <div class="title-box"> ActionSpace</div>
+              <div class="title-box"><i class="fab fa-buysellads"></i> ActionSpace</div>
               <div class="box">
                 <select>
                   <option value="buy_sell_move2break">Buy,Sell-Move2Break</option>
@@ -280,7 +299,7 @@ const DrawflowWrapper = () => {
         case 'features':
           var features = `
             <div>
-              <div class="title-box"> Features</div>
+              <div class="title-box"><i class="fas fa-rocket"></i> Features</div>
               <div class="box">
                 <select>
                   <option value="ma9">MA9</option>
@@ -299,7 +318,7 @@ const DrawflowWrapper = () => {
         case 'social_channels':
           var social_channels = `
             <div>
-              <div class="title-box"> Social Channels</div>
+              <div class="title-box"><i class="fa-brands fa-telegram"></i> Social Channels</div>
               <div class="box">
                 <select>
                   <option value="email">email</option>
@@ -315,7 +334,7 @@ const DrawflowWrapper = () => {
         case 'template':
           var template = `
             <div>
-              <div class="title-box"> Template</div>
+              <div class="title-box"><i class="fa-solid fa-code"></i> Template</div>
               <div class="box">
                 Ger Vars
                 <textarea df-template></textarea>
@@ -330,7 +349,30 @@ const DrawflowWrapper = () => {
     }
   }
 
+  function undo() {
+    console.log(undoCount);
+    redoCount = undoCount;
+    if (undoCount >= 0 && lastDataToImport.length > 0) {
+      editor.clear();
+      editor.import(lastDataToImport[undoCount]);
+      undoCount--;
+    }
+    if (undoCount < 0) {
+      undoCount = 0;
+    }
+  }
+
+  function redo() {
+    undoCount = redoCount-1;
+    if (redoCount < lastDataToImport.length - 1) {
+      redoCount++;
+      editor.import(lastDataToImport[redoCount]);
+    }
+  }
+
   function changeModule(event) {
+    lastDataToImport = [];
+    undoCount = 0;
     var all = document.querySelectorAll(".menu ul li");
     for (var i = 0; i < all.length; i++) {
       all[i].classList.remove('selected');
@@ -408,7 +450,8 @@ const DrawflowWrapper = () => {
             })
           } else {
             var tabData = {data: {}};
-            dataToImport.drawflow[tabName] = tabData;
+            lastDataToImport.push(editor.export());
+            lastDataToImport[lastDataToImport.length-1].drawflow[tabName] = tabData;
             const newHTMLNode = document.createElement("li");
             newHTMLNode.addEventListener('click', changeModule);
             newHTMLNode.setAttribute("module-name", tabName);
@@ -417,10 +460,11 @@ const DrawflowWrapper = () => {
             const tabs = document.getElementById("tab_buttons");
             const plusButton = tabs.lastChild;
             tabs.insertBefore(newHTMLNode, plusButton);  
+            dataToImport.drawflow
             console.log(dataToImport.drawflow);
 
             editor.clear();
-            editor.import(dataToImport);
+            editor.import(lastDataToImport[lastDataToImport.length-1]);
             const remove = document.getElementsByClassName("tab-remove");
             const removeIcons = document.getElementsByClassName("tab-remove-icon");
             remove[remove.length - 1].addEventListener("click", tabRemove);            
@@ -452,19 +496,19 @@ const DrawflowWrapper = () => {
               <i className="fa fa-building"></i><span> Agents</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="state">
-              <i className="fa-regular fa-timer"></i><span> State </span>
+              <i className="fas fa-business-time"></i><span> State </span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="reward">
-            <i className="fa-sharp fa-light fa-medal"></i><span> Reward</span>
+              <i className="fas fa-medal"></i><span> Reward</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="broker_account">
-              <i className="fa-regular fa-user-secret"></i><span> Broker Account</span>
+              <i className="fa-regular fa-user"></i><span> Broker Account</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="action_space">
               <i className="fab fa-buysellads"></i><span> ActionSpace</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="features">
-              <i className="fa-regular fa-rocket-launch"></i><span> Features</span>
+              <i className="fas fa-rocket"></i><span> Features</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="social_channels">
               <i className="fa-brands fa-telegram"></i><span> Social Channels</span>
@@ -476,7 +520,7 @@ const DrawflowWrapper = () => {
               <i className="fa-solid fa-code"></i><span> Template</span>
             </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="event_logger">
-              <i className="fa-light fa-file-lines"></i><span> Event logger</span>
+              <i className="fas fa-file-alt"></i><span> Event logger</span>
             </Box>
 
 
@@ -492,6 +536,17 @@ const DrawflowWrapper = () => {
             <Box id="drawflow" onDrop={drop} onDragOver={allowDrop}>
               <Box className="btn-export" onClick={handleExport}>Export</Box>
               <Box className="btn-clear" onClick={handleClearModule}>Clear</Box>
+              <Box className='bar-play'>
+                <button><i className='btn-controls-play fas fa-play'></i></button>
+              </Box>
+              <Box className='bar-controls'>
+                <button onClick={undo}><i className='btn-controls-undo fas fa-undo'></i></button>
+                <button onClick={redo}><i className='btn-controls fas fa-redo'></i></button>
+                <button><i className='btn-controls fas fa-file-alt'></i></button>
+                <button><i className='btn-controls fas fa-plane'></i></button>
+                <button><i className='btn-controls fas fa-save'></i></button>
+                <button><i className='btn-controls fas fa-share-alt'></i></button>
+              </Box>
               <Box className="btn-lock">
                 <button ref={lock} onClick={() => changeMode('lock')}><i className="fas fa-lock"></i></button>
                 <button ref={unlock} onClick={() => changeMode('unlock')} style={{display:'none'}}><i className="fas fa-lock-open"></i></button>
