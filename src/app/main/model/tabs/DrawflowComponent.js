@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { Box, Button, TextField } from '@material-ui/core';
+import React, { useRef, useEffect, useState } from 'react';
+import { Box, Button, TextField, Tooltip, makeStyles, Modal } from '@material-ui/core';
 import Drawflow from 'drawflow';
 import { result } from 'lodash';
 
@@ -15,49 +15,6 @@ const DrawflowWrapper = () => {
   var redoCount = 0;
 
   useEffect(() => {
-    const options = {
-      nodes: {
-        node1: {
-          name: 'Start',
-          icon: 'fas fa-play-circle',
-          html: '<div><i class="fas fa-play-circle"></i><span>Start</span></div>',
-          inputs: {},
-          outputs: {
-            output: {
-              name: 'Output',
-              type: 'flow',
-            },
-          },
-        },
-        node2: {
-          name: 'End',
-          icon: 'fas fa-stop-circle',
-          html: '<div><i class="fas fa-stop-circle"></i><span>End</span></div>',
-          inputs: {
-            input: {
-              name: 'Input',
-              type: 'flow',
-            },
-          },
-          outputs: {},
-        },
-      },
-      connections: {
-        'node1': {
-          'output': {
-            node: 'node2',
-            input: 'input',
-          },
-        },
-      },
-      grid: true,
-      gridSize: 20,
-      snapToGrid: true,
-      zoom: 1,
-      zoomMax: 2,
-      zoomMin: 0.5,
-    };
-    
     container = document.getElementById('drawflow');
     editor = new Drawflow(container);
 
@@ -181,7 +138,7 @@ const DrawflowWrapper = () => {
           </div>
         </div>
       `;
-        editor.addNode('environment', 0,  1, pos_x, pos_y, 'environment', {}, environment );
+        editor.addNode('environment', 1,  1, pos_x, pos_y, 'environment', {}, environment );
         break;
       case 'state':
         var state = `
@@ -201,7 +158,7 @@ const DrawflowWrapper = () => {
             </div>
           </div>
         `
-        editor.addNode('state', 1, 0, pos_x, pos_y, 'state', {}, state );
+        editor.addNode('state', 1, 1, pos_x, pos_y, 'state', {}, state );
         break;
       case 'reward':
         var reward = `
@@ -216,7 +173,7 @@ const DrawflowWrapper = () => {
             </div>
           </div>
         `;
-        editor.addNode('reward', 0, 1, pos_x, pos_y, 'reward', {}, reward );
+        editor.addNode('reward', 1, 1, pos_x, pos_y, 'reward', {}, reward );
         break;
       case 'broker_account':
         var broker_account = `
@@ -263,7 +220,7 @@ const DrawflowWrapper = () => {
               </div>
             </div>
           `;
-          editor.addNode('agents', 1, 0, pos_x, pos_y, 'agents', {}, agents );
+          editor.addNode('agents', 1, 1, pos_x, pos_y, 'agents', {}, agents );
           break;
         case 'event_logger':
           var event_logger = `
@@ -271,15 +228,7 @@ const DrawflowWrapper = () => {
             <div class="title-box"><i class="fas fa-file-alt"></i> Event Logger </div>
           </div>
           `;
-          editor.addNode('event_logger', 1, 0, pos_x, pos_y, 'event_logger', {}, event_logger );
-          break;
-        case 'email':
-          var email = `
-            <div>
-              <div class="title-box"><i class="fa-duotone fa-at"></i> Send Email </div>
-            </div>
-          `;
-          editor.addNode('email', 1, 0, pos_x, pos_y, 'email', {}, email );
+          editor.addNode('event_logger', 1, 1, pos_x, pos_y, 'event_logger', {}, event_logger );
           break;
 
         case 'action_space':
@@ -329,7 +278,7 @@ const DrawflowWrapper = () => {
               </div>
             </div>
           `;
-          editor.addNode('social_channels', 1, 1, pos_x, pos_y, 'social_channels', {}, social_channels );
+          editor.addNode('social_channels', 1, 0, pos_x, pos_y, 'social_channels', {}, social_channels );
           break;
         case 'template':
           var template = `
@@ -481,6 +430,42 @@ const DrawflowWrapper = () => {
     })
   }
 
+  const startTootipStyles = makeStyles((theme) => ({
+    customTooltip: {
+      backgroundColor: 'white',
+      color: '#556EE6',
+      fontSize: '25px',
+    },
+  }));
+
+  const startClasses = startTootipStyles();
+
+  const modalStyles = makeStyles((theme) => ({
+    paper: {
+      position: 'absolute',
+      width: '30%',
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+      top: '30%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  }));
+
+  const modalClasses = modalStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
   return (
       // <div ref={drawflowRef} style={{ height: '500px', width: '70%',background:"red" }} />
       <Box>
@@ -513,9 +498,6 @@ const DrawflowWrapper = () => {
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="social_channels">
               <i className="fa-brands fa-telegram"></i><span> Social Channels</span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="email">
-              <i className="fa-duotone fa-at"></i><span> Send Email</span>
-            </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="template">
               <i className="fa-solid fa-code"></i><span> Template</span>
             </Box>
@@ -536,29 +518,72 @@ const DrawflowWrapper = () => {
             <Box id="drawflow" onDrop={drop} onDragOver={allowDrop}>
               <Box className="btn-export" onClick={handleExport}>Export</Box>
               <Box className="btn-clear" onClick={handleClearModule}>Clear</Box>
-              <Box className='bar-play'>
-                <button><i className='btn-controls-play fas fa-play'></i></button>
-              </Box>
+              <Tooltip classes={{ tooltip: startClasses.customTooltip }} placement="right" title="Start Training">
+                <Box className='bar-play' onClick={handleOpen}>
+                  <button><i className='btn-controls-play fas fa-play'></i></button>
+                </Box>
+              </Tooltip>
               <Box className='bar-controls'>
-                <button onClick={undo}><i className='btn-controls-undo fas fa-undo'></i></button>
-                <button onClick={redo}><i className='btn-controls fas fa-redo'></i></button>
-                <button><i className='btn-controls fas fa-file-alt'></i></button>
-                <button><i className='btn-controls fas fa-plane'></i></button>
-                <button><i className='btn-controls fas fa-save'></i></button>
-                <button><i className='btn-controls fas fa-share-alt'></i></button>
+                <Tooltip title="Undo">
+                  <Button style={{minWidth: '50px'}} onClick={undo}><i className='fas fa-undo'></i></Button>
+                </Tooltip>
+                <Tooltip title="Redo">
+                  <Button style={{minWidth: '50px'}} onClick={redo}><i className='fas fa-redo'></i></Button>
+                </Tooltip>
+                <Tooltip title="Notes">
+                  <Button style={{minWidth: '50px'}}><i className='fas fa-file-alt'></i></Button>
+                </Tooltip>
+                <Tooltip title="Auto Aligne">
+                  <Button style={{minWidth: '50px'}}><i className='fas fa-plane'></i></Button>
+                </Tooltip>
+                <Tooltip title="Save">
+                  <Button style={{minWidth: '50px'}}><i className='fas fa-save'></i></Button>
+                </Tooltip>
+                <Tooltip title="Share">
+                  <Button style={{minWidth: '50px'}}><i className='fas fa-share-alt'></i></Button>
+                </Tooltip>
               </Box>
-              <Box className="btn-lock">
-                <button ref={lock} onClick={() => changeMode('lock')}><i className="fas fa-lock"></i></button>
-                <button ref={unlock} onClick={() => changeMode('unlock')} style={{display:'none'}}><i className="fas fa-lock-open"></i></button>
+              <Box className="btn-lock" style={{height: '35px'}}>
+                <Tooltip title="Lock">
+                  <Button style={{minWidth: '50px', lineHeight: '0px'}} ref={lock} onClick={() => changeMode('lock')}><i className="fas fa-lock"></i></Button>
+                </Tooltip>
+                <Tooltip title="Unlock">
+                  <Button ref={unlock} onClick={() => changeMode('unlock')} style={{display:'none', minWidth: "50px", lineHeight: '0px'}}><i className="fas fa-lock-open"></i></Button>
+                </Tooltip>
               </Box>
               <Box className="bar-zoom">
-                <button className='btn-zoom' onClick={handleZoomOut}><i className="fas fa-search-minus"></i></button>
-                <button className='btn-zoom' onClick={handleZoomReset}><i className="fas fa-search"></i></button>
-                <button className='btn-zoom-last' onClick={handleZoomIn}><i className="fas fa-search-plus"></i></button>
+                <Tooltip title="Zoom Out">
+                  <Button style={{minWidth: '50px'}} className='btn-zoom' onClick={handleZoomOut}><i className="fas fa-search-minus"></i></Button>
+                </Tooltip>
+                <Tooltip title="Reset">
+                  <Button style={{minWidth: '50px'}} className='btn-zoom' onClick={handleZoomReset}><i className="fas fa-search"></i></Button>
+                </Tooltip>
+                <Tooltip title="Zoom In">
+                  <Button style={{minWidth: '50px'}} className='btn-zoom-last' onClick={handleZoomIn}><i className="fas fa-search-plus"></i></Button>
+                </Tooltip>
               </Box>
             </Box>
           </Box>
         </Box>
+        <Modal open={open} onClose={handleClose}>
+          <div className={modalClasses.paper}>
+            <h2>Training Config</h2>
+            <Box
+              sx={{
+                maxWidth: '100%',
+              }}
+            >
+              <TextField fullWidth label="Device" id="trainingDevice" />
+              <TextField fullWidth label="Steps" id="trainingSteps" />
+              <TextField fullWidth label="Historical Data" id="historicalData" />
+              <TextField fullWidth label="Window Size" id="windowSize" />
+            </Box>
+            <Button className='start-config-btn' variant="contained" color="primary" onClick={handleClose}>
+              Submit
+            </Button>
+          </div>
+        </Modal>
+
       </Box>
     );
 };
