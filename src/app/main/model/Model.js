@@ -34,7 +34,7 @@ function Model(props) {
 
   return (
     <Box>
-      <Box className="mt-12 flex justify-between">
+      <Box className="flex justify-between">
         <Tabs
           value={tabValue}
           onChange={handleChangeTab}
@@ -47,6 +47,7 @@ function Model(props) {
           TabIndicatorProps={{
             children: <Divider className="w-full h-full rounded-full opacity-50" />,
           }}
+          style={{backgroundColor: '#414141', paddingTop: '1.2rem'}}
         >
 
 
@@ -81,7 +82,7 @@ function Model(props) {
         </Button> */}
       </Box>
       <Box className={classes.content}>
-        <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
+        <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0" style={{backgroundColor: "#414141"}}>
           {tabValue === 0 && <CreateModel />}
           {tabValue === 2 && <TrainingResult />}
           {tabValue === 1 && <BackTest />}
