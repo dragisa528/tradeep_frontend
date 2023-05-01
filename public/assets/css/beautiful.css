@@ -280,6 +280,7 @@ cursor: pointer;
   box-shadow: 0 2px 15px 2px var(--border-color);
   padding: 0px;
   width: 200px;
+  font-size: 17px;
 }
 
 .drawflow .drawflow-node.selected  {
@@ -357,7 +358,7 @@ cursor: pointer;
 }
 
 .drawflow-node.welcome {
-  width: 300px;
+  width: 250px;
 }
 
 .drawflow-node.slack .title-box {
@@ -461,46 +462,14 @@ cursor: pointer;
   }
 }
 
-.MuiBox-root-453 {
-  margin-top: 0px;
-}
-
-.environment, .agents, .reward, .action_space {
-  width: 400px!important;
-}
-
-input[type="range"]::-moz-range-thumb,
-input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  background-color: #fff;
-  border: 2px solid #4299e1;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-}
-
-.slider-value {
-  display: inline-block;
-  width: 20px;
-  text-align: center;
-}
-
 .w-full {
   width: 100%!important;
 }
 
-.node-bottom input {
-  width: 50px!important;
+.input {
+  background-color: black!important;
 }
 
-.reward-node input {
-  width: 50px!important;
-}
-
-.reward-function-btn {
-  width: 30px;
-  height: 30px;
+.output {
+  background-color: green!important;
 }
