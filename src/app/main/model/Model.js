@@ -52,24 +52,30 @@ function Model(props) {
 
 
           <Tab
-            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4 modelNavbarBtn"
             disableRipple
             label="Builder"
           />
           <Tab
-            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4 modelNavbarBtn"
             disableRipple
             label="Features"
+            // icon={<i className="fas fa-rocket"></i>}
           />
            <Tab
-            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4 modelNavbarBtn"
             disableRipple
             label="Training Result"
           />
           <Tab
-            className="text-14 font-semibold min-h-40 min-w-64 mx-4"
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4 modelNavbarBtn"
             disableRipple
             label="Backtest"
+          />
+          <Tab
+            className="text-14 font-semibold min-h-40 min-w-64 mx-4 modelNavbarBtn"
+            disableRipple
+            label="Template"
           />
         </Tabs>
         {/* <Button
