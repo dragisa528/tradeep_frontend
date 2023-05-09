@@ -52,7 +52,7 @@ header a {
 
 .col {
   overflow: auto;
-  width: 300px;
+  width: 230px;
   height: 100%;
   border-right: 1px solid var(--border-color);
 }
@@ -127,7 +127,7 @@ cursor: pointer;
   float: right;
   position: absolute;
   bottom: 70px;
-  right: 480px;
+  right: 410px;
   display: flex;
   font-size: 24px;
   color: white;
@@ -178,7 +178,7 @@ cursor: pointer;
   float: right;
   position: absolute;
   bottom: 70px;
-  right: 305px;
+  right: 235px;
   display: flex;
   font-size: 24px;
   color: white;
@@ -201,6 +201,14 @@ cursor: pointer;
 
 .start-config-btn {
   margin-top: 20px!important;
+}
+
+.start-config-btn:first-child {
+  margin-right: 20px!important;
+  color: red!important;
+}
+
+.start-btns-box {
   float: right;
 }
 
@@ -347,7 +355,7 @@ cursor: pointer;
   position: initial;
 }
 .drawflow-node .box {
-  padding: 10px 20px 20px 20px;
+  padding: 10px 20px 10px 20px;
   font-size: 14px;
   color: #555555;
 
@@ -462,14 +470,37 @@ cursor: pointer;
   }
 }
 
-.w-full {
+/* .w-full {
   width: 100%!important;
-}
+} */
 
 .input {
   background-color: black!important;
+  left: -8px!important;
 }
 
 .output {
   background-color: green!important;
+  right: 8px!important;
+}
+
+.welcome-textarea {
+  width: 100%!important;
+}
+
+.MuiTab-wrapper-476 {
+  display: flex!important;
+  align-items: center!important;
+  flex-direction: row!important;
+}
+
+.MuiTab-labelIcon-468 .MuiTab-wrapper-476 > *:first-child {
+  margin: 0 10 0 0!important;
+}
+
+.fa-gears {
+  float: right!important;
+  font-size: 20px!important;
+  margin-top: 15px!important;
+  margin-right: 10px!important;
 }

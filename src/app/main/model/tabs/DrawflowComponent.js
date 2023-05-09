@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Box, Button, TextField, Tooltip, makeStyles, Modal } from '@material-ui/core';
 import Drawflow from 'drawflow';
+import { chart } from './chart.js';
 import { result } from 'lodash';
 
 const DrawflowWrapper = () => {
@@ -28,7 +29,7 @@ const DrawflowWrapper = () => {
                       "name": "welcome",
                       "data": {},
                       "class": "welcome",
-                      "html": "\n    <div>\n      <div class=\"title-box\" style=\"line-height: 25px;\"><p>👏 <b>Welcome!!</b></p>\n        <p><b>ChatGPT Engine!!</b>🤖</p></div>\n      <div class=\"box\">\n        <p><b>Tradeep.ai</b> is model training platform.</p>\n        <p>Build Agents, Train them on financial asset.</p>\n\n        <p>Enrich their features<br>\n           Work with Chatgpt<br>\n           to empower your trading.<br>\n           <br>\n        <p><b><u>Shortkeys:</u></b></p>\n        <p>🎹 <b>Delete</b> for remove selected<br>\n        💠 Mouse Left Click == Move<br>\n        ❌ Mouse Right == Delete Option<br>\n        🔍 Ctrl + Wheel == Zoom<br>\n        📱 Mobile support<br>\n        ...</p>\n      </div>\n     <div class=\"p-10\"><textarea rows=\"1\" class=\"w-full p-10 m-auto\" placeholder=\"To ChatGPT...\"></textarea><button class=\"py-5 px-10 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700\">BsSendFill</button><button style=\"float: right;\" class=\"py-5 px-10 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700\">BiCopy</button></div>    </div>\n    ",
+                      "html": "\n    <div>\n      <div class=\"title-box\" style=\"line-height: 25px;\"><p>👏 <b>Welcome!!</b></p>\n        <p><b>ChatGPT Engine!!</b>🤖</p></div>\n      <div class=\"box\">\n        <p><b>Tradeep.ai</b> is model training platform.</p>\n        <p>Build Agents, Train them on financial asset.</p>\n\n        <p>Enrich their features<br>\n           Work with Chatgpt<br>\n           to empower your trading.<br>\n           <br>\n        <p><b><u>Shortkeys:</u></b></p>\n        <p>🎹 <b>Delete</b> for remove selected<br>\n        💠 Mouse Left Click == Move<br>\n        ❌ Mouse Right == Delete Option<br>\n        🔍 Ctrl + Wheel == Zoom<br>\n        📱 Mobile support<br>\n        ...</p>\n <div id='chart-container'></div>      </div>\n     <div class=\"p-10\"><textarea rows=\"1\" class=\"w-full p-10 m-auto welcome-textarea\" placeholder=\"To ChatGPT...\"></textarea><button class=\"py-5 px-10 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700\">BsSendFill</button><button style=\"float: right;\" class=\"py-5 px-10 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700\">BiCopy</button></div>    </div>\n    ",
                       "typenode": false,
                       "inputs": {},
                       "outputs": {},
@@ -126,7 +127,7 @@ const DrawflowWrapper = () => {
       case 'environment':
       var environment = `
         <div>
-          <div class="title-box"><i class="fa-solid fa-seedling"></i> Env(APPL)</div>
+          <div class="title-box"><i class="fa-solid fa-seedling"></i> Env(APPL)<i class="fa-solid fa-gears"></i></div>
           <div class="box">
             <select>
               <option value="crypto">Crypto</option>
@@ -136,6 +137,20 @@ const DrawflowWrapper = () => {
               <option value="commodities">Commodities</option>
             </select>
           </div>
+          <div class="box">
+            <label>Timeframe:</label>
+            <select>
+              <option value="1m">1M</option>
+              <option value="5m">5M</option>
+              <option value="30m">30M</option>
+              <option value="1h">1H</option>
+              <option value="4h">4H</option>
+              <option value="8h">8H</option>
+              <option value="12h">12H</option>
+              <option value="1d">1D</option>
+              <option value="1w">1W</option>
+            </select>
+          </div>
         </div>
       `;
         editor.addNode('environment', 1,  1, pos_x, pos_y, 'environment', {}, environment );
@@ -143,7 +158,7 @@ const DrawflowWrapper = () => {
       case 'state':
         var state = `
           <div>
-            <div class="title-box"><i class="fas fa-business-time"></i> State</div>
+            <div class="title-box"><i class="fas fa-business-time"></i> State<i class="fa-solid fa-gears"></i></div>
             <div class="box">
               <select>
                 <option value="forexbrocker_a">ForexBroker A</option>
@@ -156,6 +171,12 @@ const DrawflowWrapper = () => {
                 <option value="1d">1D</option>
               </select>
             </div>
+            <div class="box" unresizable="true">
+              <span class="w-full">Window Size:</span>
+              <div class="w-full">
+                <input id="minmax-range" type="range" min="0" max="2000" value="1000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+              </div>
+            </div>
           </div>
         `
         editor.addNode('state', 1, 1, pos_x, pos_y, 'state', {}, state );
@@ -163,7 +184,7 @@ const DrawflowWrapper = () => {
       case 'reward':
         var reward = `
           <div>
-            <div class="title-box"><i class="fas fa-medal"></i> Reward</div>
+            <div class="title-box"><i class="fas fa-medal"></i> Reward<i class="fa-solid fa-gears"></i></div>
             <div class="box">
               <select>
                 <option value="sharp_reward_a">Sharp Reward A</option>
@@ -178,7 +199,7 @@ const DrawflowWrapper = () => {
       case 'broker_account':
         var broker_account = `
         <div>
-          <div class="title-box"><i class="fa-regular fa-user"></i> Broker Account</div>
+          <div class="title-box"><i class="fa-regular fa-user"></i> Broker Account<i class="fa-solid fa-gears"></i></div>
           <div class="box">
             <select>
               <option value="metatrader4">Metatrader4</option>
@@ -186,6 +207,7 @@ const DrawflowWrapper = () => {
               <option value="binance">Binance</option>
               <option value="ohanda">Ohanda</option>
             </select>
+
           </div>
         </div>
         `;
@@ -194,7 +216,7 @@ const DrawflowWrapper = () => {
       case 'models':
         var models = `
           <div>
-            <div class="title-box"><i class="fa fa-tasks"></i> 3rd Party Data</div>
+            <div class="title-box"><i class="fa fa-tasks"></i> 3rd Party Data<i class="fa-solid fa-gears"></i></div>
             <div class="box">
               <select>
                 <option value="rl">RL</option>
@@ -209,7 +231,7 @@ const DrawflowWrapper = () => {
       case 'agents':
           var agents = `
             <div>
-              <div class="title-box"><i class="fa fa-building"></i> Agents</div>
+              <div class="title-box"><i class="fa fa-building"></i> Agents<i class="fa-solid fa-gears"></i></div>
               <div class="box">
                 <select>
                   <option value="ppo">PPO</option>
@@ -227,7 +249,7 @@ const DrawflowWrapper = () => {
         case 'event_logger':
           var event_logger = `
           <div>
-            <div class="title-box"><i class="fas fa-file-alt"></i> Event Logger </div>
+            <div class="title-box"><i class="fas fa-file-alt"></i> Event Logger <i class="fa-solid fa-gears"></i></div>
           </div>
           `;
           editor.addNode('event_logger', 1, 1, pos_x, pos_y, 'event_logger', {}, event_logger );
@@ -236,7 +258,7 @@ const DrawflowWrapper = () => {
         case 'action_space':
           var action_space = `
             <div>
-              <div class="title-box"><i class="fab fa-buysellads"></i> ActionSpace</div>
+              <div class="title-box"><i class="fab fa-buysellads"></i> ActionSpace<i class="fa-solid fa-gears"></i></div>
               <div class="box">
                 <select>
                   <option value="buy_sell_move2break">Buy,Sell-Move2Break</option>
@@ -250,7 +272,10 @@ const DrawflowWrapper = () => {
         case 'features':
           var features = `
             <div>
-              <div class="title-box"><i class="fas fa-rocket"></i> Features</div>
+              <div class="title-box">
+                <i class="fas fa-rocket"></i> Features
+                <i class="fa-solid fa-gears"></i>
+              </div>
               <div class="box">
                 <select>
                   <option value="ma9">MA9</option>
@@ -269,7 +294,10 @@ const DrawflowWrapper = () => {
         case 'social_channels':
           var social_channels = `
             <div>
-              <div class="title-box"><i class="fa-brands fa-telegram"></i> Social Channels</div>
+              <div class="title-box" style="font-size: 15px">
+                <i class="fa-brands fa-telegram"></i> Social Channels
+                <i class="fa-solid fa-gears"></i>
+              </div>
               <div class="box">
                 <select>
                   <option value="email">email</option>
@@ -285,11 +313,17 @@ const DrawflowWrapper = () => {
         case 'template':
           var template = `
             <div>
-              <div class="title-box"><i class="fa-solid fa-code"></i> Template</div>
+              <div class="title-box">
+                <i class="fa-solid fa-code"></i> Template
+                <i class="fa fa-gears"></i>
+              </div>
               <div class="box">
                 Ger Vars
                 <textarea df-template></textarea>
                 Output template with vars
+              </div>
+              <div class="env-setting w-full pr-10 pl-10 pb-10">
+                <button onclick="statePrompt()" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-10 mt-10 rounded">Setup</button>
               </div>
             </div>
           `;
@@ -301,7 +335,6 @@ const DrawflowWrapper = () => {
   }
 
   function undo() {
-    console.log(undoCount);
     redoCount = undoCount;
     if (undoCount >= 0 && lastDataToImport.length > 0) {
       editor.clear();
@@ -497,9 +530,6 @@ const DrawflowWrapper = () => {
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="social_channels">
               <i className="fa-brands fa-telegram"></i><span> Social Channels</span>
             </Box>
-            <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="template">
-              <i className="fa-solid fa-code"></i><span> Template</span>
-            </Box>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="event_logger">
               <i className="fas fa-file-alt"></i><span> Event logger</span>
             </Box>
@@ -517,7 +547,8 @@ const DrawflowWrapper = () => {
               {/* <button>plus</button> */}
             </Box>
             <Box id="drawflow" onDrop={drop} onDragOver={allowDrop}>
-              <Tooltip classes={{ tooltip: startClasses.customTooltip }} placement="right" title="Start Training">
+              <div id="chart-container"></div>
+              <Tooltip classes={{ tooltip: startClasses.customTooltip }} placement="right" title="Start Trading">
                 <Box className='bar-play' onClick={handleOpen}>
                   <button><i className='btn-controls-play fas fa-play'></i></button>
                 </Box>
@@ -569,7 +600,7 @@ const DrawflowWrapper = () => {
         </Box>
         <Modal open={open} onClose={handleClose}>
           <div className={modalClasses.paper}>
-            <h2>Training Config</h2>
+            <h2>Trading Config</h2>
             <Box
               sx={{
                 maxWidth: '100%',
@@ -580,9 +611,15 @@ const DrawflowWrapper = () => {
               <TextField fullWidth label="Historical Data" id="historicalData" />
               <TextField fullWidth label="Window Size" id="windowSize" />
             </Box>
-            <Button className='start-config-btn' variant="contained" color="primary" onClick={handleClose}>
-              Submit
-            </Button>
+            <Box className='start-btns-box'>
+              <Button className='start-config-btn' variant="contained" color="primary" onClick={handleClose}>
+                <img style={{width: '23px'}} src="./assets/images/sololearn.png" />
+                 Start trading
+              </Button>
+              <Button className='start-config-btn' variant="contained" color="primary" onClick={handleClose}>
+                Cancel
+              </Button>
+            </Box>
           </div>
         </Modal>
 
