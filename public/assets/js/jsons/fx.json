@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "name": "EUR/USD",
+      "symbol": "EURUSD",
+      "price": ""
+    },
+    {
+      "name": "GBP/USD",
+      "symbol": "GBPUSD",
+      "price": ""
+    }
+  ]
+}
