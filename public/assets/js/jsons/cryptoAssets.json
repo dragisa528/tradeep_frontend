@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "price": ""
+    },
+    {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "price": ""
+    }
+  ]
+}
