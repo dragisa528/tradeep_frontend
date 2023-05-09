@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "name": "Tesla",
+      "symbol": "TSLA",
+      "price": ""
+    },
+    {
+      "name": "Apple",
+      "symbol": "AAPL",
+      "price": ""
+    },
+    {
+      "name": "Microsoft",
+      "symbol": "MSFT",
+      "price": ""
+    },
+    {
+      "name": "Nvidia",
+      "symbol": "NVDA",
+      "price": ""
+    }
+  ]
+}
