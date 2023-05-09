@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Box, Button, TextField, Tooltip, makeStyles, Modal } from '@material-ui/core';
 import Drawflow from 'drawflow';
-import { chart } from './chart.js';
+// import { chart } from './chart.js';
 import { result } from 'lodash';
 
 const DrawflowWrapper = () => {
