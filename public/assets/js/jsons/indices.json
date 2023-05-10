@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "name": "Nasdaq 100",
+      "symbol": "QQQ",
+      "price": ""
+    },
+    {
+      "name": "SPDR S&P 500 ETF",
+      "symbol": "SPY",
+      "price": ""
+    }
+  ]
+}
