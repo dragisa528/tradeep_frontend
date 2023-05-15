@@ -88,7 +88,7 @@ function Model(props) {
         </Button> */}
       </Box>
       <Box className={classes.content}>
-        <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0" style={{backgroundColor: "#414141"}}>
+        <div className="p-12 pl-0 lg:ltr:pr-0 lg:rtl:pl-0" style={{backgroundColor: "#414141"}}>
           {tabValue === 0 && <CreateModel />}
           {tabValue === 2 && <TrainingResult />}
           {tabValue === 1 && <BackTest />}
