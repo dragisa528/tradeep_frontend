@@ -64,6 +64,15 @@ header a {
   cursor: move;
   user-select: none;
 }
+
+.add-new-element {
+  line-height: 50px;
+  border-bottom: 1px solid var(--border-color);
+  padding-left: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
 .menu {
   position: absolute;
   height: 40px;
@@ -498,7 +507,7 @@ cursor: pointer;
   margin: 0 10 0 0!important;
 }
 
-.fa-gears {
+.fa-cog {
   float: right!important;
   font-size: 20px!important;
   margin-top: 15px!important;

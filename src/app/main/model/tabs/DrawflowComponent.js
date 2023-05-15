@@ -122,12 +122,11 @@ const DrawflowWrapper = () => {
     pos_x = pos_x * ( editor.precanvas.clientWidth / (editor.precanvas.clientWidth * editor.zoom)) - (editor.precanvas.getBoundingClientRect().x * ( editor.precanvas.clientWidth / (editor.precanvas.clientWidth * editor.zoom)));
     pos_y = pos_y * ( editor.precanvas.clientHeight / (editor.precanvas.clientHeight * editor.zoom)) - (editor.precanvas.getBoundingClientRect().y * ( editor.precanvas.clientHeight / (editor.precanvas.clientHeight * editor.zoom)));
 
-
     switch (name) {
       case 'environment':
       var environment = `
         <div>
-          <div class="title-box"><i class="fa-solid fa-seedling"></i> Env(APPL)<i class="fa-solid fa-gears"></i></div>
+          <div class="title-box"><i class="fa-solid fa-seedling"></i> Env(APPL)<i class="fa fa-cog"></i></div>
           <div class="box">
             <select>
               <option value="crypto">Crypto</option>
@@ -158,7 +157,7 @@ const DrawflowWrapper = () => {
       case 'state':
         var state = `
           <div>
-            <div class="title-box"><i class="fas fa-business-time"></i> State<i class="fa-solid fa-gears"></i></div>
+            <div class="title-box"><i class="fas fa-business-time"></i> State<i class="fa fa-cog"></i></div>
             <div class="box">
               <select>
                 <option value="forexbrocker_a">ForexBroker A</option>
@@ -184,7 +183,7 @@ const DrawflowWrapper = () => {
       case 'reward':
         var reward = `
           <div>
-            <div class="title-box"><i class="fas fa-medal"></i> Reward<i class="fa-solid fa-gears"></i></div>
+            <div class="title-box"><i class="fas fa-medal"></i> Reward<i class="fa fa-cog"></i></div>
             <div class="box">
               <select>
                 <option value="sharp_reward_a">Sharp Reward A</option>
@@ -199,7 +198,7 @@ const DrawflowWrapper = () => {
       case 'broker_account':
         var broker_account = `
         <div>
-          <div class="title-box"><i class="fa-regular fa-user"></i> Broker Account<i class="fa-solid fa-gears"></i></div>
+          <div class="title-box"><i class="fa-regular fa-user"></i> Broker Account<i class="fa fa-cog"></i></div>
           <div class="box">
             <select>
               <option value="metatrader4">Metatrader4</option>
@@ -216,7 +215,7 @@ const DrawflowWrapper = () => {
       case 'models':
         var models = `
           <div>
-            <div class="title-box"><i class="fa fa-tasks"></i> 3rd Party Data<i class="fa-solid fa-gears"></i></div>
+            <div class="title-box"><i class="fa fa-tasks"></i> 3rd Party Data<i class="fa fa-cog"></i></div>
             <div class="box">
               <select>
                 <option value="rl">RL</option>
@@ -231,7 +230,7 @@ const DrawflowWrapper = () => {
       case 'agents':
           var agents = `
             <div>
-              <div class="title-box"><i class="fa fa-building"></i> Agents<i class="fa-solid fa-gears"></i></div>
+              <div class="title-box"><i class="fa fa-building"></i> Agents<i class="fa fa-cog"></i></div>
               <div class="box">
                 <select>
                   <option value="ppo">PPO</option>
@@ -246,91 +245,83 @@ const DrawflowWrapper = () => {
           `;
           editor.addNode('agents', 1, 1, pos_x, pos_y, 'agents', {}, agents );
           break;
-        case 'event_logger':
-          var event_logger = `
+      case 'event_logger':
+        var event_logger = `
+        <div>
+          <div class="title-box"><i class="fas fa-file-alt"></i> Event Logger <i class="fa fa-cog"></i></div>
+        </div>
+        `;
+        editor.addNode('event_logger', 1, 1, pos_x, pos_y, 'event_logger', {}, event_logger );
+        break;
+      case 'action_space':
+        var action_space = `
           <div>
-            <div class="title-box"><i class="fas fa-file-alt"></i> Event Logger <i class="fa-solid fa-gears"></i></div>
+            <div class="title-box"><i class="fab fa-buysellads"></i> ActionSpace<i class="fa fa-cog"></i></div>
+            <div class="box">
+              <select>
+                <option value="buy_sell_move2break">Buy,Sell-Move2Break</option>
+                <option value="buy_sell_hold">Buy, Sell, Hold</option>
+              </select>
+            </div>
           </div>
-          `;
-          editor.addNode('event_logger', 1, 1, pos_x, pos_y, 'event_logger', {}, event_logger );
-          break;
-
-        case 'action_space':
-          var action_space = `
-            <div>
-              <div class="title-box"><i class="fab fa-buysellads"></i> ActionSpace<i class="fa-solid fa-gears"></i></div>
-              <div class="box">
-                <select>
-                  <option value="buy_sell_move2break">Buy,Sell-Move2Break</option>
-                  <option value="buy_sell_hold">Buy, Sell, Hold</option>
-                </select>
-              </div>
+        `;
+        editor.addNode('action_space', 1, 1, pos_x, pos_y, 'action_space', {}, action_space );
+        break;
+      case 'features':
+        var features = `
+          <div>
+            <div class="title-box">
+              <i class="fas fa-rocket"></i> Features
+              <i class="fa fa-cog"></i>
             </div>
-          `;
-          editor.addNode('action_space', 1, 1, pos_x, pos_y, 'action_space', {}, action_space );
-          break;
-        case 'features':
-          var features = `
-            <div>
-              <div class="title-box">
-                <i class="fas fa-rocket"></i> Features
-                <i class="fa-solid fa-gears"></i>
-              </div>
-              <div class="box">
-                <select>
-                  <option value="ma9">MA9</option>
-                  <option value="ma21">MA21</option>
-                  <option value="vwap">VWAP</option>
-                  <option value="bbands">BBands</option>
-                  <option value="heniken_hashi">Heniken Hashi</option>
-                  <option value="renko">Renko</option>
-                  <option value="td3">TD3</option>
-                </select>
-              </div>
+            <div class="box">
+              <select>
+                <option value="ma9">MA9</option>
+                <option value="ma21">MA21</option>
+                <option value="vwap">VWAP</option>
+                <option value="bbands">BBands</option>
+                <option value="heniken_hashi">Heniken Hashi</option>
+                <option value="renko">Renko</option>
+                <option value="td3">TD3</option>
+              </select>
             </div>
-          `;
-          editor.addNode('features', 1, 1, pos_x, pos_y, 'features', {}, features );
-          break;
-        case 'social_channels':
-          var social_channels = `
-            <div>
-              <div class="title-box" style="font-size: 15px">
-                <i class="fa-brands fa-telegram"></i> Social Channels
-                <i class="fa-solid fa-gears"></i>
-              </div>
-              <div class="box">
-                <select>
-                  <option value="email">email</option>
-                  <option value="telegram">telegram</option>
-                  <option value="discord">discord</option>
-                  <option value="whatsapp">whatsapp</option>
-                </select>
-              </div>
+          </div>
+        `;
+        editor.addNode('features', 1, 1, pos_x, pos_y, 'features', {}, features );
+        break;
+      case 'social_channels':
+        var social_channels = `
+          <div>
+            <div class="title-box" style="font-size: 15px">
+              <i class="fa-brands fa-telegram"></i> Social Channels
+              <i class="fa fa-cog"></i>
             </div>
-          `;
-          editor.addNode('social_channels', 1, 0, pos_x, pos_y, 'social_channels', {}, social_channels );
-          break;
-        case 'template':
-          var template = `
-            <div>
-              <div class="title-box">
-                <i class="fa-solid fa-code"></i> Template
-                <i class="fa fa-gears"></i>
-              </div>
-              <div class="box">
-                Ger Vars
-                <textarea df-template></textarea>
-                Output template with vars
-              </div>
-              <div class="env-setting w-full pr-10 pl-10 pb-10">
-                <button onclick="statePrompt()" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-10 mt-10 rounded">Setup</button>
-              </div>
+            <div class="box">
+              <select>
+                <option value="email">email</option>
+                <option value="telegram">telegram</option>
+                <option value="discord">discord</option>
+                <option value="whatsapp">whatsapp</option>
+              </select>
             </div>
-          `;
-          editor.addNode('template', 1, 1, pos_x, pos_y, 'template', { "template": 'Write your template'}, template );
-          break;
-
+          </div>
+        `;
+        editor.addNode('social_channels', 1, 0, pos_x, pos_y, 'social_channels', {}, social_channels );
+        break;
       default:
+        var other = `
+        <div>
+          <div class="title-box">
+            <i class="fa-solid fa-code"></i> ${name}
+            <i class="fa fa-cog"></i>
+          </div>
+          <div class="env-setting w-full pr-10 pl-10 pb-10">
+            <button onclick="statePrompt()" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-10 mt-10 rounded">Setup</button>
+          </div>
+        </div>
+        `
+        editor.addNode(name, 1, 1, pos_x, pos_y, name, {}, other );
+        break;
     }
   }
 
@@ -465,6 +456,34 @@ const DrawflowWrapper = () => {
     })
   }
 
+  const addElement = () => {
+    Swal.fire({
+      title: "Create New Module/Strategy",
+      html: '<input placeholder="Input here..." id="add_new_module" margin="normal" />'
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        var moduleName = document.getElementById('add_new_module').value;
+        if (moduleName) {
+          const newHTMLNode = document.createElement("div");
+          newHTMLNode.setAttribute("data-node", moduleName);
+          newHTMLNode.setAttribute("class", 'drag-drawflow');
+          newHTMLNode.setAttribute("draggable", 'true');
+          newHTMLNode.addEventListener("dragstart", drag);
+          newHTMLNode.innerHTML = `<i class="fa fa-tasks"></i><span> ${moduleName}</span>`;
+          const modules = document.getElementById('left_sidebar');
+          const addButton = modules.lastChild;
+          modules.insertBefore(newHTMLNode, addButton);
+        } else {
+          Swal.fire({
+            title: "Input the module name",
+            icon: 'warning'
+          })
+        }
+      }
+    })
+  }
+
   const startTootipStyles = makeStyles((theme) => ({
     customTooltip: {
       backgroundColor: 'white',
@@ -505,7 +524,7 @@ const DrawflowWrapper = () => {
       // <div ref={drawflowRef} style={{ height: '500px', width: '70%',background:"red" }} />
       <Box>
         <Box className="wrapper">
-          <Box className="col">
+          <Box className="col" id='left_sidebar'>
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="environment">
               <i className="fa-solid fa-seedling"></i><span> Env(APPL)</span>
             </Box>
@@ -518,9 +537,6 @@ const DrawflowWrapper = () => {
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="reward">
               <i className="fas fa-medal"></i><span> Reward</span>
             </Box>
-            {/* <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="broker_account">
-              <i className="fa-regular fa-user"></i><span> Broker Account</span>
-            </Box> */}
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="action_space">
               <i className="fab fa-buysellads"></i><span> ActionSpace</span>
             </Box>
@@ -536,7 +552,9 @@ const DrawflowWrapper = () => {
             <Box className="drag-drawflow" draggable="true" onDragStart={drag} data-node="models">
               <i className="fa fa-tasks"></i><span> 3rd Party Data</span>
             </Box>
-
+            <Box className="add-new-element" onClick={addElement}>
+              <i className="fa fa-plus"></i><span> Add New</span>
+            </Box>
           </Box>
           <Box className="col-right" style={{background:"black"}}>
             <Box className="menu" style={{color: "black"}}>
@@ -544,7 +562,6 @@ const DrawflowWrapper = () => {
                 <li onClick={changeModule} module-name="Home" className="selected">Home</li>
                 <li onClick={addModule}><i className='fa fa-plus'></i></li>
               </ul>
-              {/* <button>plus</button> */}
             </Box>
             <Box id="drawflow" onDrop={drop} onDragOver={allowDrop}>
               <div id="chart-container"></div>
