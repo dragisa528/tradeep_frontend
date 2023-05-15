@@ -72,6 +72,7 @@ header a {
   cursor: pointer;
   user-select: none;
 }
+
 .menu {
   position: absolute;
   height: 40px;

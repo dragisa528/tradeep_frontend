@@ -308,25 +308,6 @@ const DrawflowWrapper = () => {
         `;
         editor.addNode('social_channels', 1, 0, pos_x, pos_y, 'social_channels', {}, social_channels );
         break;
-      case 'template':
-          var template = `
-            <div>
-              <div class="title-box">
-                <i class="fa-solid fa-code"></i> Template
-                <i class="fa fa-gears"></i>
-              </div>
-              <div class="box">
-                Get Vars
-                <textarea df-template></textarea>
-                Output template with vars
-              </div>
-              <div class="env-setting w-full pr-10 pl-10 pb-10">
-                <button onclick="statePrompt()" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-10 mt-10 rounded">Setup</button>
-              </div>
-            </div>
-          `;
-          editor.addNode('template', 1, 1, pos_x, pos_y, 'template', { "template": 'Write your template'}, template );
-          break;
       default:
         var other = `
         <div>
@@ -340,6 +321,7 @@ const DrawflowWrapper = () => {
         </div>
         `
         editor.addNode(name, 1, 1, pos_x, pos_y, name, {}, other );
+        break;
     }
   }
 

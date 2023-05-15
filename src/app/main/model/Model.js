@@ -78,14 +78,6 @@ function Model(props) {
             label="Template"
           />
         </Tabs>
-        {/* <Button
-          color="secondary"
-          variant="contained"
-          className="w-160 mr-12"
-          onClick={(ev) => dispatch(openNewModelDialog())}
-        >
-          +Create Model
-        </Button> */}
       </Box>
       <Box className={classes.content}>
         <div className="p-12 pl-0 lg:ltr:pr-0 lg:rtl:pl-0" style={{backgroundColor: "#414141"}}>
