@@ -1,20 +1,20 @@
 - [x] **1. Setup Project Structure (Frontend):**
     - [x] 1.1. Initialize a new React application.
-    - [x] 1.2. Setup routing for the different pages in your app (e.g., Dashboard, Create Model, View Model, etc.).
+    - [x] 1.2. Setup routing for the different pages in your app (e.g., Dashboard, Create Model, other pages, etc.).
     - [x] 1.3. Setup a global state management solution (like Redux or MobX) if necessary.
 
 - [ ] **2. User Authentication (Frontend):**
     - [x] 2.1. Create UI for user registration and login.
-    - [ ] 2.2. Implement functionality to make GraphQL mutations for user registration and login.
-    - [ ] 2.3. Implement client-side session management.
+    - [ ] 2.2. Implement functionality to make GraphQL mutations for user registration and login. done?
+    - [ ] 2.3. Implement client-side session management. done?
 
 - [ ] **3. Data Selection UI (Frontend):**
     - [x] 3.1. Create a UI component for users to select data for their model.
     - [ ] 3.2. Store user's data selection in local state.
 
 - [ ] **4. Feature Selection and Creation UI (Frontend):**
-    - [ ] 4.1. Create a UI component for users to select or create new features using Python snippets.
-    - [ ] 4.2. Implement a code editor for users to write Python snippets.
+    - [x] 4.1. Create a UI component for users to select or create new features using Python snippets.
+    - [x] 4.2. Implement a code editor for users to write Python snippets.
     - [ ] 4.3. Store user's feature selection and created features in local state.
 
 - [ ] **5. Model Selection UI (Frontend):**
@@ -22,7 +22,7 @@
     - [ ] 5.2. Store user's model selection in local state.
 
 - [ ] **6. Training Session Configuration UI (Frontend):**
-    - [] 6.1. Create a UI component for users to configure their training session (e.g., device, machine). need small changes.
+    - [x] 6.1. Create a UI component for users to configure their training session (e.g., device, machine). need small changes.
     - [ ] 6.2. Store user's training session configuration in local state.
 
 - [ ] **7. Create Training Session (Frontend):**
