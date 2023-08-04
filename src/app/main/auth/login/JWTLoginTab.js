@@ -49,35 +49,29 @@ function JWTLoginTab(props) {
 
   async function onSubmit(model) {
 
-    // console.log(model);
-    // return;
-    try {
-      const response = await fetch('http://127.0.0.1:8000/login/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(model)
-      });
+    axios.post("http://127.0.0.1:8000/login", JSON.stringify(model)).then(res => {
+      console.log(res.data)
+    }).catch(err => {
 
-      const result = await response.text();
-      console.log(result);
-      // Handle the successful response here
-    } catch (error) {
-      console.error(error);
-      // Handle the error here
-    }
+    })
+    // try {
+    //   const response = await fetch('http://127.0.0.1:8000/login/', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(model)
+    //   });
+
+    //   const result = await response.text();
+    //   console.log(result);
+    //   // Handle the successful response here
+    // } catch (error) {
+    //   console.error(error);
+    //   // Handle the error here
+    // }
   }
-  // function onSubmit(model) {
-  //   console.log(model);
 
-  //   axios.post("http://127.0.0.1:8000/login", JSON.stringify(model)).then(res => {
-  //     console.log(res.data)
-  //   }).catch(err => {
-
-  //   })
-  //   // dispatch(submitLogin(signIn, model));
-  // }
 
   return (
     <div className="w-full">
