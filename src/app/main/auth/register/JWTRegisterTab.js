@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { submitRegister } from 'app/auth/store/registerSlice';
 import * as yup from 'yup';
 import _ from '@lodash';
-
+import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { REGISTER_MUTATION } from '@graphql/mutations'
 
@@ -57,7 +57,14 @@ function JWTRegisterTab(props) {
   }, [authRegister.errors, setError]);
 
   function onSubmit(model) {
-    dispatch(submitRegister(signUp, model));
+    console.log(model);
+
+    axios.post("http://127.0.0.1:8000/register", JSON.stringify(model)).then(res => {
+      console.log(res.data)
+    }).catch(err => {
+
+    })
+    // dispatch(submitRegister(signUp, model));
   }
 
   return (

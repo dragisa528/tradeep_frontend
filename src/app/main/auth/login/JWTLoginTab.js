@@ -13,6 +13,7 @@ import _ from '@lodash';
 
 import { useMutation } from '@apollo/client';
 import { LOGIN_MUTATION } from '@graphql/mutations';
+import axios from 'axios';
 /**
  * Form Validation Schema
  */
@@ -45,9 +46,38 @@ function JWTLoginTab(props) {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  function onSubmit(model) {
-    dispatch(submitLogin(signIn, model));
+
+  async function onSubmit(model) {
+
+    // console.log(model);
+    // return;
+    try {
+      const response = await fetch('http://127.0.0.1:8000/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(model)
+      });
+
+      const result = await response.text();
+      console.log(result);
+      // Handle the successful response here
+    } catch (error) {
+      console.error(error);
+      // Handle the error here
+    }
   }
+  // function onSubmit(model) {
+  //   console.log(model);
+
+  //   axios.post("http://127.0.0.1:8000/login", JSON.stringify(model)).then(res => {
+  //     console.log(res.data)
+  //   }).catch(err => {
+
+  //   })
+  //   // dispatch(submitLogin(signIn, model));
+  // }
 
   return (
     <div className="w-full">
