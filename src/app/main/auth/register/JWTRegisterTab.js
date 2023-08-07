@@ -12,7 +12,8 @@ import _ from '@lodash';
 import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { REGISTER_MUTATION } from '@graphql/mutations'
-
+import "react-notifications/lib/notifications.css"
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 /**
  * Form Validation Schema
  */
@@ -61,6 +62,16 @@ function JWTRegisterTab(props) {
 
     axios.post("http://127.0.0.1:8000/register", JSON.stringify(model)).then(res => {
       console.log(res.data)
+      if (res.data === "Register successfully!")
+        NotificationManager.success(res.data, 'Success');
+      else if (res.data === "Error occurred while saving user")
+        NotificationManager.warning(res.data, 'Failure');
+      else if (res.data === "Form is invalid")
+        NotificationManager.warning(res.data, 'Failure');
+      else if (res.data === "Passwords do not match")
+        NotificationManager.warning(res.data, 'Failure');
+      else if (res.data === "Invalid request method")
+        NotificationManager.warning(res.data, 'Failure');
     }).catch(err => {
 
     })
@@ -69,6 +80,7 @@ function JWTRegisterTab(props) {
 
   return (
     <div className="w-full">
+      <NotificationContainer />
       <form className="flex flex-col justify-center w-full" onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="username"

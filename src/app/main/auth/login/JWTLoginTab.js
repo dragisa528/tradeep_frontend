@@ -14,6 +14,9 @@ import _ from '@lodash';
 import { useMutation } from '@apollo/client';
 import { LOGIN_MUTATION } from '@graphql/mutations';
 import axios from 'axios';
+import "react-notifications/lib/notifications.css"
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+
 /**
  * Form Validation Schema
  */
@@ -51,30 +54,25 @@ function JWTLoginTab(props) {
 
     axios.post("http://127.0.0.1:8000/login", JSON.stringify(model)).then(res => {
       console.log(res.data)
+      if (res.data === "Login successful")
+        NotificationManager.success(res.data, 'Success');
+      else if (res.data === "Invalid password")
+        NotificationManager.warning(res.data, 'Failure');
+      else if (res.data === "User does not exist")
+        NotificationManager.warning(res.data, 'Failure');
+      else if (res.data === "Invalid email or password")
+        NotificationManager.warning(res.data, 'Failure');
+      else if (res.data === "Invalid request method")
+        NotificationManager.warning(res.data, 'Failure');
     }).catch(err => {
-
+      console.log(err)
     })
-    // try {
-    //   const response = await fetch('http://127.0.0.1:8000/login/', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(model)
-    //   });
-
-    //   const result = await response.text();
-    //   console.log(result);
-    //   // Handle the successful response here
-    // } catch (error) {
-    //   console.error(error);
-    //   // Handle the error here
-    // }
   }
 
 
   return (
     <div className="w-full">
+      <NotificationContainer />
       <form className="flex flex-col justify-center w-full" onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="email"
